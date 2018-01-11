@@ -96,7 +96,7 @@ gravity = Vector2( 0, 500 )
 speed_min = Vector2( 10, 6 )
 speed_max = Vector2( 220, 1200 )
 speed_boost = Vector2( 2, 1 )
-speed_accel = Vector2( 400, 6000 )
+speed_accel = Vector2( 0.4, 0.8 )
 
 [node name="Anim" type="AnimationPlayer" parent="Char" index="0"]
 

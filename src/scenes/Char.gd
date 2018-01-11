@@ -4,7 +4,7 @@ export var gravity = Vector2(0, 500)
 export var speed_min = Vector2(10, 6) 
 export var speed_max = Vector2(220, 1200)
 export var speed_boost = Vector2(2, 1)
-export var speed_accel = Vector2(400, 6000)
+export var speed_accel = Vector2(0.4, 0.8)
 
 var direction = Vector2(0, 0)
 var speed = Vector2(0, 0)
@@ -48,14 +48,13 @@ func upd_direction():
 
 func upd_speed(delta):
 	if direction.x:
-		speed.x += speed_accel.x * delta
+		speed.x = lerp(speed.x, speed_max.x, speed_accel.x)
 		speed.x = clamp(speed.x, speed_min.x, speed_max.x)
 	else:
 		speed.x = 0
 	if direction.y and y_timer > 0:
-#		speed.y += speed_accel.y * delta
-#		speed.y = clamp(speed.y, speed_min.y, speed_max.y)
-		speed.y = speed_max.y
+		speed.y = lerp(speed.y, speed_max.y, speed_accel.y)
+		speed.y = clamp(speed.y, speed_min.y, speed_max.y)
 	else:
 		speed.y = 0
 	return speed
