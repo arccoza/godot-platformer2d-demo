@@ -5,6 +5,7 @@ export var speed_min = Vector2(10, 6)
 export var speed_max = Vector2(220, 1200)
 export var speed_boost = Vector2(2, 1)
 export var speed_accel = Vector2(0.4, 0.8)
+export var speed_decel = Vector2(0.1, 1)
 
 var direction = Vector2(0, 0)
 var speed = Vector2(0, 0)
@@ -24,8 +25,9 @@ func _process(delta):
 func _physics_process(delta):
 	upd_direction()
 	upd_speed(delta)
-	print(speed)
+#	print(speed)
 	upd_velocity()
+#	print(velocity)
 	var has_direction = direction.x or direction.y
 #	self.position += velocity * delta
 	move_and_slide(velocity, floor_normal)
@@ -51,7 +53,7 @@ func upd_speed(delta):
 		speed.x = lerp(speed.x, speed_max.x, speed_accel.x)
 		speed.x = clamp(speed.x, speed_min.x, speed_max.x)
 	else:
-		speed.x = 0
+		speed.x = lerp(speed.x, 0, speed_decel.x)
 	if direction.y and y_timer > 0:
 		speed.y = lerp(speed.y, speed_max.y, speed_accel.y)
 		speed.y = clamp(speed.y, speed_min.y, speed_max.y)
@@ -60,7 +62,9 @@ func upd_speed(delta):
 	return speed
 
 func upd_velocity():
-	velocity = direction * speed + gravity
+	var v = direction * speed + gravity
+	velocity.x = lerp(velocity.x, v.x, 1)
+	velocity.y = lerp(velocity.y, v.y, 1)
 	return velocity
 
 func idle():
