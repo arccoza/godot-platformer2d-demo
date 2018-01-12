@@ -1,12 +1,20 @@
 extends KinematicBody2D
 
-export var gravity = Vector2(0, 500)
-export var speed_min = Vector2(10, 6) 
-export var speed_max = Vector2(220, 1200)
-export var speed_boost = Vector2(2, 1)
+export var gravity = Vector2(0, 1000)
+export var speed_min = Vector2(10, 6)
+export var speed_max = Vector2(220, 2000)
 export var speed_accel = Vector2(0.4, 0.8)
 export var speed_decel = Vector2(0.1, 1)
+export var boost_mul = Vector2(4, 2)
+export var boost_max = 1.0
+export var boost_inc = 0.2
+export var boost_dec = 0.3
 
+const boost_reset = Vector2(1, 1)
+
+var action = { boost = false, left = false, right = false, up = false, down = false }
+var boost = Vector2(1, 1)
+var boost_bar = boost_max
 var direction = Vector2(0, 0)
 var speed = Vector2(0, 0)
 var velocity = Vector2(0, 0)
@@ -17,7 +25,6 @@ var y_timer = y_time
 
 func _ready():
 	$Anim.play("idle")
-	pass
 
 func _process(delta):
 	pass
@@ -32,6 +39,13 @@ func _physics_process(delta):
 #	self.position += velocity * delta
 	move_and_slide(velocity, floor_normal)
 	
+	if action.boost:
+		boost_bar -= boost_max * boost_dec * delta
+		boost_bar = clamp(boost_bar, 0, boost_max)
+	else:
+		boost_bar = lerp(boost_bar, boost_max, boost_inc)
+	print(boost_bar)
+	
 	if is_on_floor():
 		y_timer = y_time
 	else:
@@ -44,8 +58,14 @@ func _physics_process(delta):
 		idle()
 
 func upd_direction():
-	direction.x = float(Input.is_action_pressed("ui_right")) - float(Input.is_action_pressed("ui_left"))
-	direction.y = float(Input.is_action_pressed("ui_down")) - float(Input.is_action_pressed("ui_up"))
+	action.left = Input.is_action_pressed("ui_left")
+	action.right = Input.is_action_pressed("ui_right")
+	action.up = Input.is_action_pressed("ui_up")
+	action.down = Input.is_action_pressed("ui_down")
+	action.boost = Input.is_action_pressed("player_boost")
+	direction.x = float(action.right) - float(action.left)
+	direction.y = float(action.down) - float(action.up)
+	boost = boost_mul if action.boost and boost_bar else boost_reset
 	return direction
 
 func upd_speed(delta):
@@ -56,13 +76,14 @@ func upd_speed(delta):
 		speed.x = lerp(speed.x, 0, speed_decel.x)
 	if direction.y and y_timer > 0:
 		speed.y = lerp(speed.y, speed_max.y, speed_accel.y)
+#		speed.y += speed_max.y * speed_accel.y
 		speed.y = clamp(speed.y, speed_min.y, speed_max.y)
 	else:
 		speed.y = 0
 	return speed
 
 func upd_velocity():
-	var v = direction * speed + gravity
+	var v = direction * speed * boost + gravity
 	velocity.x = lerp(velocity.x, v.x, 1)
 	velocity.y = lerp(velocity.y, v.y, 1)
 	return velocity

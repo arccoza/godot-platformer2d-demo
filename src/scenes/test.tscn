@@ -92,16 +92,19 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Transform" ]
-gravity = Vector2( 0, 500 )
+gravity = Vector2( 0, 1000 )
 speed_min = Vector2( 10, 6 )
-speed_max = Vector2( 220, 1200 )
-speed_boost = Vector2( 2, 1 )
+speed_max = Vector2( 220, 2000 )
 speed_accel = Vector2( 0.4, 0.8 )
 speed_decel = Vector2( 0.1, 1 )
+boost_mul = Vector2( 4, 2 )
+boost_max = 1.0
+boost_inc = 0.2
+boost_dec = 0.3
 
 [node name="Anim" type="AnimationPlayer" parent="Char" index="0"]
 
-playback_process_mode = 1
+playback_process_mode = 0
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
 anims/idle = SubResource( 2 )
