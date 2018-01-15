@@ -2,65 +2,65 @@ extends Node
 
 enum {IN, OUT, INOUT, LINEAR, QUAD, CUBIC, QUART, QUINT}
 
-static func ease(from, to, cur, tot, type=[null, LINEAR]):
-	var per = cur / tot
+static func ease(from, to, progress, type=[null, LINEAR]):
+	var p = progress  # 0.0 -> 1.0
 	var step = null
 	var change = to - from
 	
 	match type:
 		[IN, QUINT]:
-			step = change * per * per * per * per * per
+			step = change * p * p * p * p * p
 		[OUT, CUBIC]:
-			per -= 1
-			step = change * (per * per * per * per * per + 1)
+			p -= 1
+			step = change * (p * p * p * p * p + 1)
 		[INOUT, CUBIC]:
-			per /= 2
-			if per < 1:
-				step = (change / 2) * per * per * per * per * per
+			p /= 2
+			if p < 1:
+				step = (change / 2) * p * p * p * p * p
 			else:
-				per = per - 2
-				step = (change / 2) * (per * per * per * per + 2)
+				p = p - 2
+				step = (change / 2) * (p * p * p * p + 2)
 
 		[IN, QUART]:
-			step = change * per * per * per * per
+			step = change * p * p * p * p
 		[OUT, CUBIC]:
-			per -= 1
-			step = -change * (per * per * per * per - 1)
+			p -= 1
+			step = -change * (p * p * p * p - 1)
 		[INOUT, CUBIC]:
-			per /= 2
-			if per < 1:
-				step = (change / 2) * per * per * per * per
+			p /= 2
+			if p < 1:
+				step = (change / 2) * p * p * p * p
 			else:
-				per = per - 2
-				step = (-change / 2) * (per * per * per * per - 2)
+				p = p - 2
+				step = (-change / 2) * (p * p * p * p - 2)
 
 		[IN, CUBIC]:
-			step = change * per * per * per
+			step = change * p * p * p
 		[OUT, CUBIC]:
-			per -= 1
-			step = change * (per * per * per + 1)
+			p -= 1
+			step = change * (p * p * p + 1)
 		[INOUT, CUBIC]:
-			per /= 2
-			if per < 1:
-				step = (change / 2) * per * per * per
+			p /= 2
+			if p < 1:
+				step = (change / 2) * p * p * p
 			else:
-				per -= 2
-				step = (change / 2) * (per * per * per + 2)
+				p -= 2
+				step = (change / 2) * (p * p * p + 2)
 		
 		[IN, QUAD]:
-			step = change * per * per
+			step = change * p * p
 		[OUT, QUAD]:
-			step = change * per * (per - 2)
+			step = change * p * (p - 2)
 		[INOUT, QUAD]:
-			per /= 2
-			if per < 1:
-				step = (change / 2) * per * per
+			p /= 2
+			if p < 1:
+				step = (change / 2) * p * p
 			else:
-				step = (-change / 2) * ((--per) * (per - 2) - 1)
+				step = (-change / 2) * ((--p) * (p - 2) - 1)
 		
 		[_, LINEAR]: continue
 		[]: continue
 		[..]:
-			step = change * per
+			step = change * p
 	
 	return from + step
