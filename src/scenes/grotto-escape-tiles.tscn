@@ -308,7 +308,7 @@ region = Rect2( 208, 192, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="BlueA" type="Node2D" parent="." index="0"]
 
@@ -629,6 +629,7 @@ shape = SubResource( 2 )
 
 [node name="BlueB" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 136, 32 )
 
 [node name="BlueB01" type="Sprite" parent="BlueB" index="0"]
@@ -999,10 +1000,13 @@ shape = SubResource( 27 )
 
 [node name="GreenA" type="Node2D" parent="." index="3"]
 
+editor/display_folded = true
+position = Vector2( 32, 136 )
+
 [node name="GreenA01" type="Sprite" parent="GreenA" index="0"]
 
 editor/display_folded = true
-position = Vector2( 16, 120 )
+position = Vector2( -16, -16 )
 texture = SubResource( 28 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1026,7 +1030,7 @@ shape = SubResource( 27 )
 [node name="GreenA02" type="Sprite" parent="GreenA" index="1"]
 
 editor/display_folded = true
-position = Vector2( 16, 160 )
+position = Vector2( -16, 24 )
 texture = SubResource( 29 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1050,7 +1054,7 @@ shape = SubResource( 27 )
 [node name="GreenA03" type="Sprite" parent="GreenA" index="2"]
 
 editor/display_folded = true
-position = Vector2( 48, 112 )
+position = Vector2( 16, -24 )
 texture = SubResource( 30 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1074,7 +1078,7 @@ shape = SubResource( 2 )
 [node name="GreenA04" type="Sprite" parent="GreenA" index="3"]
 
 editor/display_folded = true
-position = Vector2( 72, 112 )
+position = Vector2( 40, -24 )
 texture = SubResource( 31 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1098,7 +1102,7 @@ shape = SubResource( 2 )
 [node name="GreenA05" type="Sprite" parent="GreenA" index="4"]
 
 editor/display_folded = true
-position = Vector2( 48, 136 )
+position = Vector2( 16, 0 )
 texture = SubResource( 32 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
