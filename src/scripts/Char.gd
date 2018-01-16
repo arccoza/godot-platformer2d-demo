@@ -12,6 +12,7 @@ export var boost_dec = 0.3
 export var energy_max = 5.0
 export var energy_ini = 0.2
 export var energy_inc = 0.5
+#export var res = Supply.new()
 #export var energy_dec = 0.2
 #export(float, EASE) var transition_speed
 
@@ -119,3 +120,6 @@ func walk():
 #		print("play")
 #		$Anim.set_current_animation("walk")
 		$Anim.play()
+
+class Supply:
+	var _max = 1.0
