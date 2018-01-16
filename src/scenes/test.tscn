@@ -101,6 +101,9 @@ boost_mul = Vector2( 4, 2 )
 boost_max = 1.0
 boost_inc = 0.2
 boost_dec = 0.3
+energy_max = 5.0
+energy_ini = 0.2
+energy_inc = 0.5
 
 [node name="Anim" type="AnimationPlayer" parent="Char" index="0"]
 

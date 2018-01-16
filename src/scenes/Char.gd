@@ -9,12 +9,18 @@ export var boost_mul = Vector2(4, 2)
 export var boost_max = 1.0
 export var boost_inc = 0.2
 export var boost_dec = 0.3
+export var energy_max = 5.0
+export var energy_ini = 0.2
+export var energy_inc = 0.5
+#export var energy_dec = 0.2
+#export(float, EASE) var transition_speed
 
 const boost_reset = Vector2(1, 1)
 
 var action = { boost = false, left = false, right = false, up = false, down = false }
 var boost = Vector2(1, 1)
 var boost_bar = boost_max
+var energy = energy_ini
 var direction = Vector2(0, 0)
 var speed = Vector2(0, 0)
 var velocity = Vector2(0, 0)
@@ -32,6 +38,7 @@ func _process(delta):
 func _physics_process(delta):
 	upd_direction()
 	upd_speed(delta)
+	upd_energy(delta)
 #	print(speed)
 	upd_velocity()
 #	print(velocity)
@@ -44,7 +51,7 @@ func _physics_process(delta):
 		boost_bar = clamp(boost_bar, 0, boost_max)
 	else:
 		boost_bar = lerp(boost_bar, boost_max, boost_inc)
-	print(boost_bar)
+#	print(boost_bar)
 	
 	if is_on_floor():
 		y_timer = y_time
@@ -56,6 +63,18 @@ func _physics_process(delta):
 		walk()
 	else:
 		idle()
+
+var energy_tick = 0
+func upd_energy(delta):
+	if energy < energy_max:
+		energy_tick += energy_inc / energy_max * delta
+#		print("--", energy)
+		var res = global.ease(energy, energy_max, energy_tick, [global.IN, global.CUBIC])
+#		var res = ease(energy_tick, 2) * (energy_max - energy) + energy
+		print(res, res == 5.0)
+		energy = res
+	else:
+		energy_tick = 0
 
 func upd_direction():
 	action.left = Input.is_action_pressed("ui_left")
