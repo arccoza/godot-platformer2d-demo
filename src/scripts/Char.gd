@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var gravity = Vector2(0, 1000)
+export var floor_angle_max = 45
 export var speed_min = Vector2(10, 6)
 export var speed_max = Vector2(220, 2000)
 export var speed_accel = Vector2(0.4, 0.8)
@@ -26,6 +27,7 @@ var direction = Vector2(0, 0)
 var speed = Vector2(0, 0)
 var velocity = Vector2(0, 0)
 var floor_normal = Vector2(0, -1)
+var floor_angle = deg2rad(floor_angle_max)
 var y_time = 0.2
 var y_timer = y_time
 
@@ -45,13 +47,21 @@ func _physics_process(delta):
 #	print(velocity)
 	var has_direction = direction.x or direction.y
 #	self.position += velocity * delta
-#	velocity = move_and_slide(velocity, floor_normal)
-#	var res = get_slide_collision(get_slide_count() - 1)
-	var collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity -= gravity * 0.7
-		velocity = velocity.slide(collision.normal)
-		self.position += velocity * delta
+#	velocity.x -= rem.x * 0.5
+	velocity = move_and_slide(velocity, floor_normal, 5, 4, floor_angle)
+#	print(velocity)
+	var res = get_slide_collision(get_slide_count() - 1)
+	if res and abs(res.normal.angle_to(floor_normal)) < floor_angle:
+		var rem = -gravity.slide(res.normal) * delta
+		print(abs(res.normal.angle_to(floor_normal)) < floor_angle)
+		if not test_move(self.transform, rem):
+			self.position += rem
+	
+#	var collision = move_and_collide(velocity * delta)
+#	if collision:
+#		velocity -= gravity * 1.0
+#		velocity = velocity.slide(collision.normal)
+#		self.position += velocity * delta
 	
 	if action.boost:
 		boost_bar -= boost_max * boost_dec * delta

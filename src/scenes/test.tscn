@@ -98,11 +98,12 @@ __meta__ = {
 "_edit_group_": true
 }
 gravity = Vector2( 0, 1000 )
+floor_angle_max = 45
 speed_min = Vector2( 10, 6 )
 speed_max = Vector2( 220, 2000 )
 speed_accel = Vector2( 0.4, 0.8 )
 speed_decel = Vector2( 0.1, 1 )
-boost_mul = Vector2( 5, 1.5 )
+boost_mul = Vector2( 2.5, 1.5 )
 boost_max = 1.0
 boost_inc = 0.2
 boost_dec = 0.3
