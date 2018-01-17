@@ -39,13 +39,19 @@ func _process(delta):
 func _physics_process(delta):
 	upd_direction()
 	upd_speed(delta)
-	upd_energy(delta)
+#	upd_energy(delta)
 #	print(speed)
-	upd_velocity()
+	upd_velocity(delta)
 #	print(velocity)
 	var has_direction = direction.x or direction.y
 #	self.position += velocity * delta
-	move_and_slide(velocity, floor_normal)
+#	velocity = move_and_slide(velocity, floor_normal)
+#	var res = get_slide_collision(get_slide_count() - 1)
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity -= gravity * 0.7
+		velocity = velocity.slide(collision.normal)
+		self.position += velocity * delta
 	
 	if action.boost:
 		boost_bar -= boost_max * boost_dec * delta
@@ -102,7 +108,7 @@ func upd_speed(delta):
 		speed.y = 0
 	return speed
 
-func upd_velocity():
+func upd_velocity(delta):
 	var v = direction * speed * boost + gravity
 	velocity.x = lerp(velocity.x, v.x, 1)
 	velocity.y = lerp(velocity.y, v.y, 1)
