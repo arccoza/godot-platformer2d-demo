@@ -1,17 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Char.gd" type="Script" id=1]
-[ext_resource path="res://skel.tres" type="Texture" id=2]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=3]
+[ext_resource path="res://scripts/CharacterMeter.gd" type="Script" id=2]
+[ext_resource path="res://skel.tres" type="Texture" id=3]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 319.634, 25.4999 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Resource" id=6]
 
-resource_name = "idle"
+script = ExtResource( 2 )
+minv = 0.0
+maxv = 1.0
+incs = 0.2
+decs = -0.2
+value = 0.0
+easing = 0.170755
+
+[sub_resource type="Animation" id=3]
+
 length = 0.1
 loop = false
 step = 0.1
@@ -28,7 +38,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 0.6
 loop = true
@@ -46,7 +56,7 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=5]
 
 custom_solver_bias = 0.0
 radius = 18.9039
@@ -104,20 +114,15 @@ speed_max = Vector2( 220, 2000 )
 speed_accel = Vector2( 0.4, 0.8 )
 speed_decel = Vector2( 0.1, 1 )
 boost_mul = Vector2( 2.5, 1.5 )
-boost_max = 1.0
-boost_inc = 0.2
-boost_dec = 0.3
-energy_max = 5.0
-energy_ini = 0.2
-energy_inc = 0.5
+energy = SubResource( 6 )
 
 [node name="Anim" type="AnimationPlayer" parent="Char" index="0"]
 
 playback_process_mode = 0
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 3 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -128,14 +133,14 @@ _sections_unfolded = [ "Playback Options", "playback" ]
 
 position = Vector2( -1.04382, -17.7753 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 hframes = 9
 _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Char" index="2"]
 
 position = Vector2( -1, -8 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="Char" index="3"]
 
@@ -165,7 +170,7 @@ editor_draw_drag_margin = false
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
