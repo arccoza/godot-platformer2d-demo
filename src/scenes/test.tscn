@@ -165,6 +165,14 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
+[node name="Stepable" type="RayCast2D" parent="Char" index="4"]
+
+position = Vector2( 0, -10 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 20, 0 )
+collision_mask = 1
+
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
 position = Vector2( -198.969, 0 )

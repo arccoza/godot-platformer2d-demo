@@ -31,7 +31,7 @@ func _process(delta):
 func _physics_process(delta):
 #	print(energy.value)
 	energy.increase(delta)
-	print(energy.tick, " - ", energy.value)
+#	print(energy.tick, " - ", energy.value)
 	
 	upd_direction()
 	upd_speed(delta)
@@ -42,10 +42,16 @@ func _physics_process(delta):
 	
 	# Modify the characters movements on a slope.
 	var collision = get_slide_collision(get_slide_count() - 1)
-	if collision and abs(collision.normal.angle_to(floor_normal)) < floor_angle:
-		var rem = -gravity.slide(collision.normal) * delta
-		if not test_move(self.transform, rem):
-			self.position += rem
+	if collision:
+		var angle = abs(collision.normal.angle_to(floor_normal))
+		if angle < floor_angle:
+			var rem = -gravity.slide(collision.normal) * delta
+			if not test_move(self.transform, rem):
+				self.position += rem
+		else:
+#			print($Stepable.is_colliding(), angle)
+			if not $Stepable.is_colliding():
+				self.position.y -= 20
 	
 	if is_on_floor():
 		y_timer = y_time
