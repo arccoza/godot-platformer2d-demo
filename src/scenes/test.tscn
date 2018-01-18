@@ -108,6 +108,7 @@ __meta__ = {
 "_edit_group_": true
 }
 gravity = Vector2( 0, 1000 )
+step_up = Vector2( 300, 990 )
 floor_angle_max = 45
 speed_min = Vector2( 10, 6 )
 speed_max = Vector2( 220, 2000 )
@@ -165,7 +166,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="Stepable" type="RayCast2D" parent="Char" index="4"]
+[node name="StepLimit" type="RayCast2D" parent="Char" index="4"]
 
 position = Vector2( 0, -10 )
 enabled = true

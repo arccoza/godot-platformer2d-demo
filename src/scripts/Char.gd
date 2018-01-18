@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var gravity = Vector2(0, 1000)
+export var step_up = Vector2(300, 990)
 export var floor_angle_max = 45
 export var speed_min = Vector2(10, 6)
 export var speed_max = Vector2(220, 2000)
@@ -40,7 +41,7 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, floor_normal, 5, 4, floor_angle)
 	
-	# Modify the characters movements on a slope.
+	# Modify the characters movements on a slope or stairs.
 	var collision = get_slide_collision(get_slide_count() - 1)
 	if collision:
 		var angle = abs(collision.normal.angle_to(floor_normal))
@@ -48,11 +49,10 @@ func _physics_process(delta):
 			var rem = -gravity.slide(collision.normal) * delta
 			if not test_move(self.transform, rem):
 				self.position += rem
-		elif $Stepable:
-#			print($Stepable.is_colliding(), angle)
-			if not $Stepable.is_colliding():
-				self.position.y += -16.5
-				self.position.x += 5 * direction.x
+		elif $StepLimit:
+#			print($StepLimit.is_colliding(), angle)
+			if not $StepLimit.is_colliding():
+				self.position += step_up * Vector2(direction.x, -1) * delta
 	
 	if is_on_floor():
 		y_timer = y_time
@@ -61,8 +61,8 @@ func _physics_process(delta):
 		y_timer = clamp(y_timer, 0, y_time)
 	
 	if direction.x:
-		if $Stepable:
-			$Stepable.cast_to.x = sign(direction.x) * abs($Stepable.cast_to.x)
+		if $StepLimit:
+			$StepLimit.cast_to.x = sign(direction.x) * abs($StepLimit.cast_to.x)
 		walk()
 	else:
 		idle()
