@@ -1,0 +1,19 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+//	COLOR = vec4(1.0 ,0.0, 0.0, 1.0);
+	vec2 s = scroll * fract(TIME);
+	vec2 uv = UV - s;
+	uv = mod(uv, 1.0);
+	
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
