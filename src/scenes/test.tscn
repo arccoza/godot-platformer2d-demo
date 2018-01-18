@@ -170,7 +170,7 @@ editor_draw_drag_margin = false
 position = Vector2( 0, -10 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 20, 0 )
+cast_to = Vector2( 25, 0 )
 collision_mask = 1
 
 [node name="TileMap" type="TileMap" parent="." index="2"]

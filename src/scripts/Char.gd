@@ -52,6 +52,7 @@ func _physics_process(delta):
 #			print($Stepable.is_colliding(), angle)
 			if not $Stepable.is_colliding():
 				self.position.y += -16.5
+				self.position.x += 5 * direction.x
 	
 	if is_on_floor():
 		y_timer = y_time
