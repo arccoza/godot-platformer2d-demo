@@ -2,7 +2,7 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/human_regular_bald.png-1bdac2e93d96b1265db3762a6df7ee17.stex"
+path="res://.import/human_regular_bald.png-d49f7f10ff476b959f541188d99b7e9a.stex"
 
 [deps]
 
@@ -15,7 +15,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -24,5 +24,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
