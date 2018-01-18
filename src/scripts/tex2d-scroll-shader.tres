@@ -7,7 +7,7 @@ code = "shader_type canvas_item;
 uniform vec2 scroll = vec2(0.0, 1.0);
 
 void fragment() {
-	vec2 uv = UV - scroll * fract(TIME);
+	vec2 uv = UV - scroll * TIME;
 	uv = mod(uv, 1.0);
 	
 	COLOR = texture(TEXTURE, uv);
