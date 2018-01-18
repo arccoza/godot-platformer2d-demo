@@ -48,10 +48,10 @@ func _physics_process(delta):
 			var rem = -gravity.slide(collision.normal) * delta
 			if not test_move(self.transform, rem):
 				self.position += rem
-		else:
+		elif $Stepable:
 #			print($Stepable.is_colliding(), angle)
 			if not $Stepable.is_colliding():
-				self.position.y -= 20
+				self.position.y += -16.5
 	
 	if is_on_floor():
 		y_timer = y_time
@@ -60,6 +60,8 @@ func _physics_process(delta):
 		y_timer = clamp(y_timer, 0, y_time)
 	
 	if direction.x:
+		if $Stepable:
+			$Stepable.cast_to.x = sign(direction.x) * abs($Stepable.cast_to.x)
 		walk()
 	else:
 		idle()
