@@ -1,6 +1,10 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://assets/tiles/grotto-escape-tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/tiles/lava.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles/lava-fall.png" type="Texture" id=3]
+[ext_resource path="res://assets/tiles/water.png" type="Texture" id=4]
+[ext_resource path="res://assets/tiles/waterfall.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 
@@ -212,303 +216,465 @@ filter_clip = false
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="AtlasTexture" id=71]
+[sub_resource type="AtlasTexture" id=32]
 
 atlas = ExtResource( 1 )
-region = Rect2( 432, 80, 32, 16 )
+region = Rect2( 560, 16, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=73]
-
-atlas = ExtResource( 1 )
-region = Rect2( 432, 80, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=75]
-
-atlas = ExtResource( 1 )
-region = Rect2( 448, 80, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=76]
-
-atlas = ExtResource( 1 )
-region = Rect2( 432, 96, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="RectangleShape2D" id=74]
+[sub_resource type="RectangleShape2D" id=33]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[sub_resource type="AtlasTexture" id=32]
-
-atlas = ExtResource( 1 )
-region = Rect2( 144, 64, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=33]
-
-atlas = ExtResource( 1 )
-region = Rect2( 144, 112, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
 [sub_resource type="AtlasTexture" id=34]
 
 atlas = ExtResource( 1 )
-region = Rect2( 192, 64, 16, 16 )
+region = Rect2( 560, 64, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=35]
 
 atlas = ExtResource( 1 )
-region = Rect2( 144, 160, 16, 16 )
+region = Rect2( 432, 80, 32, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=36]
 
 atlas = ExtResource( 1 )
-region = Rect2( 144, 192, 16, 16 )
+region = Rect2( 432, 80, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=37]
 
 atlas = ExtResource( 1 )
-region = Rect2( 256, 64, 32, 32 )
+region = Rect2( 448, 80, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=38]
 
 atlas = ExtResource( 1 )
-region = Rect2( 192, 112, 32, 32 )
+region = Rect2( 432, 96, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=39]
 
 atlas = ExtResource( 1 )
-region = Rect2( 240, 160, 32, 32 )
+region = Rect2( 144, 64, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=40]
 
 atlas = ExtResource( 1 )
-region = Rect2( 240, 112, 16, 32 )
+region = Rect2( 144, 112, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=41]
+[sub_resource type="AtlasTexture" id=41]
 
-custom_solver_bias = 0.0
-extents = Vector2( 8, 16 )
-_sections_unfolded = [ "Resource" ]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 64, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
 
 [sub_resource type="AtlasTexture" id=42]
 
 atlas = ExtResource( 1 )
-region = Rect2( 176, 160, 16, 16 )
+region = Rect2( 144, 160, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=43]
 
 atlas = ExtResource( 1 )
-region = Rect2( 208, 160, 16, 16 )
+region = Rect2( 144, 192, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=44]
 
 atlas = ExtResource( 1 )
-region = Rect2( 176, 192, 16, 16 )
+region = Rect2( 256, 64, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=45]
 
 atlas = ExtResource( 1 )
-region = Rect2( 208, 192, 16, 16 )
+region = Rect2( 192, 112, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=46]
 
 atlas = ExtResource( 1 )
-region = Rect2( 224, 64, 16, 16 )
+region = Rect2( 240, 160, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=47]
 
 atlas = ExtResource( 1 )
-region = Rect2( 352, 96, 32, 32 )
+region = Rect2( 240, 112, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=48]
-
-atlas = ExtResource( 1 )
-region = Rect2( 320, 32, 16, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="RectangleShape2D" id=53]
+[sub_resource type="RectangleShape2D" id=48]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8, 8 )
+extents = Vector2( 8, 16 )
 _sections_unfolded = [ "Resource" ]
 
 [sub_resource type="AtlasTexture" id=49]
 
 atlas = ExtResource( 1 )
-region = Rect2( 352, 32, 16, 32 )
+region = Rect2( 176, 160, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=50]
 
 atlas = ExtResource( 1 )
-region = Rect2( 384, 32, 16, 32 )
+region = Rect2( 208, 160, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=51]
 
 atlas = ExtResource( 1 )
-region = Rect2( 320, 176, 16, 32 )
+region = Rect2( 176, 192, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=52]
 
 atlas = ExtResource( 1 )
-region = Rect2( 352, 176, 16, 32 )
+region = Rect2( 208, 192, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=53]
+
+atlas = ExtResource( 1 )
+region = Rect2( 224, 64, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=54]
 
 atlas = ExtResource( 1 )
-region = Rect2( 416, 48, 16, 16 )
+region = Rect2( 352, 96, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=55]
 
 atlas = ExtResource( 1 )
-region = Rect2( 320, 80, 16, 16 )
+region = Rect2( 320, 32, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=56]
+[sub_resource type="RectangleShape2D" id=56]
 
-atlas = ExtResource( 1 )
-region = Rect2( 320, 112, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="AtlasTexture" id=57]
 
 atlas = ExtResource( 1 )
-region = Rect2( 400, 96, 16, 16 )
+region = Rect2( 352, 32, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=58]
 
 atlas = ExtResource( 1 )
-region = Rect2( 464, 32, 32, 32 )
+region = Rect2( 384, 32, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=59]
 
 atlas = ExtResource( 1 )
-region = Rect2( 512, 32, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=70]
-
-atlas = ExtResource( 1 )
-region = Rect2( 544, 192, 32, 32 )
+region = Rect2( 320, 176, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=60]
 
 atlas = ExtResource( 1 )
-region = Rect2( 384, 144, 32, 32 )
+region = Rect2( 352, 176, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=61]
 
 atlas = ExtResource( 1 )
-region = Rect2( 480, 144, 32, 32 )
+region = Rect2( 416, 48, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=62]
 
 atlas = ExtResource( 1 )
-region = Rect2( 448, 192, 32, 32 )
+region = Rect2( 320, 80, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=63]
 
 atlas = ExtResource( 1 )
+region = Rect2( 320, 112, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=64]
+
+atlas = ExtResource( 1 )
+region = Rect2( 400, 96, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=65]
+
+atlas = ExtResource( 1 )
+region = Rect2( 464, 32, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=66]
+
+atlas = ExtResource( 1 )
+region = Rect2( 512, 32, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=67]
+
+atlas = ExtResource( 1 )
+region = Rect2( 544, 192, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=68]
+
+atlas = ExtResource( 1 )
+region = Rect2( 384, 144, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=69]
+
+atlas = ExtResource( 1 )
+region = Rect2( 480, 144, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=70]
+
+atlas = ExtResource( 1 )
+region = Rect2( 448, 192, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=71]
+
+atlas = ExtResource( 1 )
 region = Rect2( 432, 144, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=64]
+[sub_resource type="RectangleShape2D" id=72]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 16 )
 
-[sub_resource type="AtlasTexture" id=65]
+[sub_resource type="AtlasTexture" id=73]
 
 atlas = ExtResource( 1 )
 region = Rect2( 480, 112, 32, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=66]
+[sub_resource type="RectangleShape2D" id=74]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 8 )
 
-[sub_resource type="AtlasTexture" id=67]
+[sub_resource type="AtlasTexture" id=75]
 
 atlas = ExtResource( 1 )
 region = Rect2( 528, 112, 16, 64 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=68]
+[sub_resource type="RectangleShape2D" id=76]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 32 )
 
-[sub_resource type="AtlasTexture" id=69]
+[sub_resource type="AtlasTexture" id=77]
 
 atlas = ExtResource( 1 )
 region = Rect2( 560, 112, 16, 64 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
+
+[sub_resource type="AtlasTexture" id=78]
+
+atlas = ExtResource( 1 )
+region = Rect2( 592, 80, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=79]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[sub_resource type="AtlasTexture" id=80]
+
+atlas = ExtResource( 1 )
+region = Rect2( 592, 112, 16, 48 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=81]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 24 )
+
+[sub_resource type="AtlasTexture" id=82]
+
+atlas = ExtResource( 1 )
+region = Rect2( 624, 80, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=83]
+
+atlas = ExtResource( 1 )
+region = Rect2( 624, 128, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=84]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="AtlasTexture" id=85]
+
+atlas = ExtResource( 1 )
+region = Rect2( 608, 16, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=86]
+
+atlas = ExtResource( 1 )
+region = Rect2( 608, 48, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=87]
+
+atlas = ExtResource( 1 )
+region = Rect2( 640, 48, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="Shader" id=88]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=89]
+
+render_priority = 0
+shader = SubResource( 88 )
+shader_param/scroll = Vector2( 0.1, 0 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=90]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=91]
+
+render_priority = 0
+shader = SubResource( 90 )
+shader_param/scroll = Vector2( 0, 0.3 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=92]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=93]
+
+render_priority = 0
+shader = SubResource( 92 )
+shader_param/scroll = Vector2( 0.4, 0 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=94]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv) * abs(fract(TIME) - 0.5) + texture(TEXTURE, vec2(1.0, 2.0 * uv.y) - uv) * (1.0 - abs(fract(TIME) - 0.5));
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=95]
+
+render_priority = 0
+shader = SubResource( 94 )
+shader_param/scroll = Vector2( 0, 1.2 )
+_sections_unfolded = [ "shader_param" ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -1200,7 +1366,57 @@ bounce = 0.0
 
 shape = SubResource( 31 )
 
-[node name="BlueStairs" type="Node2D" parent="." index="3"]
+[node name="BlueA14" type="Sprite" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 264, 16 )
+texture = SubResource( 32 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueA14" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueA14/StaticBody2D" index="0"]
+
+position = Vector2( 0, -8 )
+shape = SubResource( 33 )
+
+[node name="BlueA15" type="Sprite" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 264, 48 )
+texture = SubResource( 34 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueA15" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueA15/StaticBody2D" index="0"]
+
+position = Vector2( 0, -8 )
+shape = SubResource( 33 )
+
+[node name="BlueStairs" type="Node2D" parent="." index="5"]
 
 editor/display_folded = true
 position = Vector2( 240, 80 )
@@ -1209,7 +1425,7 @@ position = Vector2( 240, 80 )
 
 editor/display_folded = true
 position = Vector2( -16, -24 )
-texture = SubResource( 71 )
+texture = SubResource( 35 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1234,7 +1450,7 @@ polygon = PoolVector2Array( -16, 8, -16, 3, -9, 3, -9, -1, 0, -1, 0, -4, 7, -4, 
 
 editor/display_folded = true
 position = Vector2( -24, 0 )
-texture = SubResource( 73 )
+texture = SubResource( 36 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1258,7 +1474,7 @@ polygon = PoolVector2Array( -8, 8, -8, 3, -1, 3, -1, -1, 8, -1, 8, 8 )
 [node name="BlueStairs03" type="Sprite" parent="BlueStairs" index="2"]
 
 editor/display_folded = true
-texture = SubResource( 75 )
+texture = SubResource( 37 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1283,7 +1499,7 @@ polygon = PoolVector2Array( -8, 8, -8, -4, -1, -4, -1, -8, 8, -8, 8, 8 )
 
 editor/display_folded = true
 position = Vector2( 24, 0 )
-texture = SubResource( 76 )
+texture = SubResource( 38 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1301,9 +1517,9 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlueStairs/BlueStairs04/StaticBody2D" index="0"]
 
-shape = SubResource( 74 )
+shape = SubResource( 33 )
 
-[node name="GreenA" type="Node2D" parent="." index="4"]
+[node name="GreenA" type="Node2D" parent="." index="6"]
 
 editor/display_folded = true
 position = Vector2( 32, 136 )
@@ -1312,7 +1528,7 @@ position = Vector2( 32, 136 )
 
 editor/display_folded = true
 position = Vector2( -16, -16 )
-texture = SubResource( 32 )
+texture = SubResource( 39 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1336,7 +1552,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( -16, 24 )
-texture = SubResource( 33 )
+texture = SubResource( 40 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1360,7 +1576,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 16, -24 )
-texture = SubResource( 34 )
+texture = SubResource( 41 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1384,7 +1600,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 40, -24 )
-texture = SubResource( 35 )
+texture = SubResource( 42 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1408,7 +1624,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 16, 0 )
-texture = SubResource( 36 )
+texture = SubResource( 43 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1428,7 +1644,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="GreenB" type="Node2D" parent="." index="5"]
+[node name="GreenB" type="Node2D" parent="." index="7"]
 
 editor/display_folded = true
 position = Vector2( 128, 136 )
@@ -1437,7 +1653,7 @@ position = Vector2( 128, 136 )
 
 editor/display_folded = true
 position = Vector2( -16, -16 )
-texture = SubResource( 37 )
+texture = SubResource( 44 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1461,7 +1677,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 24, -16 )
-texture = SubResource( 38 )
+texture = SubResource( 45 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1485,7 +1701,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( -16, 24 )
-texture = SubResource( 39 )
+texture = SubResource( 46 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1509,7 +1725,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 16, 24 )
-texture = SubResource( 40 )
+texture = SubResource( 47 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1527,13 +1743,13 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenB/GreenB04/StaticBody2D" index="0"]
 
-shape = SubResource( 41 )
+shape = SubResource( 48 )
 
 [node name="GreenB05" type="Sprite" parent="GreenB" index="4"]
 
 editor/display_folded = true
 position = Vector2( 56, -24 )
-texture = SubResource( 42 )
+texture = SubResource( 49 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1557,7 +1773,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 80, -24 )
-texture = SubResource( 43 )
+texture = SubResource( 50 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1581,7 +1797,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 56, 0 )
-texture = SubResource( 44 )
+texture = SubResource( 51 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1605,7 +1821,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 80, 0 )
-texture = SubResource( 45 )
+texture = SubResource( 52 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1629,7 +1845,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 56, 24 )
-texture = SubResource( 46 )
+texture = SubResource( 53 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1649,7 +1865,7 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="GreenC" type="Node2D" parent="." index="6"]
+[node name="GreenC" type="Node2D" parent="." index="8"]
 
 editor/display_folded = true
 position = Vector2( 264, 136 )
@@ -1658,7 +1874,7 @@ position = Vector2( 264, 136 )
 
 editor/display_folded = true
 position = Vector2( -16, -16 )
-texture = SubResource( 47 )
+texture = SubResource( 54 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1682,7 +1898,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 16, 0 )
-texture = SubResource( 48 )
+texture = SubResource( 55 )
 offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1702,13 +1918,13 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenC/GreenC02/StaticBody2D" index="0"]
 
 position = Vector2( 0, -8 )
-shape = SubResource( 53 )
+shape = SubResource( 56 )
 
 [node name="GreenC03" type="Sprite" parent="GreenC" index="2"]
 
 editor/display_folded = true
 position = Vector2( 40, 0 )
-texture = SubResource( 49 )
+texture = SubResource( 57 )
 offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1728,13 +1944,13 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenC/GreenC03/StaticBody2D" index="0"]
 
 position = Vector2( 0, -8 )
-shape = SubResource( 53 )
+shape = SubResource( 56 )
 
 [node name="GreenC04" type="Sprite" parent="GreenC" index="3"]
 
 editor/display_folded = true
 position = Vector2( -24, 40 )
-texture = SubResource( 50 )
+texture = SubResource( 58 )
 offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1754,13 +1970,13 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenC/GreenC04/StaticBody2D" index="0"]
 
 position = Vector2( 0, -8 )
-shape = SubResource( 53 )
+shape = SubResource( 56 )
 
 [node name="GreenC05" type="Sprite" parent="GreenC" index="4"]
 
 editor/display_folded = true
 position = Vector2( 0, 40 )
-texture = SubResource( 51 )
+texture = SubResource( 59 )
 offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1780,13 +1996,13 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenC/GreenC05/StaticBody2D" index="0"]
 
 position = Vector2( 0, -8 )
-shape = SubResource( 53 )
+shape = SubResource( 56 )
 
 [node name="GreenC06" type="Sprite" parent="GreenC" index="5"]
 
 editor/display_folded = true
 position = Vector2( 24, 40 )
-texture = SubResource( 52 )
+texture = SubResource( 60 )
 offset = Vector2( 0, -16 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
@@ -1806,13 +2022,13 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenC/GreenC06/StaticBody2D" index="0"]
 
 position = Vector2( 0, -8 )
-shape = SubResource( 53 )
+shape = SubResource( 56 )
 
 [node name="GreenC07" type="Sprite" parent="GreenC" index="6"]
 
 editor/display_folded = true
 position = Vector2( 72, -24 )
-texture = SubResource( 54 )
+texture = SubResource( 61 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1836,7 +2052,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 72, 0 )
-texture = SubResource( 55 )
+texture = SubResource( 62 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1860,7 +2076,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 72, 24 )
-texture = SubResource( 56 )
+texture = SubResource( 63 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1884,7 +2100,7 @@ shape = SubResource( 2 )
 
 editor/display_folded = true
 position = Vector2( 72, 48 )
-texture = SubResource( 57 )
+texture = SubResource( 64 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1904,29 +2120,29 @@ bounce = 0.0
 
 shape = SubResource( 2 )
 
-[node name="GreenWeb01" type="Sprite" parent="." index="7"]
+[node name="GreenWeb01" type="Sprite" parent="." index="9"]
 
 position = Vector2( 368, 120 )
-texture = SubResource( 58 )
+texture = SubResource( 65 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="GreenWeb02" type="Sprite" parent="." index="8"]
+[node name="GreenWeb02" type="Sprite" parent="." index="10"]
 
 position = Vector2( 368, 160 )
-texture = SubResource( 59 )
+texture = SubResource( 66 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="BlueGreenFill" type="Sprite" parent="." index="9"]
+[node name="BlueGreenFill" type="Sprite" parent="." index="11"]
 
 editor/display_folded = true
 position = Vector2( 368, 200 )
-texture = SubResource( 70 )
+texture = SubResource( 67 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1946,7 +2162,7 @@ bounce = 0.0
 
 shape = SubResource( 31 )
 
-[node name="GreenD" type="Node2D" parent="." index="10"]
+[node name="GreenD" type="Node2D" parent="." index="12"]
 
 editor/display_folded = true
 
@@ -1954,7 +2170,7 @@ editor/display_folded = true
 
 editor/display_folded = true
 position = Vector2( 416, 120 )
-texture = SubResource( 60 )
+texture = SubResource( 68 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -1978,7 +2194,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 416, 160 )
-texture = SubResource( 61 )
+texture = SubResource( 69 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -2002,7 +2218,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 456, 120 )
-texture = SubResource( 62 )
+texture = SubResource( 70 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -2026,7 +2242,7 @@ shape = SubResource( 31 )
 
 editor/display_folded = true
 position = Vector2( 448, 160 )
-texture = SubResource( 63 )
+texture = SubResource( 71 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -2044,13 +2260,13 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenD/GreenD04/StaticBody2D" index="0"]
 
-shape = SubResource( 64 )
+shape = SubResource( 72 )
 
 [node name="GreenD05" type="Sprite" parent="GreenD" index="4"]
 
 editor/display_folded = true
 position = Vector2( 496, 112 )
-texture = SubResource( 65 )
+texture = SubResource( 73 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -2068,13 +2284,13 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenD/GreenD05/StaticBody2D" index="0"]
 
-shape = SubResource( 66 )
+shape = SubResource( 74 )
 
 [node name="GreenD06" type="Sprite" parent="GreenD" index="5"]
 
 editor/display_folded = true
 position = Vector2( 488, 160 )
-texture = SubResource( 67 )
+texture = SubResource( 75 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -2092,13 +2308,13 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenD/GreenD06/StaticBody2D" index="0"]
 
-shape = SubResource( 68 )
+shape = SubResource( 76 )
 
 [node name="GreenD07" type="Sprite" parent="GreenD" index="6"]
 
 editor/display_folded = true
 position = Vector2( 512, 160 )
-texture = SubResource( 69 )
+texture = SubResource( 77 )
 _sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_group_": true
@@ -2116,6 +2332,212 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GreenD/GreenD07/StaticBody2D" index="0"]
 
-shape = SubResource( 68 )
+shape = SubResource( 76 )
+
+[node name="BlueC" type="Node2D" parent="." index="13"]
+
+editor/display_folded = true
+position = Vector2( 320, 32 )
+
+[node name="BlueC01" type="Sprite" parent="BlueC" index="0"]
+
+editor/display_folded = true
+position = Vector2( -24, -24 )
+texture = SubResource( 78 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC01" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueC/BlueC01/StaticBody2D" index="0"]
+
+shape = SubResource( 79 )
+
+[node name="BlueC02" type="Sprite" parent="BlueC" index="1"]
+
+editor/display_folded = true
+position = Vector2( -24, 16 )
+texture = SubResource( 80 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC02" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueC/BlueC02/StaticBody2D" index="0"]
+
+shape = SubResource( 81 )
+
+[node name="BlueC03" type="Sprite" parent="BlueC" index="2"]
+
+editor/display_folded = true
+position = Vector2( 8, -16 )
+texture = SubResource( 82 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC03" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BlueC/BlueC03/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -16, 0, -16, -16, 16, -16, 16, 16, 0, 16, 0, 0 )
+
+[node name="BlueC04" type="Sprite" parent="BlueC" index="3"]
+
+editor/display_folded = true
+position = Vector2( 8, 24 )
+texture = SubResource( 83 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC04" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueC/BlueC04/StaticBody2D" index="0"]
+
+shape = SubResource( 84 )
+
+[node name="BlueC05" type="Sprite" parent="BlueC" index="4"]
+
+editor/display_folded = true
+position = Vector2( 40, -24 )
+texture = SubResource( 85 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC05" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueC/BlueC05/StaticBody2D" index="0"]
+
+shape = SubResource( 79 )
+
+[node name="BlueC06" type="Sprite" parent="BlueC" index="5"]
+
+editor/display_folded = true
+position = Vector2( 40, 0 )
+texture = SubResource( 86 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC06" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueC/BlueC06/StaticBody2D" index="0"]
+
+shape = SubResource( 79 )
+
+[node name="BlueC07" type="Sprite" parent="BlueC" index="6"]
+
+editor/display_folded = true
+position = Vector2( 40, 24 )
+texture = SubResource( 87 )
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BlueC/BlueC07" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueC/BlueC07/StaticBody2D" index="0"]
+
+shape = SubResource( 79 )
+
+[node name="Lava" type="Sprite" parent="." index="14"]
+
+material = SubResource( 89 )
+position = Vector2( 48, 256 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 48, 32 )
+_sections_unfolded = [ "Material" ]
+
+[node name="LavaFall" type="Sprite" parent="." index="15"]
+
+material = SubResource( 91 )
+position = Vector2( 128, 256 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 48, 32 )
+_sections_unfolded = [ "Material" ]
+
+[node name="Water" type="Sprite" parent="." index="16"]
+
+material = SubResource( 93 )
+position = Vector2( 48, 296 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 48, 32 )
+_sections_unfolded = [ "Material" ]
+
+[node name="WaterFall" type="Sprite" parent="." index="17"]
+
+material = SubResource( 95 )
+position = Vector2( 128, 296 )
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 48, 32 )
+_sections_unfolded = [ "Material" ]
 
 

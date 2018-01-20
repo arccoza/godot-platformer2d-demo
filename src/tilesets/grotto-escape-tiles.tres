@@ -1,13 +1,17 @@
-[gd_resource type="TileSet" load_steps=85 format=2]
+[gd_resource type="TileSet" load_steps=111 format=2]
 
 [ext_resource path="res://assets/tiles/grotto-escape-tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/tiles/lava.png" type="Texture" id=2]
+[ext_resource path="res://assets/tiles/lava-fall.png" type="Texture" id=3]
+[ext_resource path="res://assets/tiles/water.png" type="Texture" id=4]
+[ext_resource path="res://assets/tiles/waterfall.png" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 
 atlas = ExtResource( 1 )
 region = Rect2( 32, 64, 16, 16 )
@@ -21,529 +25,701 @@ region = Rect2( 48, 64, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=4]
 
 atlas = ExtResource( 1 )
 region = Rect2( 48, 112, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=5]
 
 atlas = ExtResource( 1 )
 region = Rect2( 64, 112, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=6]
 
 atlas = ExtResource( 1 )
 region = Rect2( 80, 112, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=7]
 
 atlas = ExtResource( 1 )
 region = Rect2( 48, 144, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=8]
 
 atlas = ExtResource( 1 )
 region = Rect2( 64, 144, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=9]
 
 atlas = ExtResource( 1 )
 region = Rect2( 80, 144, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=10]
 
 atlas = ExtResource( 1 )
 region = Rect2( 96, 144, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=11]
 
 atlas = ExtResource( 1 )
 region = Rect2( 32, 208, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="StreamTexture" id=20]
+[sub_resource type="StreamTexture" id=12]
 
 load_path = "res://.import/grotto-escape-tiles.png-04252d823b948fa8c51080fd93b01977.stex"
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=13]
 
-atlas = SubResource( 20 )
+atlas = SubResource( 12 )
 region = Rect2( 64, 192, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=22]
+[sub_resource type="AtlasTexture" id=14]
 
-atlas = SubResource( 20 )
+atlas = SubResource( 12 )
 region = Rect2( 80, 192, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=15]
 
 atlas = ExtResource( 1 )
 region = Rect2( 64, 64, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=16]
 
 atlas = ExtResource( 1 )
 region = Rect2( 112, 208, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=17]
 
 atlas = ExtResource( 1 )
 region = Rect2( 32, 224, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=18]
 
 atlas = ExtResource( 1 )
 region = Rect2( 64, 208, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=19]
 
 atlas = ExtResource( 1 )
 region = Rect2( 80, 208, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=20]
 
 atlas = ExtResource( 1 )
 region = Rect2( 64, 224, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=21]
 
 atlas = ExtResource( 1 )
 region = Rect2( 80, 224, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=22]
 
 atlas = ExtResource( 1 )
 region = Rect2( 112, 224, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="RectangleShape2D" id=23]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=24]
 
 atlas = ExtResource( 1 )
 region = Rect2( 48, 16, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="ConvexPolygonShape2D" id=77]
+[sub_resource type="RectangleShape2D" id=25]
 
 custom_solver_bias = 0.0
-points = PoolVector2Array( 16, 8, -16, 8, -16, 3, -9, 3 )
+extents = Vector2( 8, 8 )
 
-[sub_resource type="ConvexPolygonShape2D" id=78]
-
-custom_solver_bias = 0.0
-points = PoolVector2Array( -9, 3, -9, -1, 0, -1, 16, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=79]
-
-custom_solver_bias = 0.0
-points = PoolVector2Array( 0, -1, 0, -4, 7, -4, 16, 8 )
-
-[sub_resource type="ConvexPolygonShape2D" id=80]
-
-custom_solver_bias = 0.0
-points = PoolVector2Array( 16, -8, 16, 8, 7, -4, 7, -8 )
-
-[sub_resource type="AtlasTexture" id=71]
+[sub_resource type="AtlasTexture" id=26]
 
 atlas = ExtResource( 1 )
-region = Rect2( 432, 80, 32, 16 )
+region = Rect2( 560, 16, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="ConvexPolygonShape2D" id=81]
-
-custom_solver_bias = 0.0
-points = PoolVector2Array( 8, 8, -8, 8, -8, 3, -1, 3 )
-
-[sub_resource type="ConvexPolygonShape2D" id=82]
-
-custom_solver_bias = 0.0
-points = PoolVector2Array( 8, -1, 8, 8, -1, 3, -1, -1 )
-
-[sub_resource type="AtlasTexture" id=73]
+[sub_resource type="AtlasTexture" id=27]
 
 atlas = ExtResource( 1 )
-region = Rect2( 432, 80, 16, 16 )
+region = Rect2( 560, 64, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=28]
 
 atlas = ExtResource( 1 )
 region = Rect2( 80, 64, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="ConvexPolygonShape2D" id=83]
+[sub_resource type="ConvexPolygonShape2D" id=29]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 16, 8, -16, 8, -16, 3, -9, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=30]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( -9, 3, -9, -1, 0, -1, 16, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=31]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, -1, 0, -4, 7, -4, 16, 8 )
+
+[sub_resource type="ConvexPolygonShape2D" id=32]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 16, -8, 16, 8, 7, -4, 7, -8 )
+
+[sub_resource type="AtlasTexture" id=33]
+
+atlas = ExtResource( 1 )
+region = Rect2( 432, 80, 32, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="ConvexPolygonShape2D" id=34]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 8, 8, -8, 8, -8, 3, -1, 3 )
+
+[sub_resource type="ConvexPolygonShape2D" id=35]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 8, -1, 8, 8, -1, 3, -1, -1 )
+
+[sub_resource type="AtlasTexture" id=36]
+
+atlas = ExtResource( 1 )
+region = Rect2( 432, 80, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="ConvexPolygonShape2D" id=37]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( 8, 8, -8, 8, -8, -4, -1, -4 )
 
-[sub_resource type="ConvexPolygonShape2D" id=84]
+[sub_resource type="ConvexPolygonShape2D" id=38]
 
 custom_solver_bias = 0.0
 points = PoolVector2Array( 8, -8, 8, 8, -1, -4, -1, -8 )
 
-[sub_resource type="AtlasTexture" id=75]
+[sub_resource type="AtlasTexture" id=39]
 
 atlas = ExtResource( 1 )
 region = Rect2( 448, 80, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=74]
-
-custom_solver_bias = 0.0
-extents = Vector2( 8, 8 )
-
-[sub_resource type="AtlasTexture" id=76]
+[sub_resource type="AtlasTexture" id=40]
 
 atlas = ExtResource( 1 )
 region = Rect2( 432, 96, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=41]
 
 atlas = ExtResource( 1 )
 region = Rect2( 144, 64, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=42]
 
 atlas = ExtResource( 1 )
 region = Rect2( 144, 112, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=43]
 
 atlas = ExtResource( 1 )
 region = Rect2( 192, 64, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=44]
 
 atlas = ExtResource( 1 )
 region = Rect2( 144, 160, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=45]
 
 atlas = ExtResource( 1 )
 region = Rect2( 144, 192, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=46]
 
 atlas = ExtResource( 1 )
 region = Rect2( 256, 64, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=38]
-
-atlas = ExtResource( 1 )
-region = Rect2( 192, 112, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=39]
-
-atlas = ExtResource( 1 )
-region = Rect2( 240, 160, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=47]
 
 atlas = ExtResource( 1 )
 region = Rect2( 32, 80, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=41]
-
-custom_solver_bias = 0.0
-extents = Vector2( 8, 16 )
-_sections_unfolded = [ "Resource" ]
-
-[sub_resource type="AtlasTexture" id=40]
-
-atlas = ExtResource( 1 )
-region = Rect2( 240, 112, 16, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=42]
-
-atlas = ExtResource( 1 )
-region = Rect2( 176, 160, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=43]
-
-atlas = ExtResource( 1 )
-region = Rect2( 208, 160, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=44]
-
-atlas = ExtResource( 1 )
-region = Rect2( 176, 192, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=45]
-
-atlas = ExtResource( 1 )
-region = Rect2( 208, 192, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=46]
-
-atlas = ExtResource( 1 )
-region = Rect2( 224, 64, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=47]
-
-atlas = ExtResource( 1 )
-region = Rect2( 352, 96, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="RectangleShape2D" id=53]
-
-custom_solver_bias = 0.0
-extents = Vector2( 8, 8 )
-_sections_unfolded = [ "Resource" ]
-
 [sub_resource type="AtlasTexture" id=48]
 
 atlas = ExtResource( 1 )
-region = Rect2( 320, 32, 16, 32 )
+region = Rect2( 192, 112, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=49]
 
 atlas = ExtResource( 1 )
-region = Rect2( 352, 32, 16, 32 )
+region = Rect2( 240, 160, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=50]
+[sub_resource type="RectangleShape2D" id=50]
 
-atlas = ExtResource( 1 )
-region = Rect2( 384, 32, 16, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=7]
-
-atlas = ExtResource( 1 )
-region = Rect2( 48, 80, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
+custom_solver_bias = 0.0
+extents = Vector2( 8, 16 )
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="AtlasTexture" id=51]
 
 atlas = ExtResource( 1 )
-region = Rect2( 320, 176, 16, 32 )
+region = Rect2( 240, 112, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=52]
 
 atlas = ExtResource( 1 )
-region = Rect2( 352, 176, 16, 32 )
+region = Rect2( 176, 160, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=53]
+
+atlas = ExtResource( 1 )
+region = Rect2( 208, 160, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=54]
 
 atlas = ExtResource( 1 )
-region = Rect2( 416, 48, 16, 16 )
+region = Rect2( 176, 192, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=55]
 
 atlas = ExtResource( 1 )
-region = Rect2( 320, 80, 16, 16 )
+region = Rect2( 208, 192, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=56]
 
 atlas = ExtResource( 1 )
-region = Rect2( 320, 112, 16, 16 )
+region = Rect2( 224, 64, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=57]
 
 atlas = ExtResource( 1 )
-region = Rect2( 400, 96, 16, 16 )
+region = Rect2( 352, 96, 32, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=58]
+[sub_resource type="RectangleShape2D" id=58]
 
-atlas = ExtResource( 1 )
-region = Rect2( 464, 32, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="AtlasTexture" id=59]
 
 atlas = ExtResource( 1 )
-region = Rect2( 512, 32, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=70]
-
-atlas = ExtResource( 1 )
-region = Rect2( 544, 192, 32, 32 )
+region = Rect2( 320, 32, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=60]
 
 atlas = ExtResource( 1 )
-region = Rect2( 384, 144, 32, 32 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="AtlasTexture" id=8]
-
-atlas = ExtResource( 1 )
-region = Rect2( 80, 80, 16, 16 )
+region = Rect2( 48, 80, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=61]
 
 atlas = ExtResource( 1 )
-region = Rect2( 480, 144, 32, 32 )
+region = Rect2( 352, 32, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=62]
 
 atlas = ExtResource( 1 )
-region = Rect2( 448, 192, 32, 32 )
+region = Rect2( 384, 32, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
-
-[sub_resource type="RectangleShape2D" id=64]
-
-custom_solver_bias = 0.0
-extents = Vector2( 8, 16 )
 
 [sub_resource type="AtlasTexture" id=63]
 
 atlas = ExtResource( 1 )
-region = Rect2( 432, 144, 16, 32 )
+region = Rect2( 320, 176, 16, 32 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=66]
+[sub_resource type="AtlasTexture" id=64]
 
-custom_solver_bias = 0.0
-extents = Vector2( 16, 8 )
+atlas = ExtResource( 1 )
+region = Rect2( 352, 176, 16, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
 
 [sub_resource type="AtlasTexture" id=65]
 
 atlas = ExtResource( 1 )
-region = Rect2( 480, 112, 32, 16 )
+region = Rect2( 416, 48, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="RectangleShape2D" id=68]
+[sub_resource type="AtlasTexture" id=66]
 
-custom_solver_bias = 0.0
-extents = Vector2( 8, 32 )
+atlas = ExtResource( 1 )
+region = Rect2( 320, 80, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
 
 [sub_resource type="AtlasTexture" id=67]
 
 atlas = ExtResource( 1 )
-region = Rect2( 528, 112, 16, 64 )
+region = Rect2( 320, 112, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=68]
+
+atlas = ExtResource( 1 )
+region = Rect2( 400, 96, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
 [sub_resource type="AtlasTexture" id=69]
 
 atlas = ExtResource( 1 )
+region = Rect2( 464, 32, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=70]
+
+atlas = ExtResource( 1 )
+region = Rect2( 512, 32, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=71]
+
+atlas = ExtResource( 1 )
+region = Rect2( 80, 80, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=72]
+
+atlas = ExtResource( 1 )
+region = Rect2( 544, 192, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=73]
+
+atlas = ExtResource( 1 )
+region = Rect2( 384, 144, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=74]
+
+atlas = ExtResource( 1 )
+region = Rect2( 480, 144, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=75]
+
+atlas = ExtResource( 1 )
+region = Rect2( 448, 192, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=76]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 16 )
+
+[sub_resource type="AtlasTexture" id=77]
+
+atlas = ExtResource( 1 )
+region = Rect2( 432, 144, 16, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=78]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 8 )
+
+[sub_resource type="AtlasTexture" id=79]
+
+atlas = ExtResource( 1 )
+region = Rect2( 480, 112, 32, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=80]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 32 )
+
+[sub_resource type="AtlasTexture" id=81]
+
+atlas = ExtResource( 1 )
+region = Rect2( 528, 112, 16, 64 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=82]
+
+atlas = ExtResource( 1 )
 region = Rect2( 560, 112, 16, 64 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="RectangleShape2D" id=83]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[sub_resource type="AtlasTexture" id=84]
+
+atlas = ExtResource( 1 )
+region = Rect2( 592, 80, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=85]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 24 )
+
+[sub_resource type="AtlasTexture" id=86]
+
+atlas = ExtResource( 1 )
+region = Rect2( 592, 112, 16, 48 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=87]
 
 atlas = ExtResource( 1 )
 region = Rect2( 32, 96, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=88]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, 0, -16, 0, -16, -16, 16, -16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=89]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, 0, 16, -16, 16, 16, 0, 16 )
+
+[sub_resource type="AtlasTexture" id=90]
+
+atlas = ExtResource( 1 )
+region = Rect2( 624, 80, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="RectangleShape2D" id=91]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="AtlasTexture" id=92]
+
+atlas = ExtResource( 1 )
+region = Rect2( 624, 128, 32, 32 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=93]
+
+atlas = ExtResource( 1 )
+region = Rect2( 608, 16, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=94]
+
+atlas = ExtResource( 1 )
+region = Rect2( 608, 48, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="AtlasTexture" id=95]
+
+atlas = ExtResource( 1 )
+region = Rect2( 640, 48, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="Shader" id=96]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=97]
+
+render_priority = 0
+shader = SubResource( 96 )
+shader_param/scroll = Vector2( 0.1, 0 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=98]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=99]
+
+render_priority = 0
+shader = SubResource( 98 )
+shader_param/scroll = Vector2( 0, 0.3 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=100]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv);
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=101]
+
+render_priority = 0
+shader = SubResource( 100 )
+shader_param/scroll = Vector2( 0.4, 0 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=102]
+
+code = "shader_type canvas_item;
+
+uniform vec2 scroll = vec2(0.0, 1.0);
+
+void fragment() {
+	vec2 uv = UV - scroll * TIME;
+	uv = mod(uv, 1.0);
+	
+	COLOR = texture(TEXTURE, uv) * abs(fract(TIME) - 0.5) + texture(TEXTURE, vec2(1.0, 2.0 * uv.y) - uv) * (1.0 - abs(fract(TIME) - 0.5));
+}"
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="ShaderMaterial" id=103]
+
+render_priority = 0
+shader = SubResource( 102 )
+shader_param/scroll = Vector2( 0, 1.2 )
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="AtlasTexture" id=104]
 
 atlas = ExtResource( 1 )
 region = Rect2( 80, 96, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=105]
 
 atlas = ExtResource( 1 )
 region = Rect2( 32, 112, 16, 16 )
@@ -553,7 +729,7 @@ filter_clip = false
 [resource]
 
 0/name = "BlueA01TL"
-0/texture = SubResource( 1 )
+0/texture = SubResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 16, 16 )
@@ -563,7 +739,7 @@ filter_clip = false
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 1/name = "BlueA02T"
@@ -577,11 +753,11 @@ filter_clip = false
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 2/name = "BlueA03T"
-2/texture = SubResource( 4 )
+2/texture = SubResource( 15 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 16, 16 )
@@ -591,11 +767,11 @@ filter_clip = false
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 3/name = "BlueA04TR"
-3/texture = SubResource( 5 )
+3/texture = SubResource( 28 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 16, 16 )
@@ -605,11 +781,11 @@ filter_clip = false
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 4/name = "BlueA05L"
-4/texture = SubResource( 6 )
+4/texture = SubResource( 47 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 16, 16 )
@@ -619,11 +795,11 @@ filter_clip = false
 4/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 5/name = "BlueA06M"
-5/texture = SubResource( 7 )
+5/texture = SubResource( 60 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 16, 16 )
@@ -633,11 +809,11 @@ filter_clip = false
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 6/name = "BlueA07R"
-6/texture = SubResource( 8 )
+6/texture = SubResource( 71 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 16, 16 )
@@ -647,11 +823,11 @@ filter_clip = false
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 7/name = "BlueA08L"
-7/texture = SubResource( 9 )
+7/texture = SubResource( 87 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 16, 16 )
@@ -661,11 +837,11 @@ filter_clip = false
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 8/name = "BlueA09R"
-8/texture = SubResource( 10 )
+8/texture = SubResource( 104 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 16, 16 )
@@ -675,11 +851,11 @@ filter_clip = false
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 9/name = "BlueA10BL"
-9/texture = SubResource( 11 )
+9/texture = SubResource( 105 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 16, 16 )
@@ -689,11 +865,11 @@ filter_clip = false
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 10/name = "BlueA11B"
-10/texture = SubResource( 12 )
+10/texture = SubResource( 4 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 16, 16 )
@@ -703,11 +879,11 @@ filter_clip = false
 10/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 11/name = "BlueA12B"
-11/texture = SubResource( 13 )
+11/texture = SubResource( 5 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 16, 16 )
@@ -717,11 +893,11 @@ filter_clip = false
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 12/name = "BlueA13BR"
-12/texture = SubResource( 14 )
+12/texture = SubResource( 6 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 16, 16 )
@@ -731,11 +907,11 @@ filter_clip = false
 12/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 13/name = "BlueB01"
-13/texture = SubResource( 15 )
+13/texture = SubResource( 7 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 16, 32 )
@@ -745,11 +921,11 @@ filter_clip = false
 13/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 16 )
 } ]
 14/name = "BlueB02"
-14/texture = SubResource( 16 )
+14/texture = SubResource( 8 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 16, 16 )
@@ -759,11 +935,11 @@ filter_clip = false
 14/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 15/name = "BlueB03"
-15/texture = SubResource( 17 )
+15/texture = SubResource( 9 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 0, 0, 16, 16 )
@@ -773,11 +949,11 @@ filter_clip = false
 15/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 16/name = "BlueB04"
-16/texture = SubResource( 18 )
+16/texture = SubResource( 10 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 0, 0, 16, 16 )
@@ -787,11 +963,11 @@ filter_clip = false
 16/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 17/name = "BlueB05"
-17/texture = SubResource( 19 )
+17/texture = SubResource( 11 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 0, 0, 16, 16 )
@@ -801,11 +977,11 @@ filter_clip = false
 17/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 18/name = "BlueB06"
-18/texture = SubResource( 21 )
+18/texture = SubResource( 13 )
 18/tex_offset = Vector2( 0, -16 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 0, 0, 16, 32 )
@@ -815,11 +991,11 @@ filter_clip = false
 18/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 19/name = "BlueB07"
-19/texture = SubResource( 22 )
+19/texture = SubResource( 14 )
 19/tex_offset = Vector2( 0, -16 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 0, 0, 16, 32 )
@@ -829,11 +1005,11 @@ filter_clip = false
 19/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 20/name = "BlueB08"
-20/texture = SubResource( 23 )
+20/texture = SubResource( 16 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 0, 0, 16, 16 )
@@ -843,11 +1019,11 @@ filter_clip = false
 20/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 21/name = "BlueB09"
-21/texture = SubResource( 24 )
+21/texture = SubResource( 17 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( 0, 0, 16, 16 )
@@ -857,11 +1033,11 @@ filter_clip = false
 21/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 22/name = "BlueB13"
-22/texture = SubResource( 25 )
+22/texture = SubResource( 18 )
 22/tex_offset = Vector2( 0, 0 )
 22/modulate = Color( 1, 1, 1, 1 )
 22/region = Rect2( 0, 0, 16, 16 )
@@ -871,11 +1047,11 @@ filter_clip = false
 22/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 23/name = "BlueB14"
-23/texture = SubResource( 26 )
+23/texture = SubResource( 19 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
 23/region = Rect2( 0, 0, 16, 16 )
@@ -885,11 +1061,11 @@ filter_clip = false
 23/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 24/name = "BlueB10"
-24/texture = SubResource( 27 )
+24/texture = SubResource( 20 )
 24/tex_offset = Vector2( 0, 0 )
 24/modulate = Color( 1, 1, 1, 1 )
 24/region = Rect2( 0, 0, 16, 16 )
@@ -899,11 +1075,11 @@ filter_clip = false
 24/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 25/name = "BlueB11"
-25/texture = SubResource( 28 )
+25/texture = SubResource( 21 )
 25/tex_offset = Vector2( 0, 0 )
 25/modulate = Color( 1, 1, 1, 1 )
 25/region = Rect2( 0, 0, 16, 16 )
@@ -913,11 +1089,11 @@ filter_clip = false
 25/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 26/name = "BlueB12"
-26/texture = SubResource( 29 )
+26/texture = SubResource( 22 )
 26/tex_offset = Vector2( 0, 0 )
 26/modulate = Color( 1, 1, 1, 1 )
 26/region = Rect2( 0, 0, 16, 16 )
@@ -927,11 +1103,11 @@ filter_clip = false
 26/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
 27/name = "BlueHead"
-27/texture = SubResource( 30 )
+27/texture = SubResource( 24 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
 27/region = Rect2( 0, 0, 32, 32 )
@@ -941,78 +1117,68 @@ filter_clip = false
 27/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-28/name = "BlueStairs01"
-28/texture = SubResource( 71 )
+28/name = "BlueA14"
+28/texture = SubResource( 26 )
 28/tex_offset = Vector2( 0, 0 )
 28/modulate = Color( 1, 1, 1, 1 )
-28/region = Rect2( 0, 0, 32, 16 )
+28/region = Rect2( 0, 0, 16, 32 )
 28/is_autotile = false
-28/occluder_offset = Vector2( 16, 8 )
-28/navigation_offset = Vector2( 16, 8 )
+28/occluder_offset = Vector2( 8, 16 )
+28/navigation_offset = Vector2( 8, 16 )
 28/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 77 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
-}, {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"shape": SubResource( 78 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
-}, {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"shape": SubResource( 79 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
-}, {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"shape": SubResource( 80 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
+"shape": SubResource( 25 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-29/name = "BlueStairs02"
-29/texture = SubResource( 73 )
+29/name = "BlueA15"
+29/texture = SubResource( 27 )
 29/tex_offset = Vector2( 0, 0 )
 29/modulate = Color( 1, 1, 1, 1 )
-29/region = Rect2( 0, 0, 16, 16 )
+29/region = Rect2( 0, 0, 16, 32 )
 29/is_autotile = false
-29/occluder_offset = Vector2( 8, 8 )
-29/navigation_offset = Vector2( 8, 8 )
+29/occluder_offset = Vector2( 8, 16 )
+29/navigation_offset = Vector2( 8, 16 )
 29/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 81 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
-}, {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"shape": SubResource( 82 ),
+"shape": SubResource( 25 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-30/name = "BlueStairs03"
-30/texture = SubResource( 75 )
+30/name = "BlueStairs01"
+30/texture = SubResource( 33 )
 30/tex_offset = Vector2( 0, 0 )
 30/modulate = Color( 1, 1, 1, 1 )
-30/region = Rect2( 0, 0, 16, 16 )
+30/region = Rect2( 0, 0, 32, 16 )
 30/is_autotile = false
-30/occluder_offset = Vector2( 8, 8 )
-30/navigation_offset = Vector2( 8, 8 )
+30/occluder_offset = Vector2( 16, 8 )
+30/navigation_offset = Vector2( 16, 8 )
 30/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 83 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 29 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
 }, {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 84 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 30 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 31 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 32 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
 } ]
-31/name = "BlueStairs04"
-31/texture = SubResource( 76 )
+31/name = "BlueStairs02"
+31/texture = SubResource( 36 )
 31/tex_offset = Vector2( 0, 0 )
 31/modulate = Color( 1, 1, 1, 1 )
 31/region = Rect2( 0, 0, 16, 16 )
@@ -1022,67 +1188,77 @@ filter_clip = false
 31/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 74 ),
+"shape": SubResource( 34 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 35 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-32/name = "GreenA01"
-32/texture = SubResource( 32 )
+32/name = "BlueStairs03"
+32/texture = SubResource( 39 )
 32/tex_offset = Vector2( 0, 0 )
 32/modulate = Color( 1, 1, 1, 1 )
-32/region = Rect2( 0, 0, 32, 32 )
+32/region = Rect2( 0, 0, 16, 16 )
 32/is_autotile = false
-32/occluder_offset = Vector2( 16, 16 )
-32/navigation_offset = Vector2( 16, 16 )
+32/occluder_offset = Vector2( 8, 8 )
+32/navigation_offset = Vector2( 8, 8 )
 32/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+"shape": SubResource( 37 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 38 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-33/name = "GreenA02"
-33/texture = SubResource( 33 )
+33/name = "BlueStairs04"
+33/texture = SubResource( 40 )
 33/tex_offset = Vector2( 0, 0 )
 33/modulate = Color( 1, 1, 1, 1 )
-33/region = Rect2( 0, 0, 32, 32 )
+33/region = Rect2( 0, 0, 16, 16 )
 33/is_autotile = false
-33/occluder_offset = Vector2( 16, 16 )
-33/navigation_offset = Vector2( 16, 16 )
+33/occluder_offset = Vector2( 8, 8 )
+33/navigation_offset = Vector2( 8, 8 )
 33/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+"shape": SubResource( 25 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-34/name = "GreenA03"
-34/texture = SubResource( 34 )
+34/name = "GreenA01"
+34/texture = SubResource( 41 )
 34/tex_offset = Vector2( 0, 0 )
 34/modulate = Color( 1, 1, 1, 1 )
-34/region = Rect2( 0, 0, 16, 16 )
+34/region = Rect2( 0, 0, 32, 32 )
 34/is_autotile = false
-34/occluder_offset = Vector2( 8, 8 )
-34/navigation_offset = Vector2( 8, 8 )
+34/occluder_offset = Vector2( 16, 16 )
+34/navigation_offset = Vector2( 16, 16 )
 34/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-35/name = "GreenA04"
-35/texture = SubResource( 35 )
+35/name = "GreenA02"
+35/texture = SubResource( 42 )
 35/tex_offset = Vector2( 0, 0 )
 35/modulate = Color( 1, 1, 1, 1 )
-35/region = Rect2( 0, 0, 16, 16 )
+35/region = Rect2( 0, 0, 32, 32 )
 35/is_autotile = false
-35/occluder_offset = Vector2( 8, 8 )
-35/navigation_offset = Vector2( 8, 8 )
+35/occluder_offset = Vector2( 16, 16 )
+35/navigation_offset = Vector2( 16, 16 )
 35/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-36/name = "GreenA05"
-36/texture = SubResource( 36 )
+36/name = "GreenA03"
+36/texture = SubResource( 43 )
 36/tex_offset = Vector2( 0, 0 )
 36/modulate = Color( 1, 1, 1, 1 )
 36/region = Rect2( 0, 0, 16, 16 )
@@ -1092,39 +1268,39 @@ filter_clip = false
 36/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-37/name = "GreenB01"
-37/texture = SubResource( 37 )
+37/name = "GreenA04"
+37/texture = SubResource( 44 )
 37/tex_offset = Vector2( 0, 0 )
 37/modulate = Color( 1, 1, 1, 1 )
-37/region = Rect2( 0, 0, 32, 32 )
+37/region = Rect2( 0, 0, 16, 16 )
 37/is_autotile = false
-37/occluder_offset = Vector2( 16, 16 )
-37/navigation_offset = Vector2( 16, 16 )
+37/occluder_offset = Vector2( 8, 8 )
+37/navigation_offset = Vector2( 8, 8 )
 37/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-38/name = "GreenB02"
-38/texture = SubResource( 38 )
+38/name = "GreenA05"
+38/texture = SubResource( 45 )
 38/tex_offset = Vector2( 0, 0 )
 38/modulate = Color( 1, 1, 1, 1 )
-38/region = Rect2( 0, 0, 32, 32 )
+38/region = Rect2( 0, 0, 16, 16 )
 38/is_autotile = false
-38/occluder_offset = Vector2( 16, 16 )
-38/navigation_offset = Vector2( 16, 16 )
+38/occluder_offset = Vector2( 8, 8 )
+38/navigation_offset = Vector2( 8, 8 )
 38/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-39/name = "GreenB03"
-39/texture = SubResource( 39 )
+39/name = "GreenB01"
+39/texture = SubResource( 46 )
 39/tex_offset = Vector2( 0, 0 )
 39/modulate = Color( 1, 1, 1, 1 )
 39/region = Rect2( 0, 0, 32, 32 )
@@ -1134,53 +1310,53 @@ filter_clip = false
 39/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-40/name = "GreenB04"
-40/texture = SubResource( 40 )
+40/name = "GreenB02"
+40/texture = SubResource( 48 )
 40/tex_offset = Vector2( 0, 0 )
 40/modulate = Color( 1, 1, 1, 1 )
-40/region = Rect2( 0, 0, 16, 32 )
+40/region = Rect2( 0, 0, 32, 32 )
 40/is_autotile = false
-40/occluder_offset = Vector2( 8, 16 )
-40/navigation_offset = Vector2( 8, 16 )
+40/occluder_offset = Vector2( 16, 16 )
+40/navigation_offset = Vector2( 16, 16 )
 40/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 41 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 16 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-41/name = "GreenB05"
-41/texture = SubResource( 42 )
+41/name = "GreenB03"
+41/texture = SubResource( 49 )
 41/tex_offset = Vector2( 0, 0 )
 41/modulate = Color( 1, 1, 1, 1 )
-41/region = Rect2( 0, 0, 16, 16 )
+41/region = Rect2( 0, 0, 32, 32 )
 41/is_autotile = false
-41/occluder_offset = Vector2( 8, 8 )
-41/navigation_offset = Vector2( 8, 8 )
+41/occluder_offset = Vector2( 16, 16 )
+41/navigation_offset = Vector2( 16, 16 )
 41/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-42/name = "GreenB06"
-42/texture = SubResource( 43 )
+42/name = "GreenB04"
+42/texture = SubResource( 51 )
 42/tex_offset = Vector2( 0, 0 )
 42/modulate = Color( 1, 1, 1, 1 )
-42/region = Rect2( 0, 0, 16, 16 )
+42/region = Rect2( 0, 0, 16, 32 )
 42/is_autotile = false
-42/occluder_offset = Vector2( 8, 8 )
-42/navigation_offset = Vector2( 8, 8 )
+42/occluder_offset = Vector2( 8, 16 )
+42/navigation_offset = Vector2( 8, 16 )
 42/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 50 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 16 )
 } ]
-43/name = "GreenB07"
-43/texture = SubResource( 44 )
+43/name = "GreenB05"
+43/texture = SubResource( 52 )
 43/tex_offset = Vector2( 0, 0 )
 43/modulate = Color( 1, 1, 1, 1 )
 43/region = Rect2( 0, 0, 16, 16 )
@@ -1190,11 +1366,11 @@ filter_clip = false
 43/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-44/name = "GreenB08"
-44/texture = SubResource( 45 )
+44/name = "GreenB06"
+44/texture = SubResource( 53 )
 44/tex_offset = Vector2( 0, 0 )
 44/modulate = Color( 1, 1, 1, 1 )
 44/region = Rect2( 0, 0, 16, 16 )
@@ -1204,11 +1380,11 @@ filter_clip = false
 44/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-45/name = "GreenB09"
-45/texture = SubResource( 46 )
+45/name = "GreenB07"
+45/texture = SubResource( 54 )
 45/tex_offset = Vector2( 0, 0 )
 45/modulate = Color( 1, 1, 1, 1 )
 45/region = Rect2( 0, 0, 16, 16 )
@@ -1218,53 +1394,53 @@ filter_clip = false
 45/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-46/name = "GreenC01"
-46/texture = SubResource( 47 )
+46/name = "GreenB08"
+46/texture = SubResource( 55 )
 46/tex_offset = Vector2( 0, 0 )
 46/modulate = Color( 1, 1, 1, 1 )
-46/region = Rect2( 0, 0, 32, 32 )
+46/region = Rect2( 0, 0, 16, 16 )
 46/is_autotile = false
-46/occluder_offset = Vector2( 16, 16 )
-46/navigation_offset = Vector2( 16, 16 )
+46/occluder_offset = Vector2( 8, 8 )
+46/navigation_offset = Vector2( 8, 8 )
 46/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-47/name = "GreenC02"
-47/texture = SubResource( 48 )
-47/tex_offset = Vector2( 0, -16 )
+47/name = "GreenB09"
+47/texture = SubResource( 56 )
+47/tex_offset = Vector2( 0, 0 )
 47/modulate = Color( 1, 1, 1, 1 )
-47/region = Rect2( 0, 0, 16, 32 )
+47/region = Rect2( 0, 0, 16, 16 )
 47/is_autotile = false
-47/occluder_offset = Vector2( 8, 16 )
-47/navigation_offset = Vector2( 8, 16 )
+47/occluder_offset = Vector2( 8, 8 )
+47/navigation_offset = Vector2( 8, 8 )
 47/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 53 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-48/name = "GreenC03"
-48/texture = SubResource( 49 )
-48/tex_offset = Vector2( 0, -16 )
+48/name = "GreenC01"
+48/texture = SubResource( 57 )
+48/tex_offset = Vector2( 0, 0 )
 48/modulate = Color( 1, 1, 1, 1 )
-48/region = Rect2( 0, 0, 16, 32 )
+48/region = Rect2( 0, 0, 32, 32 )
 48/is_autotile = false
-48/occluder_offset = Vector2( 8, 16 )
-48/navigation_offset = Vector2( 8, 16 )
+48/occluder_offset = Vector2( 16, 16 )
+48/navigation_offset = Vector2( 16, 16 )
 48/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 53 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-49/name = "GreenC04"
-49/texture = SubResource( 50 )
+49/name = "GreenC02"
+49/texture = SubResource( 59 )
 49/tex_offset = Vector2( 0, -16 )
 49/modulate = Color( 1, 1, 1, 1 )
 49/region = Rect2( 0, 0, 16, 32 )
@@ -1274,11 +1450,11 @@ filter_clip = false
 49/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 53 ),
+"shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-50/name = "GreenC05"
-50/texture = SubResource( 51 )
+50/name = "GreenC03"
+50/texture = SubResource( 61 )
 50/tex_offset = Vector2( 0, -16 )
 50/modulate = Color( 1, 1, 1, 1 )
 50/region = Rect2( 0, 0, 16, 32 )
@@ -1288,11 +1464,11 @@ filter_clip = false
 50/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 53 ),
+"shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-51/name = "GreenC06"
-51/texture = SubResource( 52 )
+51/name = "GreenC04"
+51/texture = SubResource( 62 )
 51/tex_offset = Vector2( 0, -16 )
 51/modulate = Color( 1, 1, 1, 1 )
 51/region = Rect2( 0, 0, 16, 32 )
@@ -1302,39 +1478,39 @@ filter_clip = false
 51/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 53 ),
+"shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-52/name = "GreenC07"
-52/texture = SubResource( 54 )
-52/tex_offset = Vector2( 0, 0 )
+52/name = "GreenC05"
+52/texture = SubResource( 63 )
+52/tex_offset = Vector2( 0, -16 )
 52/modulate = Color( 1, 1, 1, 1 )
-52/region = Rect2( 0, 0, 16, 16 )
+52/region = Rect2( 0, 0, 16, 32 )
 52/is_autotile = false
-52/occluder_offset = Vector2( 8, 8 )
-52/navigation_offset = Vector2( 8, 8 )
+52/occluder_offset = Vector2( 8, 16 )
+52/navigation_offset = Vector2( 8, 16 )
 52/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-53/name = "GreenC08"
-53/texture = SubResource( 55 )
-53/tex_offset = Vector2( 0, 0 )
+53/name = "GreenC06"
+53/texture = SubResource( 64 )
+53/tex_offset = Vector2( 0, -16 )
 53/modulate = Color( 1, 1, 1, 1 )
-53/region = Rect2( 0, 0, 16, 16 )
+53/region = Rect2( 0, 0, 16, 32 )
 53/is_autotile = false
-53/occluder_offset = Vector2( 8, 8 )
-53/navigation_offset = Vector2( 8, 8 )
+53/occluder_offset = Vector2( 8, 16 )
+53/navigation_offset = Vector2( 8, 16 )
 53/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 58 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-54/name = "GreenC09"
-54/texture = SubResource( 56 )
+54/name = "GreenC07"
+54/texture = SubResource( 65 )
 54/tex_offset = Vector2( 0, 0 )
 54/modulate = Color( 1, 1, 1, 1 )
 54/region = Rect2( 0, 0, 16, 16 )
@@ -1344,11 +1520,11 @@ filter_clip = false
 54/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-55/name = "GreenC10"
-55/texture = SubResource( 57 )
+55/name = "GreenC08"
+55/texture = SubResource( 66 )
 55/tex_offset = Vector2( 0, 0 )
 55/modulate = Color( 1, 1, 1, 1 )
 55/region = Rect2( 0, 0, 16, 16 )
@@ -1358,57 +1534,57 @@ filter_clip = false
 55/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
 } ]
-56/name = "GreenWeb01"
-56/texture = SubResource( 58 )
+56/name = "GreenC09"
+56/texture = SubResource( 67 )
 56/tex_offset = Vector2( 0, 0 )
 56/modulate = Color( 1, 1, 1, 1 )
-56/region = Rect2( 0, 0, 32, 32 )
+56/region = Rect2( 0, 0, 16, 16 )
 56/is_autotile = false
-56/occluder_offset = Vector2( 16, 16 )
-56/navigation_offset = Vector2( 16, 16 )
-56/shapes = [  ]
-57/name = "GreenWeb02"
-57/texture = SubResource( 59 )
+56/occluder_offset = Vector2( 8, 8 )
+56/navigation_offset = Vector2( 8, 8 )
+56/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+57/name = "GreenC10"
+57/texture = SubResource( 68 )
 57/tex_offset = Vector2( 0, 0 )
 57/modulate = Color( 1, 1, 1, 1 )
-57/region = Rect2( 0, 0, 32, 32 )
+57/region = Rect2( 0, 0, 16, 16 )
 57/is_autotile = false
-57/occluder_offset = Vector2( 16, 16 )
-57/navigation_offset = Vector2( 16, 16 )
-57/shapes = [  ]
-58/name = "BlueGreenFill"
-58/texture = SubResource( 70 )
+57/occluder_offset = Vector2( 8, 8 )
+57/navigation_offset = Vector2( 8, 8 )
+57/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+58/name = "GreenWeb01"
+58/texture = SubResource( 69 )
 58/tex_offset = Vector2( 0, 0 )
 58/modulate = Color( 1, 1, 1, 1 )
 58/region = Rect2( 0, 0, 32, 32 )
 58/is_autotile = false
 58/occluder_offset = Vector2( 16, 16 )
 58/navigation_offset = Vector2( 16, 16 )
-58/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
-} ]
-59/name = "GreenD01"
-59/texture = SubResource( 60 )
+58/shapes = [  ]
+59/name = "GreenWeb02"
+59/texture = SubResource( 70 )
 59/tex_offset = Vector2( 0, 0 )
 59/modulate = Color( 1, 1, 1, 1 )
 59/region = Rect2( 0, 0, 32, 32 )
 59/is_autotile = false
 59/occluder_offset = Vector2( 16, 16 )
 59/navigation_offset = Vector2( 16, 16 )
-59/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"shape": SubResource( 31 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
-} ]
-60/name = "GreenD02"
-60/texture = SubResource( 61 )
+59/shapes = [  ]
+60/name = "BlueGreenFill"
+60/texture = SubResource( 72 )
 60/tex_offset = Vector2( 0, 0 )
 60/modulate = Color( 1, 1, 1, 1 )
 60/region = Rect2( 0, 0, 32, 32 )
@@ -1418,11 +1594,11 @@ filter_clip = false
 60/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-61/name = "GreenD03"
-61/texture = SubResource( 62 )
+61/name = "GreenD01"
+61/texture = SubResource( 73 )
 61/tex_offset = Vector2( 0, 0 )
 61/modulate = Color( 1, 1, 1, 1 )
 61/region = Rect2( 0, 0, 32, 32 )
@@ -1432,63 +1608,234 @@ filter_clip = false
 61/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 31 ),
+"shape": SubResource( 23 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-62/name = "GreenD04"
-62/texture = SubResource( 63 )
+62/name = "GreenD02"
+62/texture = SubResource( 74 )
 62/tex_offset = Vector2( 0, 0 )
 62/modulate = Color( 1, 1, 1, 1 )
-62/region = Rect2( 0, 0, 16, 32 )
+62/region = Rect2( 0, 0, 32, 32 )
 62/is_autotile = false
-62/occluder_offset = Vector2( 8, 16 )
-62/navigation_offset = Vector2( 8, 16 )
+62/occluder_offset = Vector2( 16, 16 )
+62/navigation_offset = Vector2( 16, 16 )
 62/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 64 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 16 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-63/name = "GreenD05"
-63/texture = SubResource( 65 )
+63/name = "GreenD03"
+63/texture = SubResource( 75 )
 63/tex_offset = Vector2( 0, 0 )
 63/modulate = Color( 1, 1, 1, 1 )
-63/region = Rect2( 0, 0, 32, 16 )
+63/region = Rect2( 0, 0, 32, 32 )
 63/is_autotile = false
-63/occluder_offset = Vector2( 16, 8 )
-63/navigation_offset = Vector2( 16, 8 )
+63/occluder_offset = Vector2( 16, 16 )
+63/navigation_offset = Vector2( 16, 16 )
 63/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 66 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
+"shape": SubResource( 23 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
 } ]
-64/name = "GreenD06"
-64/texture = SubResource( 67 )
+64/name = "GreenD04"
+64/texture = SubResource( 77 )
 64/tex_offset = Vector2( 0, 0 )
 64/modulate = Color( 1, 1, 1, 1 )
-64/region = Rect2( 0, 0, 16, 64 )
+64/region = Rect2( 0, 0, 16, 32 )
 64/is_autotile = false
-64/occluder_offset = Vector2( 8, 32 )
-64/navigation_offset = Vector2( 8, 32 )
+64/occluder_offset = Vector2( 8, 16 )
+64/navigation_offset = Vector2( 8, 16 )
 64/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 68 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 8, 32 )
+"shape": SubResource( 76 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 16 )
 } ]
-65/name = "GreenD07"
-65/texture = SubResource( 69 )
+65/name = "GreenD05"
+65/texture = SubResource( 79 )
 65/tex_offset = Vector2( 0, 0 )
 65/modulate = Color( 1, 1, 1, 1 )
-65/region = Rect2( 0, 0, 16, 64 )
+65/region = Rect2( 0, 0, 32, 16 )
 65/is_autotile = false
-65/occluder_offset = Vector2( 8, 32 )
-65/navigation_offset = Vector2( 8, 32 )
+65/occluder_offset = Vector2( 16, 8 )
+65/navigation_offset = Vector2( 16, 8 )
 65/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 68 ),
+"shape": SubResource( 78 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 8 )
+} ]
+66/name = "GreenD06"
+66/texture = SubResource( 81 )
+66/tex_offset = Vector2( 0, 0 )
+66/modulate = Color( 1, 1, 1, 1 )
+66/region = Rect2( 0, 0, 16, 64 )
+66/is_autotile = false
+66/occluder_offset = Vector2( 8, 32 )
+66/navigation_offset = Vector2( 8, 32 )
+66/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 80 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 8, 32 )
 } ]
+67/name = "GreenD07"
+67/texture = SubResource( 82 )
+67/tex_offset = Vector2( 0, 0 )
+67/modulate = Color( 1, 1, 1, 1 )
+67/region = Rect2( 0, 0, 16, 64 )
+67/is_autotile = false
+67/occluder_offset = Vector2( 8, 32 )
+67/navigation_offset = Vector2( 8, 32 )
+67/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 80 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 32 )
+} ]
+68/name = "BlueC01"
+68/texture = SubResource( 84 )
+68/tex_offset = Vector2( 0, 0 )
+68/modulate = Color( 1, 1, 1, 1 )
+68/region = Rect2( 0, 0, 16, 16 )
+68/is_autotile = false
+68/occluder_offset = Vector2( 8, 8 )
+68/navigation_offset = Vector2( 8, 8 )
+68/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 83 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+69/name = "BlueC02"
+69/texture = SubResource( 86 )
+69/tex_offset = Vector2( 0, 0 )
+69/modulate = Color( 1, 1, 1, 1 )
+69/region = Rect2( 0, 0, 16, 48 )
+69/is_autotile = false
+69/occluder_offset = Vector2( 8, 24 )
+69/navigation_offset = Vector2( 8, 24 )
+69/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 85 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 24 )
+} ]
+70/name = "BlueC03"
+70/texture = SubResource( 90 )
+70/tex_offset = Vector2( 0, 0 )
+70/modulate = Color( 1, 1, 1, 1 )
+70/region = Rect2( 0, 0, 32, 32 )
+70/is_autotile = false
+70/occluder_offset = Vector2( 16, 16 )
+70/navigation_offset = Vector2( 16, 16 )
+70/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 88 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+}, {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 89 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
+71/name = "BlueC04"
+71/texture = SubResource( 92 )
+71/tex_offset = Vector2( 0, 0 )
+71/modulate = Color( 1, 1, 1, 1 )
+71/region = Rect2( 0, 0, 32, 32 )
+71/is_autotile = false
+71/occluder_offset = Vector2( 16, 16 )
+71/navigation_offset = Vector2( 16, 16 )
+71/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 91 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 16, 16 )
+} ]
+72/name = "BlueC05"
+72/texture = SubResource( 93 )
+72/tex_offset = Vector2( 0, 0 )
+72/modulate = Color( 1, 1, 1, 1 )
+72/region = Rect2( 0, 0, 16, 16 )
+72/is_autotile = false
+72/occluder_offset = Vector2( 8, 8 )
+72/navigation_offset = Vector2( 8, 8 )
+72/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 83 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+73/name = "BlueC06"
+73/texture = SubResource( 94 )
+73/tex_offset = Vector2( 0, 0 )
+73/modulate = Color( 1, 1, 1, 1 )
+73/region = Rect2( 0, 0, 16, 16 )
+73/is_autotile = false
+73/occluder_offset = Vector2( 8, 8 )
+73/navigation_offset = Vector2( 8, 8 )
+73/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 83 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+74/name = "BlueC07"
+74/texture = SubResource( 95 )
+74/tex_offset = Vector2( 0, 0 )
+74/modulate = Color( 1, 1, 1, 1 )
+74/region = Rect2( 0, 0, 16, 16 )
+74/is_autotile = false
+74/occluder_offset = Vector2( 8, 8 )
+74/navigation_offset = Vector2( 8, 8 )
+74/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"shape": SubResource( 83 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 8, 8 )
+} ]
+75/name = "Lava"
+75/texture = ExtResource( 2 )
+75/tex_offset = Vector2( 0, 0 )
+75/material = SubResource( 97 )
+75/modulate = Color( 1, 1, 1, 1 )
+75/region = Rect2( 0, 0, 96, 32 )
+75/is_autotile = false
+75/occluder_offset = Vector2( 48, 16 )
+75/navigation_offset = Vector2( 48, 16 )
+75/shapes = [  ]
+76/name = "LavaFall"
+76/texture = ExtResource( 3 )
+76/tex_offset = Vector2( 0, 0 )
+76/material = SubResource( 99 )
+76/modulate = Color( 1, 1, 1, 1 )
+76/region = Rect2( 0, 0, 48, 16 )
+76/is_autotile = false
+76/occluder_offset = Vector2( 24, 8 )
+76/navigation_offset = Vector2( 24, 8 )
+76/shapes = [  ]
+77/name = "Water"
+77/texture = ExtResource( 4 )
+77/tex_offset = Vector2( 0, 0 )
+77/material = SubResource( 101 )
+77/modulate = Color( 1, 1, 1, 1 )
+77/region = Rect2( 0, 0, 96, 32 )
+77/is_autotile = false
+77/occluder_offset = Vector2( 48, 16 )
+77/navigation_offset = Vector2( 48, 16 )
+77/shapes = [  ]
+78/name = "WaterFall"
+78/texture = ExtResource( 5 )
+78/tex_offset = Vector2( 0, 0 )
+78/material = SubResource( 103 )
+78/modulate = Color( 1, 1, 1, 1 )
+78/region = Rect2( 0, 0, 48, 16 )
+78/is_autotile = false
+78/occluder_offset = Vector2( 24, 8 )
+78/navigation_offset = Vector2( 24, 8 )
+78/shapes = [  ]
 
