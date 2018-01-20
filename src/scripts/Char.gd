@@ -45,12 +45,11 @@ func _physics_process(delta):
 	var collision = get_slide_collision(get_slide_count() - 1)
 	if collision:
 		var angle = abs(collision.normal.angle_to(floor_normal))
-		if angle < floor_angle:
+		if angle <= floor_angle:
 			var rem = -gravity.slide(collision.normal) * delta
 			if not test_move(self.transform, rem):
 				self.position += rem
 		elif $StepLimit:
-#			print($StepLimit.is_colliding(), angle)
 			if not $StepLimit.is_colliding():
 				self.position += step_up * Vector2(direction.x, -1) * delta
 	
