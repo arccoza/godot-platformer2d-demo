@@ -1,13 +1,16 @@
 extends KinematicBody2D
+var CharacterMeter = preload("character-meter.gd")
 
 export var gravity = Vector2(0, 1000)
 export var step_up = Vector2(300, 990)
 export var floor_angle_max = 45
 export var speed_min = Vector2(10, 6)
 export var speed_max = Vector2(220, 2000)
-export var speed_accel = Vector2(0.4, 0.8)
-export var speed_decel = Vector2(0.1, 1)
+export var speed_inc = Vector2(0.4, 0.8)
+export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
+export(Resource) var health
+export(Resource) var energy
 
 const boost_reset = Vector2(1, 1)
 
@@ -21,7 +24,6 @@ var floor_angle = deg2rad(floor_angle_max)
 var y_time = 0.2
 var y_timer = y_time
 
-export(Resource) var energy
 
 func _ready():
 	$Anim.play("idle")
@@ -31,7 +33,7 @@ func _process(delta):
 
 func _physics_process(delta):
 #	print(energy.value)
-	energy.increase(delta)
+#	energy.increase(delta)
 #	print(energy.tick, " - ", energy.value)
 	
 	upd_direction()
@@ -91,13 +93,13 @@ func upd_direction():
 
 func upd_speed(delta):
 	if direction.x:
-		speed.x = lerp(speed.x, speed_max.x, speed_accel.x)
+		speed.x = lerp(speed.x, speed_max.x, speed_inc.x)
 		speed.x = clamp(speed.x, speed_min.x, speed_max.x)
 	else:
-		speed.x = lerp(speed.x, 0, speed_decel.x)
+		speed.x = lerp(speed.x, 0, speed_dec.x)
 	if direction.y and y_timer > 0:
-		speed.y = lerp(speed.y, speed_max.y, speed_accel.y)
-#		speed.y += speed_max.y * speed_accel.y
+		speed.y = lerp(speed.y, speed_max.y, speed_inc.y)
+#		speed.y += speed_max.y * speed_inc.y
 		speed.y = clamp(speed.y, speed_min.y, speed_max.y)
 	else:
 		speed.y = 0
@@ -121,6 +123,3 @@ func walk():
 #		print("play")
 #		$Anim.set_current_animation("walk")
 		$Anim.play()
-
-class Supply:
-	var _max = 1.0
