@@ -67,7 +67,9 @@ func _physics_process(delta):
 	
 	
 	# Handle animation changes.
-	if direction.x:
+	if health.value <= 0:
+		die()
+	elif direction.x:
 		# Flip $StepLimit RayCast when the character changes direction.
 		if $StepLimit:
 			$StepLimit.cast_to.x = sign(direction.x) * abs($StepLimit.cast_to.x)
@@ -118,14 +120,17 @@ func upd_velocity(delta):
 	return velocity
 
 func idle():
-	if $Anim.get_current_animation() != "idle":
-		$Anim.set_current_animation("idle")
+	play("idle")
 
 func walk():
 	$Sprite.flip_h = true if direction.x < 0 else false
-	if $Anim.get_current_animation() != "walk":
-		$Anim.set_current_animation("walk")
-	if not $Anim.is_playing():
-#		print("play")
-#		$Anim.set_current_animation("walk")
+	play("walk")
+
+func die():
+	play("die")
+
+func play(ani):
+	if $Anim and $Anim.get_current_animation() != ani:
+		$Anim.set_current_animation(ani)
+	if $Anim and not $Anim.is_playing():
 		$Anim.play()
