@@ -12,10 +12,10 @@ export var boost_mul = Vector2(4, 2)
 export(Resource) var health
 export(Resource) var energy
 
-const boost_reset = Vector2(1, 1)
 
 var action = { boost = false, left = false, right = false, up = false, down = false }
 var boost = Vector2(1, 1)
+const boost_reset = Vector2(1, 1)
 var direction = Vector2(0, 0)
 var speed = Vector2(0, 0)
 var velocity = Vector2(0, 0)
@@ -55,13 +55,20 @@ func _physics_process(delta):
 			if not $StepLimit.is_colliding():
 				self.position += step_up * Vector2(direction.x, -1) * delta
 	
+	# Handle jumping.
 	if is_on_floor():
 		y_timer = y_time
 	else:
 		y_timer -= delta
 		y_timer = clamp(y_timer, 0, y_time)
 	
+	# Handle speed boost.
+	boost = boost_mul if action.boost and energy.value else boost_reset
+	
+	
+	# Handle animation changes.
 	if direction.x:
+		# Flip $StepLimit RayCast when the character changes direction.
 		if $StepLimit:
 			$StepLimit.cast_to.x = sign(direction.x) * abs($StepLimit.cast_to.x)
 		walk()
@@ -88,7 +95,6 @@ func upd_direction():
 	action.boost = Input.is_action_pressed("player_boost")
 	direction.x = float(action.right) - float(action.left)
 	direction.y = float(action.down) - float(action.up)
-#	boost = boost_mul if action.boost and boost_bar else boost_reset
 	return direction
 
 func upd_speed(delta):
