@@ -1,26 +1,45 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scripts/Char.gd" type="Script" id=1]
-[ext_resource path="res://scripts/CharacterMeter.gd" type="Script" id=2]
-[ext_resource path="res://skel.tres" type="Texture" id=3]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=4]
+[ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=1]
+[ext_resource path="res://addons/character2d/character2d.png" type="Texture" id=2]
+[ext_resource path="res://addons/character2d/character-meter.png" type="Texture" id=3]
+[ext_resource path="res://addons/character2d/character-meter.gd" type="Script" id=4]
+[ext_resource path="res://skel.tres" type="Texture" id=5]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 319.634, 25.4999 )
+_sections_unfolded = [ "Resource" ]
 
-[sub_resource type="Resource" id=2]
+[sub_resource type="Resource" id=5]
 
-script = ExtResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
 minv = 0.0
 maxv = 1.0
 incs = 0.2
 decs = -0.2
 value = 0.0
-easing = 0.170755
+easing = 1.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Resource" id=6]
+
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_icon": ExtResource( 3 )
+}
+minv = 0.0
+maxv = 1.0
+incs = 0.2
+decs = -0.2
+value = 0.0
+easing = 1.0
+
+[sub_resource type="Animation" id=2]
 
 length = 0.1
 loop = false
@@ -38,7 +57,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 0.6
 loop = true
@@ -56,17 +75,17 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=5]
+[sub_resource type="CapsuleShape2D" id=4]
 
 custom_solver_bias = 0.0
 radius = 18.9039
 height = 15.2047
+_sections_unfolded = [ "Resource" ]
 
 [node name="Root" type="Node2D" index="0"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 1189.21, 375.392 )
 rotation = -0.802851
 input_pickable = false
@@ -97,55 +116,55 @@ invert_border = 100.0
 
 shape = SubResource( 1 )
 
-[node name="Char" type="KinematicBody2D" parent="." index="1"]
+[node name="Character2D" type="KinematicBody2D" parent="." index="1"]
 
-position = Vector2( 591.615, 293.931 )
+position = Vector2( 593.724, 339.775 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Angular", "Transform" ]
 __meta__ = {
-"_edit_group_": true
+"_editor_icon": ExtResource( 2 )
 }
 gravity = Vector2( 0, 1000 )
 step_up = Vector2( 300, 990 )
 floor_angle_max = 45
 speed_min = Vector2( 10, 6 )
 speed_max = Vector2( 220, 2000 )
-speed_accel = Vector2( 0.4, 0.8 )
-speed_decel = Vector2( 0.1, 1 )
-boost_mul = Vector2( 2.5, 1.5 )
-energy = SubResource( 2 )
+speed_inc = Vector2( 0.4, 0.8 )
+speed_dec = Vector2( 0.1, 1 )
+boost_mul = Vector2( 4, 2 )
+health = SubResource( 5 )
+energy = SubResource( 6 )
 
-[node name="Anim" type="AnimationPlayer" parent="Char" index="0"]
+[node name="Anim" type="AnimationPlayer" parent="Character2D" index="0"]
 
 playback_process_mode = 0
 playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]
 
-[node name="Sprite" type="Sprite" parent="Char" index="1"]
+[node name="Sprite" type="Sprite" parent="Character2D" index="1"]
 
 position = Vector2( -1.04382, -17.7753 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 hframes = 9
 _sections_unfolded = [ "Animation", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Char" index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D" index="2"]
 
 position = Vector2( -1, -8 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
-[node name="Camera2D" type="Camera2D" parent="Char" index="3"]
+[node name="Camera2D" type="Camera2D" parent="Character2D" index="3"]
 
 anchor_mode = 1
 rotating = false
@@ -168,7 +187,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 
-[node name="StepLimit" type="RayCast2D" parent="Char" index="4"]
+[node name="StepLimit" type="RayCast2D" parent="Character2D" index="4"]
 
 position = Vector2( 0, -10 )
 enabled = true
@@ -181,7 +200,7 @@ collision_mask = 1
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 6 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
