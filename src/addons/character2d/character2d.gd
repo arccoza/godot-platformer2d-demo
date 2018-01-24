@@ -9,14 +9,16 @@ export var speed_max = Vector2(220, 2000)
 export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
+export(NodePath) var anim
 export(Resource) var health
 export(Resource) var energy
 
 
-var action = { boost = false, left = false, right = false, up = false, down = false }
+var action = { attack = false, boost = false, left = false, right = false, up = false, down = false }
 var boost = Vector2(1, 1)
 const boost_reset = Vector2(1, 1)
 var direction = Vector2(0, 0)
+var direction_last = Vector2(0, 0)
 var speed = Vector2(0, 0)
 var velocity = Vector2(0, 0)
 var floor_normal = Vector2(0, -1)
@@ -26,7 +28,9 @@ var y_timer = y_time
 
 
 func _ready():
-	$Anim.play("idle")
+	# Get the AnimationPlayer node if the path has been set.
+	anim = get_node(anim) if anim else null
+	anim.play("idle")
 
 func _process(delta):
 	pass
@@ -68,6 +72,8 @@ func _physics_process(delta):
 	# Handle animation changes.
 	if health and health.value <= 0:
 		die()
+	elif action.attack:
+		attack()
 	elif direction.x:
 		# Flip $StepLimit RayCast when the character changes direction.
 		if $StepLimit:
@@ -94,8 +100,11 @@ func upd_direction():
 	action.up = Input.is_action_pressed("ui_up")
 	action.down = Input.is_action_pressed("ui_down")
 	action.boost = Input.is_action_pressed("player_boost")
+	action.attack = Input.is_action_pressed("player_attack")
 	direction.x = float(action.right) - float(action.left)
 	direction.y = float(action.down) - float(action.up)
+	direction_last.x = direction.x if direction.x else direction_last.x
+	direction_last.y = direction.y if direction.y else direction_last.y
 	return direction
 
 func upd_speed(delta):
@@ -122,13 +131,17 @@ func idle():
 	play("idle")
 
 func walk():
-	$Sprite.flip_h = true if direction.x < 0 else false
 	play("walk")
 
 func die():
 	play("die")
 
+func attack():
+	play("attack")
+
 func play(id):
-	if not $Anim or $Anim.assigned_animation == id:
+#	print(anim.current_animation_position, " - ",  anim.current_animation_length)
+	$Sprite.flip_h = true if direction_last.x < 0 else false
+	if not anim or anim.assigned_animation == id:
 		return
-	$Anim.play(id)
+	anim.play(id)
