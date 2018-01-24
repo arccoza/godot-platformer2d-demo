@@ -65,9 +65,8 @@ func _physics_process(delta):
 	# Handle speed boost.
 	boost = boost_mul if action.boost and energy.value else boost_reset
 	
-	
 	# Handle animation changes.
-	if health.value <= 0:
+	if health and health.value <= 0:
 		die()
 	elif direction.x:
 		# Flip $StepLimit RayCast when the character changes direction.
@@ -129,8 +128,7 @@ func walk():
 func die():
 	play("die")
 
-func play(ani):
-	if $Anim and $Anim.get_current_animation() != ani:
-		$Anim.set_current_animation(ani)
-	if $Anim and not $Anim.is_playing():
-		$Anim.play()
+func play(id):
+	if not $Anim or $Anim.assigned_animation == id:
+		return
+	$Anim.play(id)
