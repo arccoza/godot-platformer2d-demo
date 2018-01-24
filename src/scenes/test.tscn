@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=1]
 [ext_resource path="res://addons/character2d/character2d.png" type="Texture" id=2]
@@ -13,7 +13,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 319.634, 25.4999 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=2]
 
 script = ExtResource( 4 )
 __meta__ = {
@@ -23,10 +23,10 @@ minv = 0.0
 maxv = 1.0
 incs = 0.2
 decs = -0.2
-value = 0.0
+value = 1.0
 easing = 1.0
 
-[sub_resource type="Resource" id=6]
+[sub_resource type="Resource" id=3]
 
 script = ExtResource( 4 )
 __meta__ = {
@@ -36,10 +36,29 @@ minv = 0.0
 maxv = 1.0
 incs = 0.2
 decs = -0.2
-value = 0.0
+value = 1.0
 easing = 1.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
+
+resource_name = "die"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=5]
 
 length = 0.1
 loop = false
@@ -57,7 +76,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 
 length = 0.6
 loop = true
@@ -75,7 +94,7 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=7]
 
 custom_solver_bias = 0.0
 radius = 18.9039
@@ -108,7 +127,7 @@ antialiased = false
 texture = null
 texture_offset = Vector2( 0, 0 )
 texture_scale = Vector2( 1, 1 )
-texture_rotation = 0.0
+texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
@@ -135,25 +154,25 @@ speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
 boost_mul = Vector2( 4, 2 )
-health = SubResource( 5 )
-energy = SubResource( 6 )
+health = SubResource( 2 )
+energy = SubResource( 3 )
 
 [node name="Anim" type="AnimationPlayer" parent="Character2D" index="0"]
 
-playback_process_mode = 0
-playback_default_blend_time = 0.0
 root_node = NodePath("..")
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 3 )
-playback/active = true
-playback/speed = 1.0
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/die = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/walk = SubResource( 6 )
 blend_times = [  ]
 autoplay = ""
 _sections_unfolded = [ "Playback Options", "playback" ]
 
 [node name="Sprite" type="Sprite" parent="Character2D" index="1"]
 
-position = Vector2( -1.04382, -17.7753 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 hframes = 9
@@ -161,8 +180,9 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D" index="2"]
 
-position = Vector2( -1, -8 )
-shape = SubResource( 4 )
+position = Vector2( 0, 10 )
+shape = SubResource( 7 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="Character2D" index="3"]
 
@@ -179,6 +199,8 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = false
 smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
 drag_margin_left = 0.2
 drag_margin_top = 0.2
 drag_margin_right = 0.2
@@ -189,11 +211,12 @@ editor_draw_drag_margin = false
 
 [node name="StepLimit" type="RayCast2D" parent="Character2D" index="4"]
 
-position = Vector2( 0, -10 )
+position = Vector2( 0, 10 )
 enabled = true
 exclude_parent = true
 cast_to = Vector2( 40, 0 )
 collision_mask = 1
+_sections_unfolded = [ "Transform" ]
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
