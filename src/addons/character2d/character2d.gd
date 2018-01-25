@@ -1,6 +1,8 @@
 extends KinematicBody2D
 var CharacterMeter = preload("character-meter.gd")
 
+export(NodePath) var sprite = NodePath("Sprite")
+export(NodePath) var anim = NodePath("Anim")
 export var gravity = Vector2(0, 1000)
 export var step_up = Vector2(300, 990)
 export var floor_angle_max = 45
@@ -9,7 +11,6 @@ export var speed_max = Vector2(220, 2000)
 export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
-export(NodePath) var anim
 export(Resource) var health
 export(Resource) var energy
 
@@ -28,9 +29,11 @@ var y_timer = y_time
 
 
 func _ready():
+	# Get the Sprite node if the path has been set.
+	sprite = get_node(sprite) if sprite else null
 	# Get the AnimationPlayer node if the path has been set.
 	anim = get_node(anim) if anim else null
-	anim.play("idle")
+	play("idle")
 
 func _process(delta):
 	pass
@@ -141,7 +144,8 @@ func attack():
 
 func play(id):
 #	print(anim.current_animation_position, " - ",  anim.current_animation_length)
-	$Sprite.flip_h = true if direction_last.x < 0 else false
+	if sprite:
+		sprite.flip_h = true if direction_last.x < 0 else false
 	if not anim or anim.assigned_animation == id:
 		return
 	anim.play(id)
