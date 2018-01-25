@@ -6,7 +6,11 @@ path="res://.import/character2d.png-583dae85249c260b668cdaea8b6428cd.stex"
 
 [deps]
 
-source_md5="0e088447fa00b5d45f83c98db49b4122"
+source_file="res://addons/character2d/character2d.png"
+source_md5="0bd6d85aa5c85ed1a0ee041a78701e97"
+
+dest_files=[ "res://.import/character2d.png-583dae85249c260b668cdaea8b6428cd.stex" ]
+dest_md5="8016d38ec42865ce87929dda37a7068d"
 
 [params]
 
