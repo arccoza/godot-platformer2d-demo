@@ -1,12 +1,14 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=1]
 [ext_resource path="res://addons/character2d/character2d.png" type="Texture" id=2]
 [ext_resource path="res://addons/character2d/character-meter.png" type="Texture" id=3]
 [ext_resource path="res://addons/character2d/character-meter.gd" type="Script" id=4]
 [ext_resource path="res://skel.tres" type="Texture" id=5]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=6]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=7]
+[ext_resource path="res://addons/character2d/missile2d.gd" type="Script" id=6]
+[ext_resource path="res://addons/character2d/missile2d.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=8]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -120,6 +122,14 @@ radius = 18.9039
 height = 15.2047
 _sections_unfolded = [ "Resource" ]
 
+[sub_resource type="AtlasTexture" id=12]
+
+flags = 0
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
 [sub_resource type="CanvasItemMaterial" id=9]
 
 render_priority = 0
@@ -168,7 +178,7 @@ _sections_unfolded = [ "Initial Velocity" ]
 [sub_resource type="AtlasTexture" id=11]
 
 flags = 0
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -295,12 +305,31 @@ cast_to = Vector2( 40, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
+[node name="Missile2D" type="Node2D" parent="Character2D" index="5"]
+
+script = ExtResource( 6 )
+__meta__ = {
+"_editor_icon": ExtResource( 7 )
+}
+count = 1
+lifetime = 1.0
+cycles = -1
+velocity = Vector2( 100, 0 )
+gravity = Vector2( 0, 0 )
+projectile = null
+
+[node name="Sprite" type="Sprite" parent="Character2D/Missile2D" index="0"]
+
+position = Vector2( 40, 0 )
+rotation = 1.5708
+texture = SubResource( 12 )
+
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 9 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
