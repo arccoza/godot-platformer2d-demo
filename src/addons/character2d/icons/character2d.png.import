@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/character2d.png-583dae85249c260b668cdaea8b6428cd.stex"
+path="res://.import/character2d.png-c0d69d19977332e828c9a13f851517e9.stex"
 
 [deps]
 
-source_file="res://addons/character2d/character2d.png"
+source_file="res://addons/character2d/icons/character2d.png"
 source_md5="0bd6d85aa5c85ed1a0ee041a78701e97"
 
-dest_files=[ "res://.import/character2d.png-583dae85249c260b668cdaea8b6428cd.stex" ]
+dest_files=[ "res://.import/character2d.png-c0d69d19977332e828c9a13f851517e9.stex" ]
 dest_md5="8016d38ec42865ce87929dda37a7068d"
 
 [params]

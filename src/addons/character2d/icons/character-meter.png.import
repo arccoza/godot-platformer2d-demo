@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/missile2d.png-82a5c1f095e04b7ed51f822c80fac6a1.stex"
+path="res://.import/character-meter.png-2026afdf14542c2b2c373a12e2eac32a.stex"
 
 [deps]
 
-source_file="res://addons/character2d/missile2d.png"
-source_md5="c8a86d74ec8c3a539a79f2fc0c4f9b93"
+source_file="res://addons/character2d/icons/character-meter.png"
+source_md5="0e088447fa00b5d45f83c98db49b4122"
 
-dest_files=[ "res://.import/missile2d.png-82a5c1f095e04b7ed51f822c80fac6a1.stex" ]
-dest_md5="a845e1ea5acd1448f95e0c5a20579f92"
+dest_files=[ "res://.import/character-meter.png-2026afdf14542c2b2c373a12e2eac32a.stex" ]
+dest_md5="d49e8abf0df629808f5fa89607286ecf"
 
 [params]
 
