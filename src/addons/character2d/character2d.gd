@@ -51,7 +51,12 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, floor_normal, 5, 4, floor_angle)
 	
 	# Modify the characters movements on a slope or stairs.
-	var collision = get_slide_collision(get_slide_count() - 1)
+	var collision = null
+	var collision_count = get_slide_count()
+	
+	if collision_count:
+		collision = get_slide_collision(collision_count - 1)
+	
 	if collision:
 		var angle = abs(collision.normal.angle_to(floor_normal))
 		if angle <= floor_angle:
