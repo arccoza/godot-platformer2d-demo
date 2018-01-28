@@ -37,13 +37,6 @@ func _ready():
 func _physics_process(delta):
 	if firing:
 		_emit_process(delta)
-	
-#	if firing and cycles < 0 or cycle < cycles:
-#		if get_child_count() < count:
-#			add_child(_instance(options))
-#
-#		for c in get_children():
-#			c.update(delta)
 
 func _emit_process(delta):
 	if (options.cycles > 0 and cycle_count >= options.cycles) or options.cycles == 0:
@@ -81,8 +74,8 @@ func _emit_process(delta):
 		emit_time -= options.rate
 		emit_count += 1
 
-func _instance(state):
-	return Projectile2D.new(state, projectile.duplicate())
+func _instance(o):
+	return Projectile2D.new(o.lifetime, o.velocity, o.gravity, projectile.duplicate())
 
 func fire(opts=null):
 	options = merge(defaults.duplicate(), opts) if opts else defaults
@@ -96,21 +89,20 @@ static func merge(target, patch):
 
 class Projectile2D extends Node2D:
 	var node = null
-	var state = {lifetime=0, velocity=Vector2(0, 0), gravity=Vector2(0, 0)}
+	var lifetime = 0
+	var velocity = Vector2(0, 0)
+	var gravity = Vector2(0, 0)
 	
-	func _init(s, n):
-		state = merge(state, s)
+	func _init(l, v, g, n):
 		node = n
+		lifetime = l
+		velocity = v
+		gravity = g
 		add_child(n)
 	
 	func update(delta):
-		if state.lifetime > 0:
-			node.position += (state.velocity + state.gravity) * delta
+		if lifetime > 0:
+			node.position += (velocity + gravity) * delta
 		else:
 			queue_free()
-		state.lifetime -= delta
-	
-	static func merge(target, patch):
-		for key in patch:
-			target[key] = patch[key]
-		return target
+		lifetime -= delta
