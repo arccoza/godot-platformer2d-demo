@@ -82,6 +82,7 @@ func _instance(o):
 	# TODO: Recycle projectile nodes,
 	# rather than constantly creating and destroying them.
 	# Also manage the creation, reuse, and destruction better.
+	# The flicker is caused by queue_free.
 	var p = projectile.duplicate()
 #	print(p)
 	return Projectile2D.new(o.lifetime, o.velocity, o.gravity, p)
