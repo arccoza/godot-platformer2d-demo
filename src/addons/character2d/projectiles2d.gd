@@ -40,14 +40,10 @@ func _ready():
 func _physics_process(delta):
 	if firing:
 		_emit_process(delta)
-#		add_child(_instance(options))
-#		for c in get_children():
-#			c.update(delta)
 
 func _emit_process(delta):
 	if (options.cycles > 0 and cycle_count >= options.cycles) or options.cycles == 0:
 		firing = false
-		print("stop")
 		return
 	
 	for c in get_children():
@@ -57,22 +53,16 @@ func _emit_process(delta):
 				cc.update(delta)
 				should_free = false
 		if should_free and c.get_child_count():
-			print("death")
 			remove_child(c)
 			c.free()
-	
-#	for c in cycle.get_children():
-#		c.update(delta)
 	
 	if cycle_time >= options.period:
 		cycle_time = 0
 		emit_time = 0
 		cycle_count += 1 if options.cycles > 0 else 0
 		emit_count = 0
-#		cycle.queue_free()
 		cycle = Node2D.new()
 		add_child(cycle)
-#		print("cycle")
 		return
 	
 	cycle_time += delta
@@ -85,11 +75,9 @@ func _emit_process(delta):
 	if options.rate == 0:
 		for i in range(0, options.count - emit_count):
 			emit_count += 1
-#			print("tick")
 			cycle.add_child(_instance(options))
 		emit_time = 0
 	elif emit_time >= options.rate:
-#		print("tick", " - ", emit_time)
 		cycle.add_child(_instance(options))
 		emit_time -= options.rate
 		emit_count += 1
@@ -100,7 +88,6 @@ func _instance(o):
 	# Also manage the creation, reuse, and destruction better.
 	# The flicker is caused by queue_free.
 	var p = projectile.duplicate()
-#	print(p)
 	return Projectile2D.new(o.lifetime, o.velocity, o.gravity, p)
 
 func fire(opts=null):
@@ -112,6 +99,8 @@ static func merge(target, patch):
 		target[key] = patch[key]
 	return target
 
+
+# TODO: Create a Cycle2D node to manage cycles and batch projectile removal.
 
 class Projectile2D extends Node2D:
 	var node = null
