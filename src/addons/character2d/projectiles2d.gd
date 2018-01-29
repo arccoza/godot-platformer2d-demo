@@ -5,7 +5,7 @@ export(int) var cycles = -1
 export(float) var period = 1.0
 export(float, 0, 1) var delay = 1.0
 export(float) var lifetime = 5.0
-export var velocity = Vector2(300, 0)
+export var velocity = Vector2(100, 0)
 export var gravity = Vector2(0, 0)
 export(PackedScene) var projectile
 
@@ -25,6 +25,7 @@ var cycle_time = 0
 var emit_count = 0
 var emit_time = 0
 var firing = true
+var cycle = Node2D.new()
 
 
 func _ready():
@@ -34,6 +35,7 @@ func _ready():
 		projectile = get_child(0)
 		remove_child(projectile)
 	print(options.rate)
+	add_child(cycle)
 
 func _physics_process(delta):
 	if firing:
@@ -49,13 +51,27 @@ func _emit_process(delta):
 		return
 	
 	for c in get_children():
-		c.update(delta)
+		var should_free = true
+		for cc in c.get_children():
+			if cc.visible:
+				cc.update(delta)
+				should_free = false
+		if should_free and c.get_child_count():
+			print("death")
+			remove_child(c)
+			c.free()
+	
+#	for c in cycle.get_children():
+#		c.update(delta)
 	
 	if cycle_time >= options.period:
 		cycle_time = 0
 		emit_time = 0
 		cycle_count += 1 if options.cycles > 0 else 0
 		emit_count = 0
+#		cycle.queue_free()
+		cycle = Node2D.new()
+		add_child(cycle)
 #		print("cycle")
 		return
 	
@@ -70,11 +86,11 @@ func _emit_process(delta):
 		for i in range(0, options.count - emit_count):
 			emit_count += 1
 #			print("tick")
-			add_child(_instance(options))
+			cycle.add_child(_instance(options))
 		emit_time = 0
 	elif emit_time >= options.rate:
 #		print("tick", " - ", emit_time)
-		add_child(_instance(options))
+		cycle.add_child(_instance(options))
 		emit_time -= options.rate
 		emit_count += 1
 
@@ -114,5 +130,6 @@ class Projectile2D extends Node2D:
 		if lifetime > 0:
 			node.position += (velocity + gravity) * delta
 		else:
-			queue_free()
+			visible = false
+#			queue_free()
 		lifetime -= delta
