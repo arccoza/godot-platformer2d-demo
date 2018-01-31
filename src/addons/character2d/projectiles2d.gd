@@ -4,14 +4,19 @@ extends Node2D
 export(int) var cycles = 2
 export(float) var period = 1.0
 export(float, 0, 1) var span = 0.5
-#export(float, 0, 1) var delay = 0.0
+# TODO: add a delay to the beginning of the cycle, as percentage of the period,
+# adjusted for span.
+# export(float, 0, 1) var delay = 0.0
+
 # Emitter props.
 export(int) var amount = 5
+
 # Projectile props.
 export(float) var lifetime = 0.5
 export(int) var collisions = 1
 export var velocity = Vector2(5, 0)
 export var gravity = Vector2(0, 0)
+
 # Projectile scene.
 export(PackedScene) var projectile
 
@@ -37,12 +42,19 @@ func _physics_process(delta):
 	if e.amount > 0 and e.count < e.amount:
 		_emitter(delta)
 
+# TODO: Add a feature to manage when on the clock things should trigger,
+# for both _cycler and _emitter. When timing the cycle or the rate, you
+# could trigger on the beginning of the timer, the end, or the middle of
+# the clock. The first implementation triggered on the falling edge (the end)
+# of the clock, but that means there is always a delay when firing.
+# The current imp triggers on the rising edge (start), for immediate effect.
+
 func _cycler(delta):
 	var c = cycle_data
 	var e = emit_data
 	
 	if c.time == 0:
-		print("cycle")
+#		print("cycle")
 		e.time = 0
 		e.count = 0
 	elif c.time >= c.period:
@@ -51,15 +63,6 @@ func _cycler(delta):
 		return
 	
 	c.time += delta
-	
-#	if c.time >= c.period:
-#		print("cycle")
-#		c.time = 0
-#		c.count += 1
-#		e.time = 0
-#		e.count = 0
-#	else:
-#		c.time += delta
 
 func _emitter(delta):
 	var e = emit_data
@@ -73,13 +76,6 @@ func _emitter(delta):
 		return
 	
 	e.time += delta
-	
-#	e.time += delta
-#
-#	if e.time >= e.rate:
-#		print("emit")
-#		e.time -= e.rate
-#		e.count += 1
 
 func _instance():
 	var p = proj_data
@@ -90,7 +86,6 @@ func _instance():
 	
 	n.add_child(projectile.duplicate())
 	add_child(n)
-		
 
 
 class Projectile2D extends Node2D:
