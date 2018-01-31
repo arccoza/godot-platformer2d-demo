@@ -1,7 +1,7 @@
 extends Node2D
 
 # Cycle props.
-export(int) var cycles = 2
+export(int) var cycles = 20
 export(float) var period = 1.0
 export(float, 0, 1) var span = 0.5
 # TODO: add a delay to the beginning of the cycle, as percentage of the period,
@@ -9,16 +9,20 @@ export(float, 0, 1) var span = 0.5
 # export(float, 0, 1) var delay = 0.0
 
 # Emitter props.
-export(int) var amount = 5
+export(int) var amount = 1
 
 # Projectile props.
 export(float) var lifetime = 0.5
 export(int) var collisions = 1
 export var velocity = Vector2(5, 0)
 export var gravity = Vector2(0, 0)
+export var damage = 0.0
 
 # Projectile scene.
 export(PackedScene) var projectile
+
+# Container node.
+export(NodePath) var container
 
 var cycle_data = { cycles=cycles, period=period, span=span, count=0, time=0 }
 var emit_data = { amount=amount, rate=period / amount * span, count=0, time=0 }
@@ -31,6 +35,8 @@ func _ready():
 	elif get_child_count():
 		projectile = get_child(0)
 		remove_child(projectile)
+	
+	container = get_node(container) if container else self
 
 func _physics_process(delta):
 	var c = cycle_data
@@ -85,7 +91,11 @@ func _instance():
 		n.set(k, proj_data[k])
 	
 	n.add_child(projectile.duplicate())
-	add_child(n)
+	n.position = container.to_local(to_global(projectile.position))
+	container.add_child(n)
+
+func fire():
+	pass
 
 
 class Projectile2D extends Node2D:
@@ -93,7 +103,14 @@ class Projectile2D extends Node2D:
 	export(int) var collisions = 1
 	export var velocity = Vector2(100, 0)
 	export var gravity = Vector2(0, 0)
+	export var damage = 0.0
+	
 	var time = 0
+	
+	
+	func _ready():
+#		set_as_toplevel(true)
+		pass
 	
 	func _physics_process(delta):
 		time += delta
