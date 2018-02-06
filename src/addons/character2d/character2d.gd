@@ -30,7 +30,7 @@ var proj = null
 
 
 func _ready():
-	# Get integral child nodes if the exists.
+	# Get integral child nodes if they exists.
 	for c in get_children():
 		if c is Sprite:
 			sprite = c
