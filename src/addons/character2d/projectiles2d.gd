@@ -12,7 +12,7 @@ export(float, 0, 1) var span = 0.5
 
 # Emitter props.
 export(int) var amount = 20
-export var speed = 5
+export(float) var speed = 100
 export var direction = Vector2(1, 0)
 export var gravity = Vector2(0, 0)
 
@@ -136,6 +136,8 @@ class Projectile2D extends Node2D:
 	export var gravity = Vector2(0, 0)
 	
 	var time = 0
+	var _rotation_offset = null
+	
 	
 	func _prep(data):
 		for k in data:
@@ -143,12 +145,20 @@ class Projectile2D extends Node2D:
 	
 	func _ready():
 #		set_as_toplevel(true)
-		pass
+		if not _rotation_offset:
+			_rotation_offset = get_child(0).rotation
+		_orient()
+	
+	func _orient():
+		var c = get_child(0)
+		var v = velocity + gravity
+		c.rotation = v.angle() + _rotation_offset
 	
 	func _physics_process(delta):
 		time += delta
 		
-		if time < lifetime:
-			position += velocity + gravity * delta
-		else:
+		position += (velocity + gravity) * delta
+		_orient()
+		
+		if time >= lifetime:
 			queue_free()
