@@ -42,11 +42,14 @@ func _physics_process(delta):
 	var c = cycle_data
 	var e = emit_data
 	
-	if c.cycles < 0 or (c.cycles != 0 and c.count < c.cycles):
-		_cycler(delta)
-	
-	if e.amount > 0 and e.count < e.amount:
-		_emitter(delta)
+	if active:
+		if c.cycles < 0 or (c.cycles != 0 and c.count < c.cycles):
+			_cycler(delta)
+		else:
+			active = false
+		
+		if e.amount > 0 and e.count < e.amount:
+			_emitter(delta)
 
 # TODO: Add a feature to manage when on the clock things should trigger,
 # for both _cycler and _emitter. When timing the cycle or the rate, you
