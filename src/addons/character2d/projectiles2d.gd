@@ -27,8 +27,8 @@ export(PackedScene) var projectile
 # Container node.
 export(NodePath) var container
 
-var cycle_data = { cycles=cycles, period=period, span=span, count=0, time=0 }
-var emit_data = { amount=amount, rate=period / amount * span, count=0, time=0 }
+onready var cycle_data = { cycles=cycles, period=period, span=span, count=0, time=0 }
+onready var emit_data = { amount=amount, rate=period / amount * span, count=0, time=0 }
 var proj_data setget , get_proj_data
 
 func get_proj_data():
