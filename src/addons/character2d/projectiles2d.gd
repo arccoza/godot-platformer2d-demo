@@ -1,7 +1,9 @@
 extends Node2D
 
+export var active = false
+
 # Cycle props.
-export(int) var cycles = 20
+export(int) var cycles = 2
 export(float) var period = 1.0
 export(float, 0, 1) var span = 0.5
 # TODO: add a delay to the beginning of the cycle, as percentage of the period,
