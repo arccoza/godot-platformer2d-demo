@@ -19,7 +19,7 @@ var action = { attack = false, boost = false, left = false, right = false, up = 
 var boost = Vector2(1, 1)
 const boost_reset = Vector2(1, 1)
 var direction = Vector2(0, 0)
-var direction_last = Vector2(0, 0)
+var direction_last = Vector2(1, 0)
 var speed = Vector2(0, 0)
 var velocity = Vector2(0, 0)
 var floor_normal = Vector2(0, -1)
@@ -146,12 +146,18 @@ func die():
 
 func attack():
 	play("attack")
-	$Projectiles2D.fire()
+	$Projectiles2D.start()
 
 func play(id):
 #	print(anim.current_animation_position, " - ",  anim.current_animation_length)
 	if sprite:
 		sprite.flip_h = true if direction_last.x < 0 else false
+		$Projectiles2D.direction = Vector2(direction_last.x, 0)
+		
+#		print($Projectiles2D.proj_data.velocity.x)
+#		$Projectiles2D.proj_data.velocity.x = sign(direction_last.x) * abs($Projectiles2D.proj_data.velocity.x)
+#		print($Projectiles2D.proj_data.velocity.x)
+#		$Projectiles2D.proj_data.velocity = $Projectiles2D.proj_data.velocity.rotated($Projectiles2D.proj_data.velocity.angle_to(floor_normal) + deg2rad(360))
 	if not anim or anim.assigned_animation == id:
 		return
 	anim.play(id)
