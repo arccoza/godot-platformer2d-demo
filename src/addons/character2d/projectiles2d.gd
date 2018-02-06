@@ -94,8 +94,28 @@ func _instance():
 	n.position = container.to_local(to_global(projectile.position))
 	container.add_child(n)
 
-func fire():
-	pass
+func start():
+	if active:
+		return
+	
+	reset()
+	active = true
+
+func stop():
+	if not active:
+		return
+	
+	active = false
+	reset()
+
+func reset():
+	var c = cycle_data
+	var e = emit_data
+	
+	c.time = 0
+	c.count = 0
+	e.time = 0
+	e.count = 0
 
 
 class Projectile2D extends Node2D:
