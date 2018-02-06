@@ -94,14 +94,11 @@ func _emitter(delta):
 	e.time += delta
 
 func _instance():
-	var p = self.proj_data
 	var n = Projectile2D.new()
 	var d = projectile.duplicate()
 	var offset = projectile.position.length() * direction
 	
-	for k in p:
-		n.set(k, p[k])
-	
+	n._prep(self.proj_data)
 	d.position = offset
 	n.add_child(d)
 	n.position = container.to_local(to_global(n.position))
@@ -134,12 +131,15 @@ func reset():
 class Projectile2D extends Node2D:
 	export(float) var lifetime = 5.0
 	export(int) var collisions = 1
+	export(float) var damage = 0.0
 	export var velocity = Vector2(100, 0)
 	export var gravity = Vector2(0, 0)
-	export var damage = 0.0
 	
 	var time = 0
 	
+	func _prep(data):
+		for k in data:
+			set(k, data[k])
 	
 	func _ready():
 #		set_as_toplevel(true)
