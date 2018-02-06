@@ -9,14 +9,15 @@ export(float, 0, 1) var span = 0.5
 # export(float, 0, 1) var delay = 0.0
 
 # Emitter props.
-export(int) var amount = 1
+export(int) var amount = 20
+export var speed = 5
+export var direction = Vector2(1, 0)
+export var gravity = Vector2(0, 0)
 
 # Projectile props.
 export(float) var lifetime = 0.5
 export(int) var collisions = 1
-export var velocity = Vector2(5, 0)
-export var gravity = Vector2(0, 0)
-export var damage = 0.0
+export(float) var damage = 0.0
 
 # Projectile scene.
 export(PackedScene) var projectile
@@ -26,7 +27,11 @@ export(NodePath) var container
 
 var cycle_data = { cycles=cycles, period=period, span=span, count=0, time=0 }
 var emit_data = { amount=amount, rate=period / amount * span, count=0, time=0 }
-var proj_data = { lifetime=lifetime, collisions=collisions, velocity=velocity, gravity=gravity }
+var proj_data setget , get_proj_data
+
+func get_proj_data():
+	proj_data = { lifetime=lifetime, collisions=collisions, damage=damage, velocity=speed * direction, gravity=gravity }
+	return proj_data
 
 
 func _ready():
@@ -87,14 +92,17 @@ func _emitter(delta):
 	e.time += delta
 
 func _instance():
-	var p = proj_data
+	var p = self.proj_data
 	var n = Projectile2D.new()
+	var d = projectile.duplicate()
+	var offset = projectile.position.length() * direction
 	
-	for k in proj_data:
-		n.set(k, proj_data[k])
+	for k in p:
+		n.set(k, p[k])
 	
-	n.add_child(projectile.duplicate())
-	n.position = container.to_local(to_global(projectile.position))
+	d.position = offset
+	n.add_child(d)
+	n.position = container.to_local(to_global(n.position))
 	container.add_child(n)
 
 func start():
