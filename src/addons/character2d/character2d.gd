@@ -1,8 +1,7 @@
 extends KinematicBody2D
 var CharacterMeter = preload("character-meter.gd")
+var Projectiles2D = preload("projectiles2d.gd")
 
-export(NodePath) var sprite = NodePath("Sprite")
-export(NodePath) var anim = NodePath("Anim")
 export var gravity = Vector2(0, 1000)
 export var step_up = Vector2(300, 990)
 export var floor_angle_max = 45
@@ -13,7 +12,6 @@ export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
 export(Resource) var health
 export(Resource) var energy
-
 
 var action = { attack = false, boost = false, left = false, right = false, up = false, down = false }
 var boost = Vector2(1, 1)
@@ -26,13 +24,21 @@ var floor_normal = Vector2(0, -1)
 var floor_angle = deg2rad(floor_angle_max)
 var y_time = 0.2
 var y_timer = y_time
+var sprite = null
+var anim = null
+var proj = null
 
 
 func _ready():
-	# Get the Sprite node if the path has been set.
-	sprite = get_node(sprite) if sprite else null
-	# Get the AnimationPlayer node if the path has been set.
-	anim = get_node(anim) if anim else null
+	# Get integral child nodes if the exists.
+	for c in get_children():
+		if c is Sprite:
+			sprite = c
+		if c is AnimationPlayer:
+			anim = c
+		if c is Projectiles2D:
+			proj = c
+
 	play("idle")
 
 func _process(delta):
@@ -152,12 +158,8 @@ func play(id):
 #	print(anim.current_animation_position, " - ",  anim.current_animation_length)
 	if sprite:
 		sprite.flip_h = true if direction_last.x < 0 else false
-		$Projectiles2D.direction = Vector2(direction_last.x, 0)
-		
-#		print($Projectiles2D.proj_data.velocity.x)
-#		$Projectiles2D.proj_data.velocity.x = sign(direction_last.x) * abs($Projectiles2D.proj_data.velocity.x)
-#		print($Projectiles2D.proj_data.velocity.x)
-#		$Projectiles2D.proj_data.velocity = $Projectiles2D.proj_data.velocity.rotated($Projectiles2D.proj_data.velocity.angle_to(floor_normal) + deg2rad(360))
+	if proj:
+		proj.direction = Vector2(direction_last.x, 0)
 	if not anim or anim.assigned_animation == id:
 		return
 	anim.play(id)
