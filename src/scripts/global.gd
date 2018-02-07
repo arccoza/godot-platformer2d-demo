@@ -2,6 +2,11 @@ extends Node
 
 enum {IN, OUT, INOUT, LINEAR, QUAD, CUBIC, QUART, QUINT}
 
+var bob = "sam"
+
+func _enter_tree():
+	print("global")
+
 static func ease(from, to, progress, type=[null, LINEAR]):
 	#if progress >= 1.0: return to
 	var p = progress  # 0.0 -> 1.0
