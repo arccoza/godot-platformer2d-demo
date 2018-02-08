@@ -32,7 +32,18 @@ onready var emit_data = { amount=amount, rate=period / amount * span, count=0, t
 var proj_data setget , get_proj_data
 
 func get_proj_data():
-	proj_data = { lifetime=lifetime, collisions=collisions, damage=damage, velocity=speed * direction, gravity=gravity }
+	proj_data = {
+		lifetime=lifetime,
+		collisions=collisions,
+		damage=damage,
+		_offset = {
+			pos=to_global(position) + projectile.position.length() * direction.normalized(),
+			rot=projectile.rotation
+		},
+		velocity=speed * direction,
+#		gravity=gravity,
+		container=container
+	}
 	return proj_data
 
 
@@ -94,15 +105,13 @@ func _emitter(delta):
 	e.time += delta
 
 func _instance():
-	var n = Projectile2D.new()
-	var d = projectile.duplicate()
-	var offset = projectile.position.length() * direction
+	var p = projectile.duplicate()
 	
-	n._prep(self.proj_data)
-	d.position = offset
-	n.add_child(d)
-	n.position = container.to_local(to_global(n.position))
-	container.add_child(n)
+	p._prep(self.proj_data)
+#	d.position = offset
+#	n.add_child(d)
+#	n.position = container.to_local(to_global(n.position))
+#	container.add_child(n)
 
 func start():
 	if active:
