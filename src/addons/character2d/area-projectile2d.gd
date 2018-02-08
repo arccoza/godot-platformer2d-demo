@@ -15,13 +15,13 @@ func _prep(data):
 	for k in data:
 		set(k, data[k])
 	
-	print(_offset.pos)
 	position = container.to_local(_offset.pos)
 	_orient()
 	container.add_child(self)
 
 func _ready():
-	pass
+	connect("area_entered", self, "_on_collision")
+	connect("body_entered", self, "_on_collision")
 
 func _orient():
 	var v = velocity
@@ -34,4 +34,12 @@ func _physics_process(delta):
 	_orient()
 	
 	if time >= lifetime:
-		queue_free()
+		die()
+
+func _on_collision(ev=null):
+	if ev is TileMap:
+		die()
+
+func die():
+	visible = false
+	queue_free()

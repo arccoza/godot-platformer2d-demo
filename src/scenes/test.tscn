@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=1]
 [ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=2]
@@ -6,9 +6,10 @@
 [ext_resource path="res://skel.tres" type="Texture" id=4]
 [ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=5]
 [ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=8]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=9]
+[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=7]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=9]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -125,31 +126,37 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="AtlasTexture" id=9]
 
 flags = 0
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="CapsuleShape2D" id=10]
+
+custom_solver_bias = 0.0
+radius = 4.5
+height = 7.0
+
+[sub_resource type="AtlasTexture" id=11]
 
 flags = 0
-atlas = ExtResource( 8 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 20, 20 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=12]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="CanvasItemMaterial" id=11]
+[sub_resource type="CanvasItemMaterial" id=13]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=14]
 
 render_priority = 0
 trail_divisor = 1
@@ -188,15 +195,15 @@ anim_offset_random = 0.0
 anim_loop = true
 _sections_unfolded = [ "Initial Velocity" ]
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=15]
 
 flags = 0
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[node name="Root" type="Node2D" index="0"]
+[node name="Root" type="Node" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -333,18 +340,41 @@ amount = 20
 speed = 100
 direction = Vector2( 1, 0 )
 gravity = Vector2( 0, 0 )
-lifetime = 2.0
+lifetime = 1.0
 collisions = 1
 damage = 0.0
 projectile = null
 container = NodePath("../../TileMap")
 
-[node name="Sprite2" type="Sprite" parent="Character2D/Projectiles2D" index="0"]
+[node name="AreaProjectile2D" type="Area2D" parent="Character2D/Projectiles2D" index="0"]
 
-position = Vector2( 40, 0 )
+position = Vector2( 70, 0 )
 rotation = 1.5708
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 524288
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+_sections_unfolded = [ "Collision", "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 6 )
+}
+lifetime = 5.0
+collisions = 1
+damage = 0.0
+
+[node name="Sprite2" type="Sprite" parent="Character2D/Projectiles2D/AreaProjectile2D" index="0"]
+
 texture = SubResource( 9 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/AreaProjectile2D" index="1"]
+
+shape = SubResource( 10 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Character2D/Projectiles2D" index="1"]
 
@@ -373,19 +403,19 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 40, 0 )
 rotation = 1.5708
-texture = SubResource( 10 )
+texture = SubResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/RigidBody2D" index="1"]
 
 position = Vector2( 40, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 12 )
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 9 )
+tile_set = ExtResource( 10 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -405,7 +435,7 @@ _sections_unfolded = [ "Cell", "Collision", "Transform" ]
 
 [node name="Particles2D" type="Particles2D" parent="." index="3"]
 
-material = SubResource( 11 )
+material = SubResource( 13 )
 rotation = -1.5708
 emitting = false
 amount = 2000
@@ -420,8 +450,8 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 1
-process_material = SubResource( 12 )
-texture = SubResource( 13 )
+process_material = SubResource( 14 )
+texture = SubResource( 15 )
 normal_map = null
 h_frames = 3
 v_frames = 1
