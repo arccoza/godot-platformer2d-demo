@@ -16,11 +16,6 @@ export(float) var speed = 100
 export var direction = Vector2(1, 0)
 export var gravity = Vector2(0, 0)
 
-# Projectile props.
-export(float) var lifetime = 0.5
-export(int) var collisions = 1
-export(float) var damage = 0.0
-
 # Projectile scene.
 export(PackedScene) var projectile
 
@@ -33,9 +28,6 @@ var proj_data setget , get_proj_data
 
 func get_proj_data():
 	proj_data = {
-		lifetime=lifetime,
-		collisions=collisions,
-		damage=damage,
 		_offset = {
 			pos=to_global(position) + projectile.position.length() * direction.normalized(),
 			rot=projectile.rotation
