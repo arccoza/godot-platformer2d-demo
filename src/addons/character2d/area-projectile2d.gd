@@ -2,6 +2,7 @@ extends Area2D
 
 export(float) var lifetime = 5.0
 export(int) var collisions = 1
+export(String, MULTILINE) var collision_groups = "terrain\nenemy" setget set_collision_groups, get_collision_groups
 export(float) var damage = 0.0
 
 var container = null
@@ -9,6 +10,18 @@ var velocity = Vector2(0, 0)
 #var gravity = Vector2(0, 0)
 var time = 0
 var _offset = null
+
+func set_collision_groups(val):
+	match typeof(val):
+		TYPE_STRING:
+			collision_groups = val.split("\n")
+		TYPE_ARRAY:
+			collision_groups = PoolStringArray(val)
+		TYPE_STRING_ARRAY:
+			collision_groups = val
+
+func get_collision_groups():
+	return collision_groups
 
 
 func _prep(data):
@@ -37,8 +50,10 @@ func _physics_process(delta):
 		die()
 
 func _on_collision(ev=null):
-	if ev is TileMap:
-		die()
+	var target_groups = ev.get_groups()
+	for cg in collision_groups:
+		if cg in target_groups:
+			die()
 
 func die():
 	visible = false

@@ -365,6 +365,8 @@ __meta__ = {
 }
 lifetime = 5.0
 collisions = 1
+collision_groups = "terrain
+enemy"
 damage = 0.0
 
 [node name="Sprite2" type="Sprite" parent="Character2D/Projectiles2D/AreaProjectile2D" index="0"]
@@ -410,7 +412,9 @@ texture = SubResource( 11 )
 position = Vector2( 40, 0 )
 shape = SubResource( 12 )
 
-[node name="TileMap" type="TileMap" parent="." index="2"]
+[node name="TileMap" type="TileMap" parent="." index="2" groups=[
+"terrain",
+]]
 
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
