@@ -98,12 +98,7 @@ func _emitter(delta):
 
 func _instance():
 	var p = projectile.duplicate()
-	
 	p._prep(self.proj_data)
-#	d.position = offset
-#	n.add_child(d)
-#	n.position = container.to_local(to_global(n.position))
-#	container.add_child(n)
 
 func start():
 	if active:
@@ -127,39 +122,3 @@ func reset():
 	c.count = 0
 	e.time = 0
 	e.count = 0
-
-
-class Projectile2D extends Node2D:
-	export(float) var lifetime = 5.0
-	export(int) var collisions = 1
-	export(float) var damage = 0.0
-	export var velocity = Vector2(100, 0)
-	export var gravity = Vector2(0, 0)
-	
-	var time = 0
-	var _rotation_offset = null
-	
-	
-	func _prep(data):
-		for k in data:
-			set(k, data[k])
-	
-	func _ready():
-#		set_as_toplevel(true)
-		if not _rotation_offset:
-			_rotation_offset = get_child(0).rotation
-		_orient()
-	
-	func _orient():
-		var c = get_child(0)
-		var v = velocity + gravity
-		c.rotation = v.angle() + _rotation_offset
-	
-	func _physics_process(delta):
-		time += delta
-		
-		position += (velocity + gravity) * delta
-		_orient()
-		
-		if time >= lifetime:
-			queue_free()
