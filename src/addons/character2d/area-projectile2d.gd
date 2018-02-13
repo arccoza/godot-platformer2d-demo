@@ -49,11 +49,28 @@ func _physics_process(delta):
 	if time >= lifetime:
 		die()
 
-func _on_collision(ev=null):
-	var target_groups = ev.get_groups()
+func _on_collision(target=null):
+	var target_groups = target.get_groups()
+	var groups = []
+	
 	for cg in collision_groups:
 		if cg in target_groups:
-			die()
+			groups.append(cg)
+	
+	if groups.size():
+		impact(target, groups)
+
+signal impacted(target, groups)
+
+func impact(target, groups):
+	emit_signal("impacted", target, groups)
+	
+	if "enemy" in groups and target.meter:
+		target.meter("health", damage)
+	
+	collisions -= 1
+	if collisions == 0:
+		die()
 
 func die():
 	visible = false

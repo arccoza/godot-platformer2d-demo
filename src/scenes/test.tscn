@@ -1,15 +1,14 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=1]
 [ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=2]
-[ext_resource path="res://addons/character2d/character-meter.gd" type="Script" id=3]
-[ext_resource path="res://skel.tres" type="Texture" id=4]
-[ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=5]
-[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=6]
-[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=7]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=9]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=10]
+[ext_resource path="res://skel.tres" type="Texture" id=3]
+[ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=4]
+[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=5]
+[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=6]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=8]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,33 +16,7 @@ custom_solver_bias = 0.0
 extents = Vector2( 319.634, 25.4999 )
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="Resource" id=2]
-
-script = ExtResource( 3 )
-__meta__ = {
-"_editor_icon": null
-}
-minv = 0.0
-maxv = 1.0
-incs = 0.2
-decs = -0.2
-value = 1.0
-easing = 1.0
-
-[sub_resource type="Resource" id=3]
-
-script = ExtResource( 3 )
-__meta__ = {
-"_editor_icon": null
-}
-minv = 0.0
-maxv = 1.0
-incs = 0.2
-decs = -0.2
-value = 1.0
-easing = 1.0
-
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 
 resource_name = "attack"
 length = 0.4
@@ -62,7 +35,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 length = 0.5
 loop = false
@@ -80,7 +53,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 
 length = 0.1
 loop = false
@@ -98,7 +71,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
 length = 0.6
 loop = true
@@ -116,47 +89,47 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=6]
 
 custom_solver_bias = 0.0
 radius = 18.9039
 height = 15.2047
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=7]
 
 flags = 0
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=8]
 
 custom_solver_bias = 0.0
 radius = 4.5
 height = 7.0
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=9]
 
 flags = 0
-atlas = ExtResource( 9 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 20, 20 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="CircleShape2D" id=12]
+[sub_resource type="CircleShape2D" id=10]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="CanvasItemMaterial" id=13]
+[sub_resource type="CanvasItemMaterial" id=11]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=12]
 
 render_priority = 0
 trail_divisor = 1
@@ -193,12 +166,11 @@ anim_speed_random = 0.0
 anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = true
-_sections_unfolded = [ "Initial Velocity" ]
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=13]
 
 flags = 0
-atlas = ExtResource( 8 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -260,8 +232,10 @@ speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
 boost_mul = Vector2( 4, 2 )
-health = SubResource( 2 )
-energy = SubResource( 3 )
+health = 100
+health_max = 100
+energy = 100
+energy_max = 100
 
 [node name="Anim" type="AnimationPlayer" parent="Character2D" index="0"]
 
@@ -270,17 +244,17 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 4 )
-anims/die = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/walk = SubResource( 7 )
+anims/attack = SubResource( 2 )
+anims/die = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/walk = SubResource( 5 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options", "playback" ]
 
 [node name="Sprite" type="Sprite" parent="Character2D" index="1"]
 
 scale = Vector2( 4, 4 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 hframes = 9
 frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
@@ -288,7 +262,7 @@ _sections_unfolded = [ "Animation", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D" index="2"]
 
 position = Vector2( 0, 10 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="Character2D" index="3"]
@@ -327,10 +301,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Projectiles2D" type="Node2D" parent="Character2D" index="5"]
 
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 5 )
 }
 active = false
 cycles = 2
@@ -355,10 +329,10 @@ angular_damp = 1.0
 collision_layer = 524288
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 6 )
+"_editor_icon": ExtResource( 5 )
 }
 lifetime = 0.5
 collisions = 1
@@ -368,12 +342,12 @@ damage = 0.0
 
 [node name="Sprite2" type="Sprite" parent="Character2D/Projectiles2D/AreaProjectile2D" index="0"]
 
-texture = SubResource( 9 )
+texture = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/AreaProjectile2D" index="1"]
 
-shape = SubResource( 10 )
+shape = SubResource( 8 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Character2D/Projectiles2D" index="1"]
 
@@ -402,12 +376,12 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 40, 0 )
 rotation = 1.5708
-texture = SubResource( 11 )
+texture = SubResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/RigidBody2D" index="1"]
 
 position = Vector2( 40, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="TileMap" type="TileMap" parent="." index="2" groups=[
 "terrain",
@@ -416,7 +390,7 @@ shape = SubResource( 12 )
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 10 )
+tile_set = ExtResource( 9 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -436,7 +410,8 @@ _sections_unfolded = [ "Cell", "Collision", "Transform" ]
 
 [node name="Particles2D" type="Particles2D" parent="." index="3"]
 
-material = SubResource( 13 )
+visible = false
+material = SubResource( 11 )
 rotation = -1.5708
 emitting = false
 amount = 2000
@@ -451,8 +426,8 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 1
-process_material = SubResource( 14 )
-texture = SubResource( 15 )
+process_material = SubResource( 12 )
+texture = SubResource( 13 )
 normal_map = null
 h_frames = 3
 v_frames = 1
