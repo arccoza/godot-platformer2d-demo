@@ -52,14 +52,9 @@ func _process(delta):
 	pass
 
 func _physics_process(delta):
-#	print(energy.value)
-#	energy.increase(delta)
-#	print(energy.tick, " - ", energy.value)
-	
 	upd_action(delta)
 	upd_direction()
 	upd_speed(delta)
-#	upd_energy(delta)
 	upd_velocity(delta)
 	
 	velocity = move_and_slide(velocity, floor_normal, 5, 4, floor_angle)
@@ -113,18 +108,6 @@ func _on_boost(boosted):
 		boost = boost_mul
 	else:
 		boost = boost_reset
-
-#var energy_tick = 0
-#func upd_energy(delta):
-#	if energy < energy_max:
-#		energy_tick += energy_inc / energy_max * delta
-##		print("--", energy)
-#		var res = global.ease(energy, energy_max, energy_tick, [global.IN, global.CUBIC])
-##		var res = ease(energy_tick, 2) * (energy_max - energy) + energy
-#		print(res, res == 5.0)
-#		energy = res
-#	else:
-#		energy_tick = 0
 
 signal boost_on(boosted)
 signal boost_off(boosted)
