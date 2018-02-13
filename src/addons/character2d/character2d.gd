@@ -10,8 +10,12 @@ export var speed_max = Vector2(220, 2000)
 export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
-export(Resource) var health
-export(Resource) var energy
+export var health = 100
+var health_min = 0
+export var health_max = 100
+export var energy = 100
+var energy_min = 0
+export var energy_max = 100
 
 var action = { attack = false, boost = false, left = false, right = false, up = false, down = false }
 var boost = Vector2(1, 1)
@@ -40,6 +44,9 @@ func _ready():
 			proj = c
 
 	play("idle")
+	connect("boost_on", self, "_on_boost")
+	connect("boost_off", self, "_on_boost")
+	connect("meter_limit", self, "_on_meter_limit")
 
 func _process(delta):
 	pass
@@ -49,6 +56,7 @@ func _physics_process(delta):
 #	energy.increase(delta)
 #	print(energy.tick, " - ", energy.value)
 	
+	upd_action(delta)
 	upd_direction()
 	upd_speed(delta)
 #	upd_energy(delta)
@@ -80,11 +88,11 @@ func _physics_process(delta):
 		y_timer -= delta
 		y_timer = clamp(y_timer, 0, y_time)
 	
-	# Handle speed boost.
-	boost = boost_mul if action.boost and energy.value else boost_reset
+	# Update energy.
+	meter("energy", (-1 if action.boost else 1) * 100 * delta)
 	
 	# Handle animation changes.
-	if health and health.value <= 0:
+	if health <= health_min:
 		die()
 	elif action.attack:
 		attack()
@@ -95,6 +103,16 @@ func _physics_process(delta):
 		walk()
 	else:
 		idle()
+
+func _on_meter_limit(what, upper, value):
+	if what == "energy" and not upper:
+		_on_boost(false)
+
+func _on_boost(boosted):
+	if boosted and energy > energy_min:
+		boost = boost_mul
+	else:
+		boost = boost_reset
 
 #var energy_tick = 0
 #func upd_energy(delta):
@@ -108,13 +126,27 @@ func _physics_process(delta):
 #	else:
 #		energy_tick = 0
 
-func upd_direction():
+signal boost_on(boosted)
+signal boost_off(boosted)
+
+func upd_action(delta):
+	var boost_prev = action.boost
+	
 	action.left = Input.is_action_pressed("ui_left")
 	action.right = Input.is_action_pressed("ui_right")
 	action.up = Input.is_action_pressed("ui_up")
 	action.down = Input.is_action_pressed("ui_down")
 	action.boost = Input.is_action_pressed("player_boost")
 	action.attack = Input.is_action_pressed("player_attack")
+	
+	if action.boost > boost_prev:
+		emit_signal("boost_on", action.boost)
+	elif action.boost < boost_prev:
+		emit_signal("boost_off", action.boost)
+	
+	return action
+
+func upd_direction():
 	direction.x = float(action.right) - float(action.left)
 	direction.y = float(action.down) - float(action.up)
 	direction_last.x = direction.x if direction.x else direction_last.x
@@ -140,6 +172,19 @@ func upd_velocity(delta):
 	velocity.x = lerp(velocity.x, v.x, 1)
 	velocity.y = lerp(velocity.y, v.y, 1)
 	return velocity
+
+signal meter_limit(what, upper_bound, value)
+
+func meter(what, amount):
+	var v = get(what) + amount
+	var vmin = get(what + "_min")
+	var vmax = get(what + "_max")
+	
+	v = clamp(v, vmin, vmax)
+	if v == vmin or v == vmax:
+		emit_signal("meter_limit", what, v == vmax, v)
+	
+	set(what, v)
 
 func idle():
 	play("idle")
