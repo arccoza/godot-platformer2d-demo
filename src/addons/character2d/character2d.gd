@@ -56,32 +56,7 @@ func _physics_process(delta):
 	upd_direction()
 	upd_speed(delta)
 	upd_velocity(delta)
-	
-	velocity = move_and_slide(velocity, floor_normal, 5, 4, floor_angle)
-	
-	# Modify the characters movements on a slope or stairs.
-	var collision = null
-	var collision_count = get_slide_count()
-	
-	if collision_count:
-		collision = get_slide_collision(collision_count - 1)
-	
-	if collision:
-		var angle = abs(collision.normal.angle_to(floor_normal))
-		if angle <= floor_angle:
-			var rem = -gravity.slide(collision.normal) * delta
-			if not test_move(self.transform, rem):
-				self.position += rem
-		elif $StepLimit:
-			if not $StepLimit.is_colliding():
-				self.position += step_up * Vector2(direction.x, -1) * delta
-	
-	# Handle jumping.
-	if is_on_floor():
-		y_timer = y_time
-	else:
-		y_timer -= delta
-		y_timer = clamp(y_timer, 0, y_time)
+	_move(delta)
 	
 	# Update energy.
 	meter("energy", (-1 if action.boost else 1) * 100 * delta)
@@ -108,6 +83,33 @@ func _on_boost(boosted):
 		boost = boost_mul
 	else:
 		boost = boost_reset
+
+func _move(delta):
+	velocity = move_and_slide(velocity, floor_normal, 5, 4, floor_angle)
+	
+	# Modify the characters movements on a slope or stairs.
+	var collision = null
+	var collision_count = get_slide_count()
+	
+	if collision_count:
+		collision = get_slide_collision(collision_count - 1)
+	
+	if collision:
+		var angle = abs(collision.normal.angle_to(floor_normal))
+		if angle <= floor_angle:
+			var rem = -gravity.slide(collision.normal) * delta
+			if not test_move(self.transform, rem):
+				self.position += rem
+		elif $StepLimit:
+			if not $StepLimit.is_colliding():
+				self.position += step_up * Vector2(direction.x, -1) * delta
+	
+	# Handle jumping.
+	if is_on_floor():
+		y_timer = y_time
+	else:
+		y_timer -= delta
+		y_timer = clamp(y_timer, 0, y_time)
 
 signal boost_on(boosted)
 signal boost_off(boosted)
