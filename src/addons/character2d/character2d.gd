@@ -193,3 +193,32 @@ func play(id):
 	if not anim or anim.assigned_animation == id:
 		return
 	anim.play(id)
+
+
+class Scope extends Resource:
+	export(float) var vmin = 0.0
+	export(float) var vmax = 1.0
+	export(float) var vinc = 0.25
+	export(float) var vdec = 0.25
+
+
+class Meter extends Resource:
+	export(Resource) var scope = null
+	export var value = 0.0
+	
+	signal limit(upper_bound, value)
+	
+	
+	func _init():
+		meter = Scope.new()
+	
+	func mod(amount):
+		var v = value + amount
+		var vmin = scope.vmin
+		var vmax = scope.vmax
+		
+		v = clamp(v, vmin, vmax)
+		if v == vmin or v == vmax:
+			emit_signal("limit", v == vmax, v)
+		
+		value = v
