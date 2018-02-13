@@ -132,8 +132,8 @@ func upd_action(delta):
 	return action
 
 func upd_direction():
-	direction.x = float(action.right) - float(action.left)
-	direction.y = float(action.down) - float(action.up)
+	direction.x = int(action.right) - int(action.left)
+	direction.y = int(action.down) - int(action.up)
 	direction_last.x = direction.x if direction.x else direction_last.x
 	direction_last.y = direction.y if direction.y else direction_last.y
 	return direction
