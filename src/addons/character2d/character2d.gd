@@ -54,14 +54,12 @@ func _ready():
 	energy.maxi = energy_max
 	energy.connect("limited", self, "_on_energy_limit")
 
-	play("idle")
-#	connect("boost_on", self, "_on_boost")
-#	connect("boost_off", self, "_on_boost")
 	connect("action_changed", self, "_on_action")
+	play("idle")
 	
 
-func _process(delta):
-	pass
+#func _process(delta):
+#	pass
 
 func _physics_process(delta):
 	upd_action(delta)
@@ -71,9 +69,8 @@ func _physics_process(delta):
 #	_move(delta)
 	
 	# Update energy.
-#	meter("energy", (-1 if action.boost else 1) * 100 * delta)
 	energy.mod((-1 if action.boost else 1) * 100 * delta)
-	health.mod(-50 * delta)
+#	health.mod(-50 * delta)
 	
 	# Handle animation changes.
 	if health.value > health.mini:
@@ -92,12 +89,11 @@ func _physics_process(delta):
 
 func _on_health_limit(value, maxed):
 	if not maxed:
-		print("no health ", value)
 		die()
 
 func _on_energy_limit(value, maxed):
 	if not maxed:
-		_on_boost(false)
+		_on_action("boost", false)
 
 func _on_action(name, state):
 	if name == "boost" and state and energy.value > energy.mini:
@@ -192,14 +188,19 @@ func attack():
 	proj.start()
 
 func play(id):
-#	print(anim.current_animation_position, " - ",  anim.current_animation_length)
+	var current = anim.get_animation(anim.current_animation)
+	var interuptable = current and current.loop
+	
 	if sprite and id != "die":
 		sprite.flip_h = true if direction_last.x < 0 else false
 	if proj and id != "die":
 		proj.direction = Vector2(direction_last.x, 0)
+	
 	if not anim or anim.assigned_animation == id:
 		return
-	anim.play(id)
+	
+	if not current or interuptable:
+		anim.play(id)
 
 
 class Span extends Resource:
