@@ -200,7 +200,7 @@ class SpanCurves extends Resource:
 class Quant extends Span:
 	export var value = 0.0
 	
-	signal limit(value, maxed)
+	signal limited(value, maxed)
 	
 	func set_value(val):
 		var d = val - value
@@ -218,9 +218,10 @@ class Quant extends Span:
 		
 		if v >= vmax:
 			v = vmax
-			emit_signal("limit", v, v == vmax)
 		elif v <= vmin:
 			v = vmin
-			emit_signal("limit", v, v == vmax)
+		
+		if v != value and (v == vmin or v == vmax):
+			emit_signal("limited", v, v == vmax)
 		
 		value = v
