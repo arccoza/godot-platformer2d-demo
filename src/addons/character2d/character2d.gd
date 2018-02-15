@@ -32,6 +32,7 @@ var y_timer = y_time
 var sprite = null
 var animp = null
 var proj = null
+var step_limit = null
 
 
 func _ready():
@@ -43,6 +44,8 @@ func _ready():
 			animp = c
 		if c is Projectiles2D:
 			proj = c
+	
+	step_limit = $step_limit
 	
 	health = Quant.new(health)
 	health.mini = health_min
@@ -78,9 +81,9 @@ func _physics_process(delta):
 		if action.attack:
 			attack()
 		elif direction.x:
-			# Flip $StepLimit RayCast when the character changes direction.
-			if $StepLimit:
-				$StepLimit.cast_to.x = sign(direction.x) * abs($StepLimit.cast_to.x)
+			# Flip $step_limit RayCast when the character changes direction.
+			if step_limit:
+				step_limit.cast_to.x = sign(direction.x) * abs(step_limit.cast_to.x)
 			walk()
 		else:
 			idle()
@@ -117,8 +120,8 @@ func _move(delta):
 			var rem = -gravity.slide(collision.normal) * delta
 			if not test_move(self.transform, rem):
 				self.position += rem
-		elif $StepLimit:
-			if not $StepLimit.is_colliding():
+		elif step_limit:
+			if not step_limit.is_colliding():
 				self.position += step_up * Vector2(direction.x, -1) * delta
 	
 	# Handle jumping.
