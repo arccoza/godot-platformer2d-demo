@@ -173,9 +173,9 @@ func attack():
 
 func play(id):
 #	print(anim.current_animation_position, " - ",  anim.current_animation_length)
-	if sprite:
+	if sprite and id != "die":
 		sprite.flip_h = true if direction_last.x < 0 else false
-	if proj:
+	if proj and id != "die":
 		proj.direction = Vector2(direction_last.x, 0)
 	if not anim or anim.assigned_animation == id:
 		return
