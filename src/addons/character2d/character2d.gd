@@ -30,7 +30,7 @@ var floor_angle = deg2rad(floor_angle_max)
 var y_time = 0.2
 var y_timer = y_time
 var sprite = null
-var anim = null
+var animp = null
 var proj = null
 
 
@@ -40,7 +40,7 @@ func _ready():
 		if c is Sprite:
 			sprite = c
 		if c is AnimationPlayer:
-			anim = c
+			animp = c
 		if c is Projectiles2D:
 			proj = c
 	
@@ -188,7 +188,7 @@ func attack():
 	proj.start()
 
 func play(id):
-	var current = anim.get_animation(anim.current_animation)
+	var current = animp.get_animation(animp.current_animation)
 	var interuptable = current and current.loop
 	
 	if sprite and id != "die":
@@ -196,11 +196,11 @@ func play(id):
 	if proj and id != "die":
 		proj.direction = Vector2(direction_last.x, 0)
 	
-	if not anim or anim.assigned_animation == id:
+	if not animp or animp.assigned_animation == id:
 		return
 	
 	if not current or interuptable:
-		anim.play(id)
+		animp.play(id)
 
 
 class Span extends Resource:
