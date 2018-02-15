@@ -11,7 +11,7 @@ var vision = null
 
 
 func _ready():
-	vision = $vision_cone
+	vision = $vision
 	$step_limit.add_exception(vision)
 	vision.connect("body_entered", self, "_on_vision_detect", [true])
 	vision.connect("body_exited", self, "_on_vision_detect", [false])

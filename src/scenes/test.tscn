@@ -313,7 +313,7 @@ wander_period = 3
 wander_pause = 0.5
 alert_delay = 2
 
-[node name="vision_cone" type="Area2D" parent="NonPlayerCharacter2D" index="0"]
+[node name="vision" type="Area2D" parent="NonPlayerCharacter2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -323,7 +323,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NonPlayerCharacter2D/vision_cone" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NonPlayerCharacter2D/vision" index="0"]
 
 build_mode = 0
 polygon = PoolVector2Array( 0.258469, -0.781914, 131.36, -48.9596, 131.36, 22.577 )
