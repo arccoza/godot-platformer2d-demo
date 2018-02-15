@@ -158,19 +158,6 @@ func upd_velocity(delta):
 	velocity.y = lerp(velocity.y, v.y, 1)
 	return velocity
 
-signal meter_limit(what, upper_bound, value)
-
-func meter(what, amount):
-	var v = get(what) + amount
-	var vmin = get(what + "_min")
-	var vmax = get(what + "_max")
-	
-	v = clamp(v, vmin, vmax)
-	if v == vmin or v == vmax:
-		emit_signal("meter_limit", what, v == vmax, v)
-	
-	set(what, v)
-
 func idle():
 	play("idle")
 
