@@ -10,6 +10,7 @@ export var speed_max = Vector2(220, 2000)
 export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
+
 export var health = 100
 var health_min = 0
 export var health_max = 100
@@ -42,11 +43,22 @@ func _ready():
 			anim = c
 		if c is Projectiles2D:
 			proj = c
+	
+	health = Quant.new(health)
+	health.mini = health_min
+	health.maxi = health_max
+#	health.connect("limited", self, "_on_health_limit")
+	
+	energy = Quant.new(energy)
+	energy.mini = energy_min
+	energy.maxi = energy_max
+	energy.connect("limited", self, "_on_energy_limit")
 
 	play("idle")
-	connect("boost_on", self, "_on_boost")
-	connect("boost_off", self, "_on_boost")
-	connect("meter_limit", self, "_on_meter_limit")
+#	connect("boost_on", self, "_on_boost")
+#	connect("boost_off", self, "_on_boost")
+	connect("action_changed", self, "_on_action")
+	
 
 func _process(delta):
 	pass
@@ -56,30 +68,39 @@ func _physics_process(delta):
 	upd_direction()
 	upd_speed(delta)
 	upd_velocity(delta)
-	_move(delta)
+#	_move(delta)
 	
 	# Update energy.
-	meter("energy", (-1 if action.boost else 1) * 100 * delta)
+#	meter("energy", (-1 if action.boost else 1) * 100 * delta)
+	energy.mod((-1 if action.boost else 1) * 100 * delta)
+	health.mod(-50 * delta)
 	
 	# Handle animation changes.
-	if health <= health_min:
-		die()
-	elif action.attack:
-		attack()
-	elif direction.x:
-		# Flip $StepLimit RayCast when the character changes direction.
-		if $StepLimit:
-			$StepLimit.cast_to.x = sign(direction.x) * abs($StepLimit.cast_to.x)
-		walk()
+	if health.value > health.mini:
+		_move(delta)
+		if action.attack:
+			attack()
+		elif direction.x:
+			# Flip $StepLimit RayCast when the character changes direction.
+			if $StepLimit:
+				$StepLimit.cast_to.x = sign(direction.x) * abs($StepLimit.cast_to.x)
+			walk()
+		else:
+			idle()
 	else:
-		idle()
+		die()
 
-func _on_meter_limit(what, upper, value):
-	if what == "energy" and not upper:
+func _on_health_limit(value, maxed):
+	if not maxed:
+		print("no health ", value)
+		die()
+
+func _on_energy_limit(value, maxed):
+	if not maxed:
 		_on_boost(false)
 
-func _on_boost(boosted):
-	if boosted and energy > energy_min:
+func _on_action(name, state):
+	if name == "boost" and state and energy.value > energy.mini:
 		boost = boost_mul
 	else:
 		boost = boost_reset
@@ -111,24 +132,23 @@ func _move(delta):
 		y_timer -= delta
 		y_timer = clamp(y_timer, 0, y_time)
 
-signal boost_on(boosted)
-signal boost_off(boosted)
+signal action_changed(name, state)
 
 func upd_action(delta):
-	var boost_prev = action.boost
+	var _action = {
+		left = Input.is_action_pressed("ui_left"),
+		right = Input.is_action_pressed("ui_right"),
+		up = Input.is_action_pressed("ui_up"),
+		down = Input.is_action_pressed("ui_down"),
+		boost = Input.is_action_pressed("player_boost"),
+		attack = Input.is_action_pressed("player_attack")
+	}
 	
-	action.left = Input.is_action_pressed("ui_left")
-	action.right = Input.is_action_pressed("ui_right")
-	action.up = Input.is_action_pressed("ui_up")
-	action.down = Input.is_action_pressed("ui_down")
-	action.boost = Input.is_action_pressed("player_boost")
-	action.attack = Input.is_action_pressed("player_attack")
+	for k in _action:
+		if _action[k] != action[k]:
+			emit_signal("action_changed", k, _action[k])
 	
-	if action.boost > boost_prev:
-		emit_signal("boost_on", action.boost)
-	elif action.boost < boost_prev:
-		emit_signal("boost_off", action.boost)
-	
+	action = _action
 	return action
 
 func upd_direction():
