@@ -169,7 +169,7 @@ func die():
 
 func attack():
 	play("attack")
-	$Projectiles2D.start()
+	proj.start()
 
 func play(id):
 #	print(anim.current_animation_position, " - ",  anim.current_animation_length)
