@@ -65,8 +65,8 @@ signal impacted(target, groups)
 func impact(target, groups):
 	emit_signal("impacted", target, groups)
 	
-	if "enemy" in groups and target.meter:
-		target.meter("health", damage)
+	if "enemy" in groups and target.health:
+		target.health.mod(damage)
 	
 	collisions -= 1
 	if collisions == 0:
