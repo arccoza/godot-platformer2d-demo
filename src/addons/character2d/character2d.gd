@@ -195,30 +195,45 @@ func play(id):
 	anim.play(id)
 
 
-class Scope extends Resource:
-	export(float) var vmin = 0.0
-	export(float) var vmax = 1.0
-	export(float) var vinc = 0.25
-	export(float) var vdec = 0.25
+class Span extends Resource:
+	export(float) var mini = 0.0
+	export(float) var maxi = 1.0
+	export(float) var incr = 1.0
+	export(float) var decr = 1.0
+#	export(float) var step = 0.0
+#	export(float, 0, 1) var rand = 0.0
+#	export(float) var ratio
 
 
-class Meter extends Resource:
-	export(Resource) var scope = null
+class SpanCurves extends Resource:
+	export var inc = 0
+	export var dec = 0
+
+
+class Quant extends Span:
 	export var value = 0.0
 	
-	signal limit(upper_bound, value)
+	signal limit(value, maxed)
 	
+	func set_value(val):
+		var d = val - value
+		mod(d)
 	
-	func _init():
-		meter = Scope.new()
+	func _init(v=null):
+		value = v
 	
 	func mod(amount):
-		var v = value + amount
-		var vmin = scope.vmin
-		var vmax = scope.vmax
+		var v = value
+		var vmin = mini
+		var vmax = maxi
 		
-		v = clamp(v, vmin, vmax)
-		if v == vmin or v == vmax:
-			emit_signal("limit", v == vmax, v)
+		v += amount
+		
+		if v >= vmax:
+			v = vmax
+			emit_signal("limit", v, v == vmax)
+		elif v <= vmin:
+			v = vmin
+			emit_signal("limit", v, v == vmax)
 		
 		value = v
