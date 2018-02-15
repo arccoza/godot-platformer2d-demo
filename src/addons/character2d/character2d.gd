@@ -187,14 +187,6 @@ class Span extends Resource:
 	export(float) var maxi = 1.0
 	export(float) var incr = 1.0
 	export(float) var decr = 1.0
-#	export(float) var step = 0.0
-#	export(float, 0, 1) var rand = 0.0
-#	export(float) var ratio
-
-
-class SpanCurves extends Resource:
-	export var inc = 0
-	export var dec = 0
 
 
 class Quant extends Span:
