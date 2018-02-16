@@ -419,6 +419,7 @@ shape = SubResource( 12 )
 "player",
 ]]
 
+editor/display_folded = true
 position = Vector2( -26.276, 339.775 )
 input_pickable = false
 collision_layer = 2
@@ -493,7 +494,31 @@ drag_margin_right = 0.2
 drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
-editor_draw_drag_margin = false
+editor_draw_drag_margin = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Character2D/Camera2D" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 260.0
+margin_top = -150.0
+margin_right = 377.0
+margin_bottom = -116.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 50.0
+exp_edit = false
+rounded = false
+percent_visible = true
 
 [node name="step_limit" type="RayCast2D" parent="Character2D" index="4"]
 
