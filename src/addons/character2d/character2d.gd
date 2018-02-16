@@ -101,7 +101,7 @@ func _on_energy_limit(value, maxed):
 func _on_action(name, state):
 	if name == "boost" and state and energy.value > energy.mini:
 		boost = boost_mul
-	else:
+	elif name == "boost":
 		boost = boost_reset
 
 func _move(delta):
