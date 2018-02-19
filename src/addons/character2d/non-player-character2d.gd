@@ -21,7 +21,9 @@ func _ready():
 func _init_vision():
 	if not vision_cone:
 		return
-	$step_limit.add_exception(vision_cone)
+
+	if $step_limit:
+		$step_limit.add_exception(vision_cone.area)
 	vision_cone.connect("found", self, "_on_vision_detect", [true])
 	vision_cone.connect("lost", self, "_on_vision_detect", [false])
 
