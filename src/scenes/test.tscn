@@ -1,15 +1,17 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://addons/character2d/non-player-character2d.gd" type="Script" id=1]
 [ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=2]
-[ext_resource path="res://skel.tres" type="Texture" id=3]
-[ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=4]
-[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=5]
-[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=6]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=7]
-[ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=8]
-[ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=9]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=10]
+[ext_resource path="res://addons/character2d/vision-cone2d.gd" type="Script" id=3]
+[ext_resource path="res://addons/character2d/icons/vision-cone2d.svg" type="Texture" id=4]
+[ext_resource path="res://skel.tres" type="Texture" id=5]
+[ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=6]
+[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=7]
+[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=8]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=9]
+[ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=10]
+[ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=11]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -97,21 +99,21 @@ radius = 18.9039
 height = 15.2047
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=7]
 
 flags = 0
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=8]
 
 custom_solver_bias = 0.0
 radius = 4.5
 height = 7.0
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 
 length = 0.4
 loop = false
@@ -129,7 +131,7 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 
 length = 0.5
 loop = false
@@ -147,7 +149,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=11]
 
 length = 0.1
 loop = true
@@ -165,7 +167,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=12]
 
 length = 0.6
 loop = true
@@ -186,7 +188,7 @@ tracks/0/keys = {
 [sub_resource type="AtlasTexture" id=13]
 
 flags = 0
-atlas = ExtResource( 9 )
+atlas = ExtResource( 11 )
 region = Rect2( 0, 0, 20, 20 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -243,7 +245,7 @@ anim_loop = true
 [sub_resource type="AtlasTexture" id=17]
 
 flags = 0
-atlas = ExtResource( 7 )
+atlas = ExtResource( 9 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -313,20 +315,15 @@ wander_period = 3
 wander_pause = 0.5
 alert_delay = 2
 
-[node name="vision" type="Area2D" parent="NonPlayerCharacter2D" index="0"]
+[node name="VisionCone2D" type="Node2D" parent="NonPlayerCharacter2D" index="0"]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NonPlayerCharacter2D/vision" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 0.258469, -0.781914, 131.36, -48.9596, 131.36, 22.577 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+radius = 100
+angle = 30
+cone_is_visible = true
 
 [node name="Anim" type="AnimationPlayer" parent="NonPlayerCharacter2D" index="1"]
 
@@ -345,7 +342,7 @@ _sections_unfolded = [ "Playback Options", "playback" ]
 [node name="Sprite" type="Sprite" parent="NonPlayerCharacter2D" index="2"]
 
 scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 hframes = 9
 frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
@@ -367,10 +364,11 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Projectiles2D2" type="Node2D" parent="NonPlayerCharacter2D" index="5"]
 
-script = ExtResource( 4 )
+editor/display_folded = true
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 7 )
 }
 active = false
 cycles = 2
@@ -395,10 +393,10 @@ angular_damp = 1.0
 collision_layer = 524288
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 7 )
 }
 lifetime = 0.5
 collisions = 1
@@ -408,12 +406,12 @@ damage = -10.0
 
 [node name="Sprite2" type="Sprite" parent="NonPlayerCharacter2D/Projectiles2D2/AreaProjectile2D" index="0"]
 
-texture = SubResource( 11 )
+texture = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NonPlayerCharacter2D/Projectiles2D2/AreaProjectile2D" index="1"]
 
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="Character2D" type="KinematicBody2D" parent="." index="2" groups=[
 "player",
@@ -425,7 +423,7 @@ input_pickable = false
 collision_layer = 2
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 8 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "Collision" ]
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
@@ -450,17 +448,17 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/attack = SubResource( 7 )
-anims/die = SubResource( 8 )
-anims/idle = SubResource( 9 )
-anims/walk = SubResource( 10 )
+anims/attack = SubResource( 9 )
+anims/die = SubResource( 10 )
+anims/idle = SubResource( 11 )
+anims/walk = SubResource( 12 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options", "playback" ]
 
 [node name="Sprite" type="Sprite" parent="Character2D" index="1"]
 
 scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 hframes = 9
 frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
@@ -531,10 +529,10 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Projectiles2D" type="Node2D" parent="Character2D" index="5"]
 
-script = ExtResource( 4 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 7 )
 }
 active = false
 cycles = 2
@@ -559,10 +557,10 @@ angular_damp = 1.0
 collision_layer = 524288
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 7 )
 }
 lifetime = 0.5
 collisions = 1
@@ -572,12 +570,12 @@ damage = -10.0
 
 [node name="Sprite2" type="Sprite" parent="Character2D/Projectiles2D/AreaProjectile2D" index="0"]
 
-texture = SubResource( 11 )
+texture = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/AreaProjectile2D" index="1"]
 
-shape = SubResource( 12 )
+shape = SubResource( 8 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Character2D/Projectiles2D" index="1"]
 
@@ -620,7 +618,7 @@ shape = SubResource( 14 )
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 10 )
+tile_set = ExtResource( 12 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
