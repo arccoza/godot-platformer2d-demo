@@ -71,5 +71,5 @@ func upd_action(delta):
 
 func merge(a, b):
 	for k in b:
-		a[k] = b[k]
+		a[k] = b[k] if b[k] != null else a[k]
 	return a
