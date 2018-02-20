@@ -16,21 +16,29 @@ func _ready():
 			vision_cone = c
 	
 	_init_vision()
+	_init_rays()
 	upd_ai_times(0)
 
 func _init_vision():
 	if not vision_cone:
 		return
-
-	if $step_limit:
-		$step_limit.add_exception(vision_cone.area)
 	vision_cone.connect("found", self, "_on_vision_detect", [true])
 	vision_cone.connect("lost", self, "_on_vision_detect", [false])
 
+func _init_rays():
+	if $step_limit:
+		if vision_cone:
+			$step_limit.add_exception(vision_cone.area)
+		if $bump_detect:
+			$step_limit.add_exception($bump_detect)
+	if $bump_detect:
+		if vision_cone:
+			$bump_detect.add_exception(vision_cone.area)
+		if $step_limit:
+			$bump_detect.add_exception($step_limit)
+
 func _physics_process(delta):
 	upd_ai_times(delta)
-	if direction.x:
-		vision_cone.scale = Vector2(direction.x, 1)
 
 func _on_vision_detect(ev, is_area, entered):
 	if ev.is_in_group("player"):
@@ -51,6 +59,8 @@ func upd_ai_times(delta):
 
 func upd_action(delta):
 	var _action = {
+		left = null,
+		right = null,
 		up = false,
 		down = false,
 		boost = false,
@@ -65,9 +75,23 @@ func upd_action(delta):
 	elif _action.attack:
 		_action.left = false
 		_action.right = false
-
+		
 	merge(action, _action)
+	
+	if not action.attack and $bump_detect and $bump_detect.is_colliding():
+		if action.left or action.right:
+			action.left = not action.left
+			action.right = not action.right
+	
 	return action
+
+func upd_direction(delta):
+	.upd_direction(delta)
+	if direction.x:
+		if vision_cone:
+			vision_cone.scale = Vector2(direction.x, 1)
+		if $bump_detect:
+			$bump_detect.cast_to.x = direction.x * abs($bump_detect.cast_to.x)
 
 func merge(a, b):
 	for k in b:
