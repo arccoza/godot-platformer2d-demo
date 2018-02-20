@@ -77,7 +77,7 @@ func _ready():
 
 func _physics_process(delta):
 	upd_action(delta)
-	upd_direction()
+	upd_direction(delta)
 	upd_speed(delta)
 	upd_velocity(delta)
 #	_move(delta)
@@ -161,7 +161,7 @@ func upd_action(delta):
 	action = _action
 	return action
 
-func upd_direction():
+func upd_direction(delta):
 	direction.x = int(action.right) - int(action.left)
 	direction.y = int(action.down) - int(action.up)
 	direction_last.x = direction.x if direction.x else direction_last.x
@@ -203,7 +203,7 @@ func attack():
 	proj.start()
 
 func play(id):
-	var current = animp.get_animation(animp.current_animation)
+	var current = animp.get_animation(animp.current_animation) if animp.current_animation else null
 	var interuptable = current and current.loop
 	
 	if sprite and id != "die":
