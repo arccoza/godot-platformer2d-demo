@@ -46,6 +46,9 @@ func get_paused():
 	return paused
 
 
+signal action_changed(name, state)
+
+
 func _ready():
 	# Get integral child nodes if they exists.
 	for c in get_children():
@@ -142,8 +145,6 @@ func _move(delta):
 		y_timer -= delta
 		y_timer = clamp(y_timer, 0, y_time)
 
-signal action_changed(name, state)
-
 func upd_action(delta):
 	var _action = {
 		left = Input.is_action_pressed("ui_left"),
@@ -228,11 +229,14 @@ class Span extends Resource:
 class Quant extends Span:
 	export var value = 0.0
 	
-	signal limited(value, maxed)
 	
 	func set_value(val):
 		var d = val - value
 		mod(d)
+	
+	
+	signal limited(value, maxed)
+	
 	
 	func _init(v=null):
 		value = v
