@@ -33,6 +33,17 @@ var sprite = null
 var animp = null
 var proj = null
 var step_limit = null
+var paused = false setget set_paused, get_paused
+
+
+func set_paused(val):
+	var t = bool(val)
+	paused = t
+	set_physics_process(not t)
+	shape_owner_set_disabled(0, t)
+
+func get_paused():
+	return paused
 
 
 func _ready():
@@ -185,6 +196,7 @@ func walk():
 
 func die():
 	play("die")
+	set_paused(true)
 
 func attack():
 	play("attack")
