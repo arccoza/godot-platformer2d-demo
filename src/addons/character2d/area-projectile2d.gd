@@ -11,6 +11,7 @@ var velocity = Vector2(0, 0)
 var time = 0
 var _offset = null
 
+
 func set_collision_groups(val):
 	match typeof(val):
 		TYPE_STRING:
@@ -22,6 +23,9 @@ func set_collision_groups(val):
 
 func get_collision_groups():
 	return collision_groups
+
+
+signal impacted(target, groups)
 
 
 func _prep(data):
@@ -59,8 +63,6 @@ func _on_collision(target=null):
 	
 	if groups.size():
 		impact(target, groups)
-
-signal impacted(target, groups)
 
 func impact(target, groups):
 	emit_signal("impacted", target, groups)
