@@ -92,8 +92,10 @@ func upd_direction(delta):
 	if direction.x:
 		if vision_cone:
 			vision_cone.scale = Vector2(direction.x, 1)
-		if $bump_detect:
-			$bump_detect.cast_to.x = direction.x * abs($bump_detect.cast_to.x)
+			vision_cone.position.x = direction.x * abs(vision_cone.position.x)
+		for r in rays:
+			r.position.x = direction.x * abs(r.position.x)
+			r.cast_to.x = direction.x * abs(r.cast_to.x)
 
 func merge(a, b):
 	for k in b:
