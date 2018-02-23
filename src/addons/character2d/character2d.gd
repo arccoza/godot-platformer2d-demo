@@ -11,12 +11,14 @@ export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
 export var boost_mul = Vector2(4, 2)
 
-export var health = 100
+export var health_value = 100
 var health_min = 0
 export var health_max = 100
-export var energy = 100
+var health = Quant.new(health_value, health_min, health_max)
+export var energy_value = 100
 var energy_min = 0
 export var energy_max = 100
+var energy = Quant.new(energy_value, energy_min, energy_max)
 
 var action = { attack = false, boost = false, left = false, right = false, up = false, down = false }
 var boost = Vector2(1, 1)
@@ -61,14 +63,7 @@ func _ready():
 	
 	step_limit = $step_limit
 	
-	health = Quant.new(health)
-	health.mini = health_min
-	health.maxi = health_max
 #	health.connect("limited", self, "_on_health_limit")
-	
-	energy = Quant.new(energy)
-	energy.mini = energy_min
-	energy.maxi = energy_max
 	energy.connect("limited", self, "_on_energy_limit")
 
 	connect("action_changed", self, "_on_action")
