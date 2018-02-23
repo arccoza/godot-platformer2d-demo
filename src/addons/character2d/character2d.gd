@@ -241,6 +241,7 @@ class Quant extends Span:
 	
 	
 	signal limited(value, maxed)
+	signal changed(value)
 	
 	
 	func _init(v=null):
@@ -262,3 +263,4 @@ class Quant extends Span:
 			emit_signal("limited", v, v == vmax)
 		
 		value = v
+		emit_signal("changed", v)
