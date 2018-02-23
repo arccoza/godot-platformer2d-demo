@@ -329,9 +329,9 @@ speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
 boost_mul = Vector2( 4, 2 )
-health = 100
+health_value = 100
 health_max = 100
-energy = 100
+energy_value = 100
 energy_max = 100
 wander_period = 3
 wander_pause = 0.5
@@ -473,9 +473,9 @@ speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
 boost_mul = Vector2( 4, 2 )
-health = 100
+health_value = 100
 health_max = 100
-energy = 100
+energy_value = 100
 energy_max = 100
 
 [node name="Anim" type="AnimationPlayer" parent="Character2D" index="0"]
