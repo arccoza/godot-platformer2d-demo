@@ -17,6 +17,9 @@ func _ready():
 				res[k].connect("changed", self, "resource_changed", [k])
 				resource_changed(res[k].value, k)
 
+# TODO: add code to handle max and min bounds if different between hud and character.
+# May have to add a new signal to Quant for when bounds change (eg. max increased).
+
 func resource_changed(value, name):
 	var n = find_node(name + "_bar")
 	
