@@ -126,7 +126,7 @@ size_flags_vertical = 0
 alignment = 0
 _sections_unfolded = [ "Margin", "Rect", "Size Flags" ]
 
-[node name="power_bar" type="TextureProgress" parent="row/col_right" index="0"]
+[node name="energy_bar" type="TextureProgress" parent="row/col_right" index="0"]
 
 self_modulate = Color( 0.392953, 0.831373, 0.301961, 1 )
 anchor_left = 0.0
