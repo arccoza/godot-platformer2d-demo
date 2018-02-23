@@ -244,8 +244,10 @@ class Quant extends Span:
 	signal changed(value)
 	
 	
-	func _init(v=null):
-		value = v
+	func _init(v=null, minv=null, maxv=null):
+		value = v if v != null else value
+		mini = minv if minv != null else mini
+		maxi = maxv if maxv != null else maxi
 	
 	func mod(amount):
 		var v = value
