@@ -13,11 +13,11 @@ func _ready():
 		res["points"] = player.get("points")
 		
 		for k in res:
-			res[k].connect("changed", self, "resource_changed", [k])
+			if res[k]:
+				res[k].connect("changed", self, "resource_changed", [k])
 
 func resource_changed(value, name):
 	var n = find_node(name + "_bar")
-	prints(n)
 	
 	if n:
 		n.value = value
