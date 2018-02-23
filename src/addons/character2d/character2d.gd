@@ -259,8 +259,9 @@ class Quant extends Span:
 		elif v <= vmin:
 			v = vmin
 		
-		if v != value and (v == vmin or v == vmax):
-			emit_signal("limited", v, v == vmax)
+		if v != value:
+			emit_signal("changed", v)
+			if v == vmin or v == vmax:
+				emit_signal("limited", v, v == vmax)
 		
 		value = v
-		emit_signal("changed", v)
