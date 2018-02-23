@@ -26,16 +26,15 @@ func _init_vision():
 	vision_cone.connect("lost", self, "_on_vision_detect", [false])
 
 func _init_rays():
-	if $step_limit:
+	for c in get_children():
+		if c is RayCast2D:
+			rays.append(c)
+	
+	for r in rays:
 		if vision_cone:
-			$step_limit.add_exception(vision_cone.area)
-		if $bump_detect:
-			$step_limit.add_exception($bump_detect)
-	if $bump_detect:
-		if vision_cone:
-			$bump_detect.add_exception(vision_cone.area)
-		if $step_limit:
-			$bump_detect.add_exception($step_limit)
+			r.add_exception(vision_cone.area)
+		for r2 in rays:
+			r.add_exception(r2)
 
 func _physics_process(delta):
 	upd_ai_times(delta)
