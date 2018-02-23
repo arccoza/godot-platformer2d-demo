@@ -185,14 +185,14 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=18]
+[sub_resource type="CapsuleShape2D" id=13]
 
 custom_solver_bias = 0.0
 radius = 18.9039
 height = 15.2047
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=14]
 
 flags = 0
 atlas = ExtResource( 11 )
@@ -200,18 +200,18 @@ region = Rect2( 0, 0, 20, 20 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
-[sub_resource type="CircleShape2D" id=14]
+[sub_resource type="CircleShape2D" id=15]
 
 custom_solver_bias = 0.0
 radius = 10.0
 
-[sub_resource type="CanvasItemMaterial" id=15]
+[sub_resource type="CanvasItemMaterial" id=16]
 
 render_priority = 0
 blend_mode = 1
 light_mode = 0
 
-[sub_resource type="ParticlesMaterial" id=16]
+[sub_resource type="ParticlesMaterial" id=17]
 
 render_priority = 0
 trail_divisor = 1
@@ -249,7 +249,7 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = true
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=18]
 
 flags = 0
 atlas = ExtResource( 9 )
@@ -264,7 +264,7 @@ _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
 
 editor/display_folded = true
-position = Vector2( 1189.21, 375.392 )
+position = Vector2( 1189.21, 225.392 )
 rotation = -0.802851
 input_pickable = false
 collision_layer = 1
@@ -298,6 +298,7 @@ shape = SubResource( 1 )
 "enemy",
 ]]
 
+position = Vector2( 370, 0 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -368,7 +369,16 @@ exclude_parent = true
 cast_to = Vector2( 30, 0 )
 collision_mask = 1
 
-[node name="step_limit" type="RayCast2D" parent="NonPlayerCharacter2D" index="5"]
+[node name="edge_detect" type="RayCast2D" parent="NonPlayerCharacter2D" index="5"]
+
+position = Vector2( 20, 6 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 0, 70 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="step_limit" type="RayCast2D" parent="NonPlayerCharacter2D" index="6"]
 
 position = Vector2( 0, 10 )
 enabled = true
@@ -377,8 +387,9 @@ cast_to = Vector2( 40, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="Projectiles2D2" type="Node2D" parent="NonPlayerCharacter2D" index="6"]
+[node name="Projectiles2D2" type="Node2D" parent="NonPlayerCharacter2D" index="7"]
 
+editor/display_folded = true
 script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -437,7 +448,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 10 )
-_sections_unfolded = [ "Collision" ]
+_sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "_editor_icon": ExtResource( 2 )
 }
@@ -479,7 +490,7 @@ _sections_unfolded = [ "Animation", "Transform" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D" index="2"]
 
 position = Vector2( 0, 10 )
-shape = SubResource( 18 )
+shape = SubResource( 13 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="Character2D" index="3"]
@@ -542,6 +553,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Projectiles2D" type="Node2D" parent="Character2D" index="5"]
 
+editor/display_folded = true
 script = ExtResource( 6 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -617,12 +629,12 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 40, 0 )
 rotation = 1.5708
-texture = SubResource( 13 )
+texture = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/RigidBody2D" index="1"]
 
 position = Vector2( 40, 0 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="TileMap" type="TileMap" parent="." index="3" groups=[
 "terrain",
@@ -652,7 +664,7 @@ _sections_unfolded = [ "Cell", "Collision", "Transform" ]
 [node name="Particles2D" type="Particles2D" parent="." index="4"]
 
 visible = false
-material = SubResource( 15 )
+material = SubResource( 16 )
 rotation = -1.5708
 emitting = false
 amount = 2000
@@ -667,8 +679,8 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
 draw_order = 1
-process_material = SubResource( 16 )
-texture = SubResource( 17 )
+process_material = SubResource( 17 )
+texture = SubResource( 18 )
 normal_map = null
 h_frames = 3
 v_frames = 1
