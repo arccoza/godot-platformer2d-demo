@@ -8,6 +8,7 @@ export(int) var alert_delay = 2
 var alert_time = 0
 var alert = false
 var vision_cone = null
+var rays = []
 
 
 func _ready():
