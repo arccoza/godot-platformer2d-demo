@@ -15,6 +15,7 @@ func _ready():
 		for k in res:
 			if res[k]:
 				res[k].connect("changed", self, "resource_changed", [k])
+				resource_changed(res[k].value, k)
 
 func resource_changed(value, name):
 	var n = find_node(name + "_bar")
