@@ -129,14 +129,19 @@ func _move(delta):
 		collision = get_slide_collision(collision_count - 1)
 	
 	if collision:
+#		var cpos = collision.local_shape.to_local(collision.position)
+#		var crem = collision.remainder
+#		prints(cpos)
 		var angle = abs(collision.normal.angle_to(floor_normal))
 		if angle <= floor_angle:
 			var rem = -gravity.slide(collision.normal) * delta
 			if not test_move(self.transform, rem):
 				self.position += rem
-		elif step_limit:
+		elif step_limit and not is_on_ceiling():
 			if not step_limit.is_colliding():
 				self.position += step_up * Vector2(direction.x, -1) * delta
+#		elif cpos.y < 20:
+#				self.position += Vector2(crem.x, -(cpos.y + 8))
 	
 	# Handle jumping.
 	if is_on_floor():
