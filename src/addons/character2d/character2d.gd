@@ -136,8 +136,22 @@ func _move(delta):
 			if not test_move(self.transform, rem):
 				self.position += rem
 		elif step_limit and not is_on_ceiling():
-			if not step_limit.is_colliding():
+			var step_collided = step_limit.is_colliding()
+			var step_collider = step_limit.get_collider()
+			var step_collider_shape = step_limit.get_collider_shape()
+			
+			if step_collided:
+				if step_collider is Area2D:
+					step_collided = false
+				elif not step_collider is TileMap:
+					var owner = step_collider.shape_find_owner(step_collider_shape)
+					step_collided = not step_collider.is_shape_owner_disabled(owner)
+#			print(step_collided)
+			
+			if not step_collided:
 				self.position += step_up * Vector2(direction.x, -1) * delta
+#			else:
+#				prints(step_limit.get_collider())
 #		elif cpos.y < 20:
 #				self.position += Vector2(crem.x, -(cpos.y + 8))
 	
