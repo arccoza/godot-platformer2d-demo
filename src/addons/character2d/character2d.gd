@@ -41,9 +41,11 @@ var paused = false setget set_paused, get_paused
 
 func set_paused(val):
 	var t = bool(val)
+	var owners = get_shape_owners()
 	paused = t
 	set_physics_process(not t)
-	shape_owner_set_disabled(0, t)
+	for o in owners:
+		shape_owner_set_disabled(o, t)
 
 func get_paused():
 	return paused
