@@ -321,6 +321,7 @@ _sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
+player_name = "Bob"
 gravity = Vector2( 0, 1000 )
 step_up = Vector2( 300, 990 )
 floor_angle_max = 45
@@ -465,6 +466,7 @@ _sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
+player_name = "Bob"
 gravity = Vector2( 0, 1000 )
 step_up = Vector2( 300, 990 )
 floor_angle_max = 45
