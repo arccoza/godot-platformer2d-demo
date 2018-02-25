@@ -2,6 +2,7 @@ extends KinematicBody2D
 var CharacterMeter = preload("character-meter.gd")
 var Projectiles2D = preload("projectiles2d.gd")
 
+export var player_name = "Bob"
 export var gravity = Vector2(0, 1000)
 export var step_up = Vector2(300, 990)
 export var floor_angle_max = 45
