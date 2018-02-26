@@ -11,6 +11,7 @@ config_version=3
 [application]
 
 config/name="platformer2d-demo"
+run/main_scene="res://scenes/test.tscn"
 config/icon="res://icon.png"
 
 [autoload]
