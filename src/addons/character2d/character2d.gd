@@ -150,8 +150,6 @@ func _move(delta):
 			
 			if not step_collided:
 				self.position += step_up * Vector2(direction.x, -1) * delta
-#			else:
-#				prints(step_limit.get_collider())
 #		elif cpos.y < 20:
 #				self.position += Vector2(crem.x, -(cpos.y + 8))
 	
@@ -234,6 +232,27 @@ func play(id):
 	
 	if not current or interuptable:
 		animp.play(id)
+
+func is_ray_colliding(ray, exclude_types=["Area2D"]):
+	if not ray:
+		return false
+	
+	var collided = ray.is_colliding()
+	var collider = null
+	var shape = null
+	var owner = null
+	
+	if collided:
+		collider = ray.get_collider()
+		
+		if collider.get_class() in exclude_types:
+			collided = false
+		elif not collider is TileMap:
+			shape = ray.get_collider_shape()
+			owner = collider.shape_find_owner(shape)
+			collided = not collider.is_shape_owner_disabled(owner)
+	
+	return collided
 
 
 class Span extends Resource:
