@@ -17,17 +17,18 @@ func _ready():
 		for k in res:
 			if res[k]:
 				res[k].connect("changed", self, "resource_changed", [k])
-				resource_changed(res[k].value, k)
-
-# TODO: add code to handle max and min bounds if different between hud and character.
-# May have to add a new signal to Quant for when bounds change (eg. max increased).
+				resource_changed({value=res[k].value, mini=res[k].mini, maxi=res[k].maxi}, k)
 
 func player_name_changed(name):
 	var n = find_node("player_name")
 	n.text = name
 
-func resource_changed(value, name):
+func resource_changed(state, name):
 	var n = find_node(name + "_bar")
 	
 	if n:
-		n.value = value
+		n.value = state.value
+	if n.get("min_value") != null:
+		n.min_value = state.mini
+	if n.get("max_value") != null:
+		n.max_value = state.maxi
