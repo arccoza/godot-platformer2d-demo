@@ -1,4 +1,4 @@
-extends 'character2d.gd'
+extends "character2d.gd"
 var VisionCone2D = preload("vision-cone2d.gd")
 
 export(int) var wander_period = 3
