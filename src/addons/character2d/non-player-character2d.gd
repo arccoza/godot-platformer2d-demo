@@ -78,10 +78,9 @@ func upd_action(delta):
 		
 	merge(action, _action)
 	
-	var turn = ($bump_detect and $bump_detect.is_colliding()) or ($edge_detect and not $edge_detect.is_colliding())
-#	prints(turn)
-	if not action.attack and turn:
-		if action.left or action.right:
+	if not action.attack:
+		var turn = is_ray_colliding($bump_detect) or not is_ray_colliding($edge_detect)
+		if turn and (action.left or action.right):
 			action.left = not action.left
 			action.right = not action.right
 	
