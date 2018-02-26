@@ -87,6 +87,27 @@ func upd_action(delta):
 	
 	return action
 
+func is_ray_colliding(ray, exclude_types=["Area2D"]):
+	if not ray:
+		return false
+	
+	var collided = ray.is_colliding()
+	var collider = null
+	var shape = null
+	var owner = null
+	
+	if collided:
+		collider = ray.get_collider()
+		
+		if collider.get_class() in exclude_types:
+			collided = false
+		elif not collider is TileMap:
+			shape = ray.get_collider_shape()
+			owner = collider.shape_find_owner(shape)
+			collided = not collider.is_shape_owner_disabled(owner)
+	
+	return collided
+
 func upd_direction(delta):
 	.upd_direction(delta)
 	if direction.x:
