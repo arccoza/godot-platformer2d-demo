@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/character2d/non-player-character2d.gd" type="Script" id=2]
@@ -10,9 +10,10 @@
 [ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=8]
 [ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=9]
 [ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=10]
-[ext_resource path="res://addons/character2d/character2d.gd" type="Script" id=11]
+[ext_resource path="res://addons/character2d/player-character2d.gd" type="Script" id=11]
 [ext_resource path="res://assets/sprites/Pig/pig_hair.png" type="Texture" id=12]
 [ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=13]
+[ext_resource path="res://scripts/KinematicBody2D.gd" type="Script" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -258,6 +259,11 @@ region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
 
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 34.1191, 33.2639 )
+
 [node name="Root" type="Node" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
@@ -272,7 +278,8 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="hud" parent="CanvasLayer" index="0" instance=ExtResource( 1 )]
 
-player_node = NodePath("../../Character2D")
+rect_clip_content = false
+player_node = NodePath("../../PlayerCharacter2D")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="1"]
 
@@ -321,7 +328,6 @@ _sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
-player_name = "Bob"
 gravity = Vector2( 0, 1000 )
 step_up = Vector2( 300, 990 )
 floor_angle_max = 45
@@ -385,10 +391,10 @@ collision_mask = 1
 
 [node name="edge_detect" type="RayCast2D" parent="NonPlayerCharacter2D" index="5"]
 
-position = Vector2( 20, 6 )
+position = Vector2( 10, 86 )
 enabled = true
 exclude_parent = true
-cast_to = Vector2( 0, 70 )
+cast_to = Vector2( 0, -70 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
@@ -452,7 +458,7 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 8 )
 
-[node name="Character2D" type="KinematicBody2D" parent="." index="3" groups=[
+[node name="PlayerCharacter2D" type="KinematicBody2D" parent="." index="3" groups=[
 "player",
 ]]
 
@@ -466,7 +472,6 @@ _sections_unfolded = [ "Collision", "collision" ]
 __meta__ = {
 "_editor_icon": ExtResource( 3 )
 }
-player_name = "Bob"
 gravity = Vector2( 0, 1000 )
 step_up = Vector2( 300, 990 )
 floor_angle_max = 45
@@ -479,8 +484,9 @@ health_value = 100
 health_max = 100
 energy_value = 100
 energy_max = 100
+player_name = "Bob"
 
-[node name="Anim" type="AnimationPlayer" parent="Character2D" index="0"]
+[node name="Anim" type="AnimationPlayer" parent="PlayerCharacter2D" index="0"]
 
 root_node = NodePath("..")
 autoplay = ""
@@ -494,7 +500,7 @@ anims/walk = SubResource( 12 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options", "playback" ]
 
-[node name="Sprite" type="Sprite" parent="Character2D" index="1"]
+[node name="Sprite" type="Sprite" parent="PlayerCharacter2D" index="1"]
 
 scale = Vector2( 4, 4 )
 texture = ExtResource( 6 )
@@ -502,13 +508,13 @@ hframes = 9
 frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D" index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter2D" index="2"]
 
 position = Vector2( 0, 10 )
 shape = SubResource( 13 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Camera2D" type="Camera2D" parent="Character2D" index="3"]
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter2D" index="3"]
 
 anchor_mode = 1
 rotating = false
@@ -533,7 +539,7 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = true
 
-[node name="step_limit" type="RayCast2D" parent="Character2D" index="4"]
+[node name="step_limit" type="RayCast2D" parent="PlayerCharacter2D" index="4"]
 
 position = Vector2( 0, 10 )
 enabled = true
@@ -542,7 +548,7 @@ cast_to = Vector2( 40, 0 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="Projectiles2D" type="Node2D" parent="Character2D" index="5"]
+[node name="Projectiles2D" type="Node2D" parent="PlayerCharacter2D" index="5"]
 
 editor/display_folded = true
 script = ExtResource( 7 )
@@ -561,7 +567,7 @@ gravity = Vector2( 0, 0 )
 projectile = null
 container = NodePath("../../TileMap")
 
-[node name="AreaProjectile2D" type="Area2D" parent="Character2D/Projectiles2D" index="0"]
+[node name="AreaProjectile2D" type="Area2D" parent="PlayerCharacter2D/Projectiles2D" index="0"]
 
 position = Vector2( 70, 0 )
 rotation = 1.5708
@@ -584,16 +590,16 @@ collision_groups = "terrain
 enemy"
 damage = -10.0
 
-[node name="Sprite2" type="Sprite" parent="Character2D/Projectiles2D/AreaProjectile2D" index="0"]
+[node name="Sprite2" type="Sprite" parent="PlayerCharacter2D/Projectiles2D/AreaProjectile2D" index="0"]
 
 texture = SubResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/AreaProjectile2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter2D/Projectiles2D/AreaProjectile2D" index="1"]
 
 shape = SubResource( 8 )
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Character2D/Projectiles2D" index="1"]
+[node name="RigidBody2D" type="RigidBody2D" parent="PlayerCharacter2D/Projectiles2D" index="1"]
 
 position = Vector2( 50, 0 )
 input_pickable = false
@@ -616,13 +622,13 @@ angular_velocity = 0.0
 angular_damp = -1.0
 _sections_unfolded = [ "Collision" ]
 
-[node name="Sprite" type="Sprite" parent="Character2D/Projectiles2D/RigidBody2D" index="0"]
+[node name="Sprite" type="Sprite" parent="PlayerCharacter2D/Projectiles2D/RigidBody2D" index="0"]
 
 position = Vector2( 40, 0 )
 rotation = 1.5708
 texture = SubResource( 14 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character2D/Projectiles2D/RigidBody2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCharacter2D/Projectiles2D/RigidBody2D" index="1"]
 
 position = Vector2( 40, 0 )
 shape = SubResource( 15 )
@@ -676,5 +682,33 @@ normal_map = null
 h_frames = 3
 v_frames = 1
 _sections_unfolded = [ "Drawing", "Material", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="CollisionObject2D" type="KinematicBody2D" parent="." index="6"]
+
+position = Vector2( 140, 780 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 14 )
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="CS2D" type="CollisionShape2D" parent="CollisionObject2D" index="0"]
+
+shape = SubResource( 19 )
+
+[node name="CollisionObject2D2" type="KinematicBody2D" parent="." index="7"]
+
+position = Vector2( 460, 780 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 14 )
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="CS2D" type="CollisionShape2D" parent="CollisionObject2D2" index="0"]
+
+shape = SubResource( 19 )
 
 
