@@ -259,7 +259,7 @@ class Quant extends Span:
 	
 	
 	signal limited(value, maxed)
-	signal changed(value)
+	signal changed(state)
 	
 	
 	func _init(v=null, minv=null, maxv=null):
@@ -281,6 +281,6 @@ class Quant extends Span:
 		
 		if v != value:
 			value = v
-			emit_signal("changed", v)
+			emit_signal("changed", {value=v, mini=mini, maxi=maxi})
 			if v == vmin or v == vmax:
 				emit_signal("limited", v, v == vmax)
