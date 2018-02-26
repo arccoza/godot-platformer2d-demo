@@ -28,7 +28,7 @@ func resource_changed(state, name):
 	
 	if n:
 		n.value = state.value
-	if n.get("min_value") != null:
-		n.min_value = state.mini
-	if n.get("max_value") != null:
-		n.max_value = state.maxi
+		if n.get("min_value") != null:
+			n.min_value = state.mini
+		if n.get("max_value") != null:
+			n.max_value = state.maxi
