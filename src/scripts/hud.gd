@@ -24,10 +24,13 @@ func player_name_changed(name):
 	n.text = name
 
 func resource_changed(state, name):
-	var n = find_node(name + "_bar")
+	var n = find_node(name)
 	
 	if n:
-		n.value = state.value
+		if n.get("value") != null:
+			n.value = state.value
+		elif n.get("text") != null:
+			n.text = str(state.value)
 		if n.get("min_value") != null:
 			n.min_value = state.mini
 		if n.get("max_value") != null:
