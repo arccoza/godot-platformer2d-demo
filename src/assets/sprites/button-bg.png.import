@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/back.png-80cc3db9e49b185ed5768f5a85935f2f.stex"
+path="res://.import/button-bg.png-02e0c80bc148a24d8f24816a231592fa.stex"
 
 [deps]
 
-source_file="res://assets/sprites/sunny-land/back.png"
-source_md5="d7678242fcc92af2b001aed53dc42863"
+source_file="res://assets/sprites/button-bg.png"
+source_md5="60704ea5a3dbbebb8842da001bc2a33f"
 
-dest_files=[ "res://.import/back.png-80cc3db9e49b185ed5768f5a85935f2f.stex" ]
-dest_md5="44b3e14104bf0c46168a780458fef488"
+dest_files=[ "res://.import/button-bg.png-02e0c80bc148a24d8f24816a231592fa.stex" ]
+dest_md5="260d5192775c6fa95bffa4348c753085"
 
 [params]
 
@@ -18,7 +18,7 @@ compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=1
+flags/repeat=0
 flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
