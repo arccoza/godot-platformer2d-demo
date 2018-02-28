@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pickup.wav-99a1b8581ceaa33061a31a99c018414b.sample"
+
+[deps]
+
+source_file="res://assets/soundfx/pickup.wav"
+source_md5="61bac2ab357573c7b3c1b8c4e323c5ae"
+
+dest_files=[ "res://.import/pickup.wav-99a1b8581ceaa33061a31a99c018414b.sample" ]
+dest_md5="7d78062c9b83bf1a1cf47ae4c562c5f3"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

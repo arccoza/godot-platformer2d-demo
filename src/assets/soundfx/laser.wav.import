@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/laser.wav-2449ee3e942e8973b2440808f29fd483.sample"
+
+[deps]
+
+source_file="res://assets/soundfx/laser.wav"
+source_md5="20c0226c41f9c5d1bb158cfcd73d689e"
+
+dest_files=[ "res://.import/laser.wav-2449ee3e942e8973b2440808f29fd483.sample" ]
+dest_md5="b748b7bed46b87e384faad36ae4ed714"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
