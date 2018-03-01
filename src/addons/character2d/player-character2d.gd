@@ -1,6 +1,6 @@
 extends "character2d.gd"
 
-export var player_name = "Bob"
+export var player_name = "Unknown"
 
 export var points_value = 100
 var points_min = 0

@@ -495,7 +495,7 @@ health_value = 100
 health_max = 100
 energy_value = 100
 energy_max = 100
-player_name = "Bob"
+player_name = "Unknown"
 points_value = 100
 points_max = 100
 
