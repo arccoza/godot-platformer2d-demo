@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/hud.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/resource-bar-bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/resource-bar.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/Mr. JUNKER MSX.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/Magero.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://assets/sprites/coin-icon.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -156,10 +156,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 284.0
-margin_top = 2.0
-margin_right = 381.0
-margin_bottom = 29.0
+margin_left = 248.0
+margin_top = 8.0
+margin_right = 406.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -181,8 +181,8 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 391.0
-margin_right = 423.0
+margin_left = 416.0
+margin_right = 448.0
 margin_bottom = 32.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -199,10 +199,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 433.0
-margin_top = 2.0
-margin_right = 451.0
-margin_bottom = 29.0
+margin_left = 458.0
+margin_top = 8.0
+margin_right = 488.0
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
