@@ -7,10 +7,10 @@ path="res://.import/title.png-38a305cc8316c1bd6bcbe3f9441ae050.stex"
 [deps]
 
 source_file="res://assets/sprites/title.png"
-source_md5="4120317fdeccf1478908e2faefb1c8c3"
+source_md5="59159765f23ff62cd5b399a23d1573e8"
 
 dest_files=[ "res://.import/title.png-38a305cc8316c1bd6bcbe3f9441ae050.stex" ]
-dest_md5="e2d36d64b7aee554de68abd5b4d67b80"
+dest_md5="e784f4bf951e813b38b865aab934a80a"
 
 [params]
 
