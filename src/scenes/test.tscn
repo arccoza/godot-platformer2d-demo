@@ -1,7 +1,7 @@
 [gd_scene load_steps=44 format=2]
 
-[ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/title_screen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/hud-screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/title-screen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/character2d/non-player-character2d.gd" type="Script" id=3]
 [ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=4]
 [ext_resource path="res://addons/character2d/vision-cone2d.gd" type="Script" id=5]
@@ -286,8 +286,6 @@ scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="hud_screen" parent="CanvasLayer" index="0" instance=ExtResource( 1 )]
-
-player_node = NodePath("../../PlayerCharacter2D")
 
 [node name="title_screen" parent="CanvasLayer" index="1" instance=ExtResource( 2 )]
 
