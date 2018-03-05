@@ -1,10 +1,11 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://assets/tiles/grotto-escape-tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/tiles/lava.png" type="Texture" id=2]
 [ext_resource path="res://assets/tiles/lava-fall.png" type="Texture" id=3]
 [ext_resource path="res://assets/tiles/water.png" type="Texture" id=4]
-[ext_resource path="res://assets/tiles/waterfall.png" type="Texture" id=5]
+[ext_resource path="res://scripts/tex2d-frame-anim-shader.shader" type="Shader" id=5]
+[ext_resource path="res://assets/tiles/waterfall.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 
@@ -672,13 +673,26 @@ filter_clip = false
 
 code = "shader_type canvas_item;
 
-uniform vec2 scroll = vec2(0.0, 1.0);
+uniform uint frames;
+uniform float rate : hint_range(0, 1000, 1);
+uniform vec2 direction = vec2(1, 0);
+
+vec2 get_frame(vec2 UV, float t, int n) {
+	vec2 frame_offset = 1.0/float(frames) * direction;
+	frame_offset *= floor(t + float(n));
+	vec2 uv = UV + frame_offset;
+	return uv = mod(uv, 1.0);
+}
 
 void fragment() {
-	vec2 uv = UV - scroll * TIME;
-	uv = mod(uv, 1.0);
+	float t = TIME * rate;
+	float opacity = mod(t, 1.0);
+	vec2 uv1 = get_frame(UV, t, -1);
+	vec2 uv2 = get_frame(UV, t, 0);
 	
-	COLOR = texture(TEXTURE, uv);
+	vec4 c1 = texture(TEXTURE, uv1);
+	vec4 c2 = texture(TEXTURE, uv2);
+	COLOR = mix(c1, c2, opacity);
 }"
 _sections_unfolded = [ "Resource" ]
 
@@ -686,10 +700,12 @@ _sections_unfolded = [ "Resource" ]
 
 render_priority = 0
 shader = SubResource( 88 )
-shader_param/scroll = Vector2( 0.1, 0 )
+shader_param/frames = 3
+shader_param/rate = 2.0
+shader_param/direction = Vector2( 1, 0 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=90]
+[sub_resource type="Shader" id=94]
 
 code = "shader_type canvas_item;
 
@@ -714,57 +730,32 @@ void fragment() {
 	vec4 c2 = texture(TEXTURE, uv2);
 	COLOR = mix(c1, c2, opacity);
 }"
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="ShaderMaterial" id=91]
 
 render_priority = 0
-shader = SubResource( 90 )
+shader = SubResource( 94 )
 shader_param/frames = 3
-shader_param/rate = 6.0
-shader_param/direction = null
+shader_param/rate = 4.0
+shader_param/direction = Vector2( 1, 0 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=92]
+[sub_resource type="ShaderMaterial" id=92]
 
-code = "shader_type canvas_item;
-
-uniform vec2 scroll = vec2(0.0, 1.0);
-
-void fragment() {
-	vec2 uv = UV - scroll * TIME;
-	uv = mod(uv, 1.0);
-	
-	COLOR = texture(TEXTURE, uv);
-}"
-_sections_unfolded = [ "Resource" ]
+render_priority = 0
+shader = SubResource( 88 )
+shader_param/frames = 3
+shader_param/rate = 4.0
+shader_param/direction = Vector2( 1, 0 )
+_sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="ShaderMaterial" id=93]
 
 render_priority = 0
-shader = SubResource( 92 )
-shader_param/scroll = Vector2( 0.4, 0 )
-_sections_unfolded = [ "shader_param" ]
-
-[sub_resource type="Shader" id=94]
-
-code = "shader_type canvas_item;
-
-uniform vec2 scroll = vec2(0.0, 1.0);
-
-void fragment() {
-	vec2 uv = UV - scroll * TIME;
-	uv = mod(uv, 1.0);
-	
-	COLOR = texture(TEXTURE, uv) * abs(fract(TIME) - 0.5) + texture(TEXTURE, vec2(1.0, 2.0 * uv.y) - uv) * (1.0 - abs(fract(TIME) - 0.5));
-}"
-_sections_unfolded = [ "Resource" ]
-
-[sub_resource type="ShaderMaterial" id=95]
-
-render_priority = 0
-shader = SubResource( 94 )
-shader_param/scroll = Vector2( 0, 1.2 )
+shader = ExtResource( 5 )
+shader_param/frames = 3
+shader_param/rate = 6.0
+shader_param/direction = null
 _sections_unfolded = [ "shader_param" ]
 
 [node name="Node2D" type="Node2D" index="0"]
@@ -2604,8 +2595,9 @@ shape = SubResource( 79 )
 material = SubResource( 89 )
 position = Vector2( 48, 256 )
 texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 48, 32 )
-_sections_unfolded = [ "Material" ]
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Material", "Region" ]
 
 [node name="LavaFall" type="Sprite" parent="." index="15"]
 
@@ -2618,18 +2610,20 @@ _sections_unfolded = [ "Animation", "Material", "Region" ]
 
 [node name="Water" type="Sprite" parent="." index="16"]
 
-material = SubResource( 93 )
+material = SubResource( 92 )
 position = Vector2( 48, 296 )
 texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 48, 32 )
-_sections_unfolded = [ "Material" ]
+region_enabled = true
+region_rect = Rect2( 0, 0, 32, 32 )
+_sections_unfolded = [ "Material", "Region" ]
 
 [node name="WaterFall" type="Sprite" parent="." index="17"]
 
-material = SubResource( 95 )
+material = SubResource( 93 )
 position = Vector2( 128, 296 )
-texture = ExtResource( 5 )
-region_rect = Rect2( 0, 0, 48, 32 )
-_sections_unfolded = [ "Material" ]
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+_sections_unfolded = [ "Material", "Region" ]
 
 

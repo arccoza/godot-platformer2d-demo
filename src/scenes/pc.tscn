@@ -1,0 +1,257 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://addons/character2d/player-character2d.gd" type="Script" id=1]
+[ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=2]
+[ext_resource path="res://skel.tres" type="Texture" id=3]
+[ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=4]
+[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=5]
+[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=6]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=7]
+
+[sub_resource type="Animation" id=1]
+
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 0.1
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 2, 0 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 5.15014
+height = 2.95992
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="AtlasTexture" id=6]
+
+flags = 0
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="CircleShape2D" id=7]
+
+custom_solver_bias = 0.0
+radius = 4.07462
+
+[sub_resource type="OccluderPolygon2D" id=8]
+
+closed = true
+cull_mode = 0
+polygon = PoolVector2Array( -2.724, 8.22501, -0.724001, 3.22501, 0.275999, 2.22501, 1.276, 3.22501, 3.276, 8.22501 )
+
+[node name="PlayerCharacter2D" type="KinematicBody2D"]
+
+position = Vector2( -26.276, 339.775 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
+__meta__ = {
+"_editor_icon": ExtResource( 2 )
+}
+gravity = Vector2( 0, 1000 )
+step_up = Vector2( 300, 990 )
+floor_angle_max = 45
+speed_min = Vector2( 10, 6 )
+speed_max = Vector2( 220, 2000 )
+speed_inc = Vector2( 0.4, 0.8 )
+speed_dec = Vector2( 0.1, 1 )
+boost_mul = Vector2( 4, 2 )
+health_value = 100
+health_max = 100
+energy_value = 100
+energy_max = 100
+player_name = "Unknown"
+points_value = 100
+points_max = 100
+
+[node name="Anim" type="AnimationPlayer" parent="." index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/attack = SubResource( 1 )
+anims/die = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Playback Options", "playback" ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 3 )
+hframes = 9
+frame = 1
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+
+position = Vector2( 0, 2 )
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.25, 0.25 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.02
+drag_margin_top = 0.02
+drag_margin_right = 0.02
+drag_margin_bottom = 0.02
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = true
+_sections_unfolded = [ "Drag Margin" ]
+
+[node name="step_limit" type="RayCast2D" parent="." index="4"]
+
+position = Vector2( 0, 4 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 10, 0 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Projectiles2D" type="Node2D" parent="." index="5"]
+
+script = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+active = false
+cycles = 2
+period = 1.0
+span = 0.5
+amount = 20
+speed = 100
+direction = Vector2( 1, 0 )
+gravity = Vector2( 0, 0 )
+projectile = null
+container = NodePath("..")
+
+[node name="AreaProjectile2D" type="Area2D" parent="Projectiles2D" index="0"]
+
+position = Vector2( 10, 2.14569e-06 )
+rotation = 1.5708
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 524288
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 6 )
+_sections_unfolded = [ "Collision", "Transform" ]
+__meta__ = {
+"_editor_icon": ExtResource( 5 )
+}
+lifetime = 0.5
+collisions = 1
+collision_groups = "terrain
+enemy"
+damage = -10.0
+
+[node name="Sprite2" type="Sprite" parent="Projectiles2D/AreaProjectile2D" index="0"]
+
+texture = SubResource( 6 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectiles2D/AreaProjectile2D" index="1"]
+
+position = Vector2( 0.499989, -3 )
+shape = SubResource( 7 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="6"]
+
+occluder = SubResource( 8 )
+light_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+
