@@ -1914,4 +1914,5 @@ filter_clip = false
 78/occluder_offset = Vector2( 24, 8 )
 78/navigation_offset = Vector2( 24, 8 )
 78/shapes = [  ]
+_sections_unfolded = [ "0" ]
 

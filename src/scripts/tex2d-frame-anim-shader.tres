@@ -1,0 +1,23 @@
+shader_type canvas_item;
+
+uniform uint frames;
+uniform float rate : hint_range(0, 1000, 1);
+uniform vec2 direction = vec2(1, 0);
+
+vec2 get_frame(vec2 UV, float t, int n) {
+	vec2 frame_offset = 1.0/float(frames) * direction;
+	frame_offset *= floor(t + float(n));
+	vec2 uv = UV + frame_offset;
+	return uv = mod(uv, 1.0);
+}
+
+void fragment() {
+	float t = TIME * rate;
+	float opacity = mod(t, 1.0);
+	vec2 uv1 = get_frame(UV, t, -1);
+	vec2 uv2 = get_frame(UV, t, 0);
+	
+	vec4 c1 = texture(TEXTURE, uv1);
+	vec4 c2 = texture(TEXTURE, uv2);
+	COLOR = mix(c1, c2, opacity);
+}

@@ -693,13 +693,26 @@ _sections_unfolded = [ "shader_param" ]
 
 code = "shader_type canvas_item;
 
-uniform vec2 scroll = vec2(0.0, 1.0);
+uniform uint frames;
+uniform float rate : hint_range(0, 1000, 1);
+uniform vec2 direction = vec2(1, 0);
+
+vec2 get_frame(vec2 UV, float t, int n) {
+	vec2 frame_offset = 1.0/float(frames) * direction;
+	frame_offset *= floor(t + float(n));
+	vec2 uv = UV + frame_offset;
+	return uv = mod(uv, 1.0);
+}
 
 void fragment() {
-	vec2 uv = UV - scroll * TIME;
-	uv = mod(uv, 1.0);
+	float t = TIME * rate;
+	float opacity = mod(t, 1.0);
+	vec2 uv1 = get_frame(UV, t, -1);
+	vec2 uv2 = get_frame(UV, t, 0);
 	
-	COLOR = texture(TEXTURE, uv);
+	vec4 c1 = texture(TEXTURE, uv1);
+	vec4 c2 = texture(TEXTURE, uv2);
+	COLOR = mix(c1, c2, opacity);
 }"
 _sections_unfolded = [ "Resource" ]
 
@@ -707,7 +720,9 @@ _sections_unfolded = [ "Resource" ]
 
 render_priority = 0
 shader = SubResource( 90 )
-shader_param/scroll = Vector2( 0, 0.3 )
+shader_param/frames = 3
+shader_param/rate = 6.0
+shader_param/direction = null
 _sections_unfolded = [ "shader_param" ]
 
 [sub_resource type="Shader" id=92]
@@ -752,7 +767,7 @@ shader = SubResource( 94 )
 shader_param/scroll = Vector2( 0, 1.2 )
 _sections_unfolded = [ "shader_param" ]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
 [node name="BlueA" type="Node2D" parent="." index="0"]
 
@@ -2597,8 +2612,9 @@ _sections_unfolded = [ "Material" ]
 material = SubResource( 91 )
 position = Vector2( 128, 256 )
 texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 48, 32 )
-_sections_unfolded = [ "Material" ]
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 16 )
+_sections_unfolded = [ "Animation", "Material", "Region" ]
 
 [node name="Water" type="Sprite" parent="." index="16"]
 
