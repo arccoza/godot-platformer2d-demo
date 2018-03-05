@@ -1,11 +1,13 @@
-[gd_resource type="TileSet" load_steps=110 format=2]
+[gd_resource type="TileSet" load_steps=112 format=2]
 
 [ext_resource path="res://assets/tiles/grotto-escape-tiles.png" type="Texture" id=1]
 [ext_resource path="res://assets/tiles/lava.png" type="Texture" id=2]
 [ext_resource path="res://assets/tiles/lava-fall.png" type="Texture" id=3]
-[ext_resource path="res://assets/tiles/water.png" type="Texture" id=4]
-[ext_resource path="res://scripts/tex2d-frame-anim-shader.shader" type="Shader" id=5]
-[ext_resource path="res://assets/tiles/waterfall.png" type="Texture" id=6]
+[ext_resource path="res://assets/tiles/lava-fill.png" type="Texture" id=4]
+[ext_resource path="res://assets/tiles/water.png" type="Texture" id=5]
+[ext_resource path="res://scripts/tex2d-frame-anim-shader.shader" type="Shader" id=6]
+[ext_resource path="res://assets/tiles/waterfall.png" type="Texture" id=7]
+[ext_resource path="res://assets/tiles/water-fill.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -786,7 +788,7 @@ _sections_unfolded = [ "shader_param" ]
 [sub_resource type="ShaderMaterial" id=93]
 
 render_priority = 0
-shader = ExtResource( 5 )
+shader = ExtResource( 6 )
 shader_param/frames = 3
 shader_param/rate = 6.0
 shader_param/direction = null
@@ -1900,25 +1902,43 @@ filter_clip = false
 76/occluder_offset = Vector2( 8, 8 )
 76/navigation_offset = Vector2( 8, 8 )
 76/shapes = [  ]
-77/name = "Water"
+77/name = "LavaFill"
 77/texture = ExtResource( 4 )
 77/tex_offset = Vector2( 0, 0 )
-77/material = SubResource( 92 )
 77/modulate = Color( 1, 1, 1, 1 )
-77/region = Rect2( 0, 0, 32, 32 )
+77/region = Rect2( 0, 0, 16, 16 )
 77/is_autotile = false
-77/occluder_offset = Vector2( 16, 16 )
-77/navigation_offset = Vector2( 16, 16 )
+77/occluder_offset = Vector2( 8, 8 )
+77/navigation_offset = Vector2( 8, 8 )
 77/shapes = [  ]
-78/name = "WaterFall"
-78/texture = ExtResource( 6 )
+78/name = "Water"
+78/texture = ExtResource( 5 )
 78/tex_offset = Vector2( 0, 0 )
-78/material = SubResource( 93 )
+78/material = SubResource( 92 )
 78/modulate = Color( 1, 1, 1, 1 )
-78/region = Rect2( 0, 0, 16, 16 )
+78/region = Rect2( 0, 0, 32, 32 )
 78/is_autotile = false
-78/occluder_offset = Vector2( 8, 8 )
-78/navigation_offset = Vector2( 8, 8 )
+78/occluder_offset = Vector2( 16, 16 )
+78/navigation_offset = Vector2( 16, 16 )
 78/shapes = [  ]
+79/name = "WaterFall"
+79/texture = ExtResource( 7 )
+79/tex_offset = Vector2( 0, 0 )
+79/material = SubResource( 93 )
+79/modulate = Color( 1, 1, 1, 1 )
+79/region = Rect2( 0, 0, 16, 16 )
+79/is_autotile = false
+79/occluder_offset = Vector2( 8, 8 )
+79/navigation_offset = Vector2( 8, 8 )
+79/shapes = [  ]
+80/name = "WaterFill"
+80/texture = ExtResource( 8 )
+80/tex_offset = Vector2( 0, 0 )
+80/modulate = Color( 1, 1, 1, 1 )
+80/region = Rect2( 0, 0, 16, 16 )
+80/is_autotile = false
+80/occluder_offset = Vector2( 8, 8 )
+80/navigation_offset = Vector2( 8, 8 )
+80/shapes = [  ]
 _sections_unfolded = [ "0" ]
 

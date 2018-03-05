@@ -205,9 +205,9 @@ __meta__ = {
 }
 active = false
 cycles = 2
-period = 1.0
+period = 0.1
 span = 0.5
-amount = 20
+amount = 1
 speed = 100
 direction = Vector2( 1, 0 )
 gravity = Vector2( 0, 0 )
