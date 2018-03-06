@@ -707,7 +707,7 @@ shader_param/rate = 2.0
 shader_param/direction = Vector2( 1, 0 )
 _sections_unfolded = [ "shader_param" ]
 
-[sub_resource type="Shader" id=104]
+[sub_resource type="Shader" id=90]
 
 code = "shader_type canvas_item;
 
@@ -736,7 +736,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=91]
 
 render_priority = 0
-shader = SubResource( 104 )
+shader = SubResource( 90 )
 shader_param/frames = 3
 shader_param/rate = 4.0
 shader_param/direction = Vector2( 1, 0 )
@@ -755,16 +755,12 @@ _sections_unfolded = [ "shader_param" ]
 
 render_priority = 0
 shader = ExtResource( 6 )
-shader_param/frames = 3
-shader_param/rate = 6.0
-shader_param/direction = null
 _sections_unfolded = [ "shader_param" ]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="BlueA" type="Node2D" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 32, 32 )
 
 [node name="BlueA01TL" type="Sprite" parent="BlueA" index="0"]
