@@ -1,0 +1,155 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/tiles/grotto-escape-bg-tiles.png" type="Texture" id=1]
+[ext_resource path="res://assets/tiles/torch.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+
+uniform uint frames;
+uniform float rate : hint_range(0, 1000, 1);
+uniform vec2 direction = vec2(1, 0);
+
+vec2 get_frame(vec2 UV, float t, int n) {
+	vec2 frame_offset = 1.0/float(frames) * direction;
+	frame_offset *= floor(t + float(n));
+	vec2 uv = UV + frame_offset;
+	return uv = mod(uv, 1.0);
+}
+
+void fragment() {
+	float t = TIME * rate;
+	float opacity = mod(t, 1.0);
+	vec2 uv1 = get_frame(UV, t, -1);
+	vec2 uv2 = get_frame(UV, t, 0);
+	
+	vec4 c1 = texture(TEXTURE, uv1);
+	vec4 c2 = texture(TEXTURE, uv2);
+	COLOR = mix(c1, c2, opacity);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/frames = 3
+shader_param/rate = 2.0
+shader_param/direction = Vector2( 1, 0 )
+_sections_unfolded = [ "shader_param" ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="wall_tile01" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 16, 96, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_tile02" type="Sprite" parent="." index="1"]
+
+position = Vector2( 0, 24 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 400, 64, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="wall_tile03" type="Sprite" parent="." index="2"]
+
+position = Vector2( 0, 48 )
+texture = ExtResource( 1 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 400, 80, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="pillar01" type="Sprite" parent="." index="3"]
+
+position = Vector2( 32, 8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 96, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="pillar02" type="Sprite" parent="." index="4"]
+
+position = Vector2( 32, 24 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 112, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="pillar03" type="Sprite" parent="." index="5"]
+
+position = Vector2( 32, 40 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 48, 128, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="grass" type="Sprite" parent="." index="6"]
+
+position = Vector2( 64, 32 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 192, 112, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="foliage" type="Sprite" parent="." index="7"]
+
+position = Vector2( 160, 128 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -80 )
+region_enabled = true
+region_rect = Rect2( 80, 48, 144, 96 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="leaves01" type="Sprite" parent="." index="8"]
+
+position = Vector2( 248, 8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 48, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="leaves02" type="Sprite" parent="." index="9"]
+
+position = Vector2( 248, 32 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 256, 80, 16, 16 )
+_sections_unfolded = [ "Region" ]
+
+[node name="altar" type="Sprite" parent="." index="10"]
+
+position = Vector2( 304, 128 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -80 )
+region_enabled = true
+region_rect = Rect2( 288, 48, 80, 96 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="door" type="Sprite" parent="." index="11"]
+
+position = Vector2( 368, 32 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 400, 112, 32, 32 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="torch" type="Sprite" parent="." index="12"]
+
+material = SubResource( 2 )
+position = Vector2( 368, 72 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 16, 32 )
+_sections_unfolded = [ "Material", "Offset", "Region" ]
+
+
