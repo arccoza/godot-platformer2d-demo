@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/hud-screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/title-screen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/pc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=4]
 [ext_resource path="res://assets/sprites/grotto-escape/lava-light.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/cavern-background.png" type="Texture" id=6]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -241,5 +242,47 @@ shadow_filter = 2
 shadow_filter_smooth = 32.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Shadow", "Transform" ]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+_sections_unfolded = [ "Scroll" ]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" index="0"]
+
+motion_scale = Vector2( 0.5, 0.5 )
+motion_offset = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1920, 2880 )
+_sections_unfolded = [ "Motion" ]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer" index="0"]
+
+self_modulate = Color( 0.0627451, 0.431373, 0.654902, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1920.0
+margin_bottom = 2880.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 6 )
+stretch_mode = 2
+_sections_unfolded = [ "Rect", "Visibility" ]
 
 
