@@ -228,7 +228,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource( 17 )
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -285,6 +285,7 @@ shape = SubResource( 1 )
 "enemy",
 ]]
 
+editor/display_folded = true
 position = Vector2( 370, 0 )
 input_pickable = false
 collision_layer = 1
@@ -413,7 +414,7 @@ lifetime = 0.5
 collisions = 1
 collision_groups = "terrain
 player"
-damage = -10.0
+health = -10.0
 
 [node name="Sprite2" type="Sprite" parent="NonPlayerCharacter2D/Projectiles2D2/AreaProjectile2D" index="0"]
 
