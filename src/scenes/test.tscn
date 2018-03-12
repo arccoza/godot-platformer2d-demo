@@ -301,6 +301,7 @@ floor_angle_max = 45
 speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
+can_float = false
 boost_mul = Vector2( 4, 2 )
 health_value = 100
 health_max = 100
@@ -424,6 +425,8 @@ _sections_unfolded = [ "Transform" ]
 shape = SubResource( 8 )
 
 [node name="PlayerCharacter2D" parent="." index="3" instance=ExtResource( 12 )]
+
+can_float = false
 
 [node name="TileMap" type="TileMap" parent="." index="4" groups=[
 "terrain",
