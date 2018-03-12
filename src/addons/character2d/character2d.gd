@@ -5,11 +5,23 @@ var Projectiles2D = preload("projectiles2d.gd")
 export var gravity = Vector2(0, 1000)
 export var step_up = Vector2(300, 990)
 export var floor_angle_max = 45
-export var speed_min = Vector2(10, 6)
+var floor_normal = Vector2(0, -1)
+var floor_angle = deg2rad(floor_angle_max)
+
+var speed_min = Vector2(10, 6)
 export var speed_max = Vector2(220, 2000)
 export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
+var speed = Vector2(0, 0)
+var direction = Vector2(0, 0)
+var direction_last = Vector2(1, 0)
+var velocity = Vector2(0, 0)
+var y_time = 0.2
+var y_timer = y_time
+
 export var boost_mul = Vector2(4, 2)
+var boost = Vector2(1, 1)
+const boost_reset = Vector2(1, 1)
 
 export var health_value = 100
 var health_min = 0
@@ -21,16 +33,7 @@ export var energy_max = 100
 var energy = Quant.new(energy_value, energy_min, energy_max)
 
 var action = { attack = false, boost = false, left = false, right = false, up = false, down = false }
-var boost = Vector2(1, 1)
-const boost_reset = Vector2(1, 1)
-var direction = Vector2(0, 0)
-var direction_last = Vector2(1, 0)
-var speed = Vector2(0, 0)
-var velocity = Vector2(0, 0)
-var floor_normal = Vector2(0, -1)
-var floor_angle = deg2rad(floor_angle_max)
-var y_time = 0.2
-var y_timer = y_time
+
 var sprite = null
 var animp = null
 var proj = null
