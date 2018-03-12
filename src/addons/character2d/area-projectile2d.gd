@@ -3,7 +3,7 @@ extends Area2D
 export(float) var lifetime = 5.0
 export(int) var collisions = 1
 export(String, MULTILINE) var collision_groups = "terrain\nenemy" setget set_collision_groups, get_collision_groups
-export(float) var damage = 0.0
+export(float) var health = 0.0
 
 var container = null
 var velocity = Vector2(0, 0)
@@ -68,7 +68,7 @@ func impact(target, groups):
 	emit_signal("impacted", target, groups)
 	
 	if target.get("health"):
-		target.health.mod(damage)
+		target.health.mod(health)
 	
 	collisions -= 1
 	if collisions == 0:
