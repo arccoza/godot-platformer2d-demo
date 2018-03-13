@@ -81,4 +81,7 @@ func _draw_cone():
 	
 	colors.append(ColorN("green", 0.35))
 	
+	for p in points:
+		draw_circle(p, 2.0, colors[0])
+	
 	draw_polygon(points, colors)
