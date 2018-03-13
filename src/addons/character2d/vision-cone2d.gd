@@ -52,16 +52,6 @@ signal found(obj, is_area)  #detected
 signal lost(obj, is_area)  #ignored
 
 
-func add_to_group(group, persistent=false):
-	var layer = pow(2, ProjectSettings.get_setting("layer_names/2d_physics/" + group))
-	prints("layer", layer)
-#	set_collision_layer_bit(layer, true)
-	.add_to_group(group, persistent)
-
-func remove_from_group(group):
-	prints(group)
-	.remove_from_group(group)
-
 func _ready():
 	prints("ProjectSettings", ProjectSettings.get_setting("layer_names/2d_physics/ANY"))
 	shape.points = cone_points
