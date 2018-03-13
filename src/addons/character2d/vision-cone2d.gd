@@ -7,7 +7,6 @@ export(Color, RGBA) var color = ColorN("green", 0.35) setget set_color
 export(int, 36, 360) var resolution = 72
 export(bool) var cone_is_visible = false
 export(bool) var points_are_visible = false
-export(String, MULTILINE) var target_groups = "player" setget set_target_groups
 var cone_points = PoolVector2Array()
 var ray_points = PoolVector2Array()
 var area = Area2D.new()
@@ -15,6 +14,13 @@ var owner_id = null
 var shape = ConvexPolygonShape2D.new()
 var target = null
 var is_target_hittable = false
+enum _layers { LAYER_DEFAULT=1, LAYER_PC=2, LAYER_NPC=4, LAYER_TERRAIN=32, LAYER_OBJECT=64, LAYER_PROJECTILE=128 }
+export(int, FLAGS, "DEFAULT", "PC", "NPC", "TERRAIN", "OBJECT", "PROJECTILE") var targets = LAYER_PC setget set_targets
+
+
+func set_targets(val):
+	prints("targets:", val)
+	targets = val
 
 
 func set_radius(val):
@@ -38,25 +44,16 @@ func set_color(val):
 	update()
 
 
-func set_target_groups(val):
-	match typeof(val):
-		TYPE_STRING:
-			target_groups = val.split("\n")
-		TYPE_ARRAY:
-			target_groups = PoolStringArray(val)
-		TYPE_STRING_ARRAY:
-			target_groups = val
-
-
 signal found(obj, is_area)  #detected
 signal lost(obj, is_area)  #ignored
 
 
 func _ready():
-	prints("ProjectSettings", ProjectSettings.get_setting("layer_names/2d_physics/ANY"))
 	shape.points = cone_points
 	owner_id = area.create_shape_owner(self)
 	area.shape_owner_add_shape(owner_id, shape)
+	area.collision_layer = 0
+	area.collision_mask = targets
 	area.connect("area_entered", self, "_on_entered", [true])
 	area.connect("body_entered", self, "_on_entered", [false])
 	area.connect("area_exited", self, "_on_exited", [true])
@@ -77,23 +74,13 @@ func _physics_process(delta):
 	
 #	prints(is_target_hittable)
 
-func _is_in_target_groups(node):
-	var valid = false
-	for g in target_groups:
-		valid = node.is_in_group(g)
-		if valid:
-			break
-	return valid
-
 func _on_entered(obj, is_area):
-	if _is_in_target_groups(obj):
-		target = obj
-		emit_signal("found", obj, is_area)
+	target = obj
+	emit_signal("found", obj, is_area)
 
 func _on_exited(obj, is_area):
-	if _is_in_target_groups(obj):
-		target = null
-		emit_signal("lost", obj, is_area)
+	target = null
+	emit_signal("lost", obj, is_area)
 
 func _update_cone_points():
 	var ang = deg2rad(angle)

@@ -40,6 +40,7 @@ var animp = null
 var proj = null
 var step_limit = null
 var paused = false setget set_paused, get_paused
+enum _layers { LAYER_DEFAULT=1, LAYER_PC=2, LAYER_NPC=4, LAYER_TERRAIN=32, LAYER_OBJECT=64, LAYER_PROJECTILE=128 }
 
 
 func set_paused(val):

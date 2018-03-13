@@ -10,6 +10,7 @@ var velocity = Vector2(0, 0)
 #var gravity = Vector2(0, 0)
 var time = 0
 var _offset = null
+enum _layers { LAYER_DEFAULT=1, LAYER_PC=2, LAYER_NPC=4, LAYER_TERRAIN=32, LAYER_OBJECT=64, LAYER_PROJECTILE=128 }
 
 
 func set_collision_groups(val):
@@ -25,7 +26,7 @@ func get_collision_groups():
 	return collision_groups
 
 
-signal impacted(target, groups)
+signal impacted(target)
 
 
 func _prep(data):
@@ -54,18 +55,10 @@ func _physics_process(delta):
 		die()
 
 func _on_collision(target=null):
-	var target_groups = target.get_groups()
-	var groups = []
-	
-	for cg in collision_groups:
-		if cg in target_groups:
-			groups.append(cg)
-	
-	if groups.size():
-		impact(target, groups)
+	impact(target)
 
-func impact(target, groups):
-	emit_signal("impacted", target, groups)
+func impact(target):
+	emit_signal("impacted", target)
 	
 	if target.get("health"):
 		target.health.mod(health)
