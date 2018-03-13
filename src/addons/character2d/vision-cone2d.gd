@@ -4,6 +4,7 @@ extends Node2D
 export(float) var radius = 100 setget set_radius, get_angle
 export(float, 0, 360) var angle = 30 setget set_angle, get_angle
 #export(Color, RGBA) var color = ColorN("green", 0.35)
+export(int, 36, 360) var resolution = 72
 export(bool) var cone_is_visible = false
 var cone_points = PoolVector2Array()
 var area = Area2D.new()
@@ -49,7 +50,7 @@ func _on_exited(obj, is_area):
 
 func _update_cone_points():
 	var ang = deg2rad(angle)
-	var res = ceil((36.0/360.0) * angle * radius/360)  # Number of points in the arc.
+	var res = ceil((resolution/360.0) * angle * radius/360)  # Number of points in the arc.
 	print(res)
 	var inc = ang/res  # The size of the arc angle steps.
 	ang = ang / 2  # The starting angle.
