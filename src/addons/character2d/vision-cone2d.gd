@@ -7,6 +7,7 @@ export(Color, RGBA) var color = ColorN("green", 0.35) setget set_color
 export(int, 36, 360) var resolution = 72
 export(bool) var cone_is_visible = false
 export(bool) var points_are_visible = false
+export(String, MULTILINE) var target_groups = "player" setget set_target_groups
 var cone_points = PoolVector2Array()
 var ray_points = PoolVector2Array()
 var area = Area2D.new()
@@ -37,6 +38,16 @@ func set_color(val):
 	update()
 
 
+func set_target_groups(val):
+	match typeof(val):
+		TYPE_STRING:
+			target_groups = val.split("\n")
+		TYPE_ARRAY:
+			target_groups = PoolStringArray(val)
+		TYPE_STRING_ARRAY:
+			target_groups = val
+
+
 signal found(obj, is_area)  #detected
 signal lost(obj, is_area)  #ignored
 
@@ -63,16 +74,23 @@ func _physics_process(delta):
 	else:
 		draw_ray(null, null)
 	
-	prints(is_target_hittable)
-	
+#	prints(is_target_hittable)
+
+func _is_in_target_groups(node):
+	var valid = false
+	for g in target_groups:
+		valid = node.is_in_group(g)
+		if valid:
+			break
+	return valid
 
 func _on_entered(obj, is_area):
-	if obj.is_in_group("player"):
+	if _is_in_target_groups(obj):
 		target = obj
 	emit_signal("found", obj, is_area)
 
 func _on_exited(obj, is_area):
-	if obj.is_in_group("player"):
+	if _is_in_target_groups(obj):
 		target = null
 	emit_signal("lost", obj, is_area)
 
