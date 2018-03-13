@@ -285,7 +285,6 @@ shape = SubResource( 1 )
 "enemy",
 ]]
 
-editor/display_folded = true
 position = Vector2( 370, 0 )
 input_pickable = false
 collision_layer = 1
@@ -315,12 +314,17 @@ alert_delay = 2
 [node name="VisionCone2D" type="Node2D" parent="NonPlayerCharacter2D" index="0"]
 
 script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_editor_icon": ExtResource( 6 )
 }
 radius = 200.0
 angle = 30.0
+color = null
+resolution = 72
 cone_is_visible = true
+points_are_visible = false
+target_groups = PoolStringArray( "player" )
 
 [node name="Anim" type="AnimationPlayer" parent="NonPlayerCharacter2D" index="1"]
 
@@ -425,8 +429,11 @@ _sections_unfolded = [ "Transform" ]
 
 shape = SubResource( 8 )
 
-[node name="PlayerCharacter2D" parent="." index="3" instance=ExtResource( 12 )]
+[node name="PlayerCharacter2D" parent="." index="3" groups=[
+"player",
+] instance=ExtResource( 12 )]
 
+position = Vector2( 493.724, 19.775 )
 can_float = false
 
 [node name="TileMap" type="TileMap" parent="." index="4" groups=[

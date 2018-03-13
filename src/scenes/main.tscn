@@ -55,7 +55,7 @@ _sections_unfolded = [ "Color" ]
 custom_solver_bias = 0.0
 extents = Vector2( 24, 32 )
 
-[node name="top" type="Node" index="0"]
+[node name="top" type="Node"]
 
 [node name="ui" type="CanvasLayer" parent="." index="0"]
 
