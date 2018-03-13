@@ -48,16 +48,24 @@ func _on_exited(obj, is_area):
 	emit_signal("lost", obj, is_area)
 
 func _update_cone_points():
-	var a = deg2rad(angle/2)
-	var v = Vector2(radius, 0)
-	var ps = [Vector2(0, 0), v.rotated(-a), v.rotated(a)]
+	var ang = deg2rad(angle)
+	var res = ceil((36.0/360.0) * angle)  # Number of points in the arc.
+	print(res)
+	var inc = ang/res  # The size of the arc angle steps.
+	ang = ang / 2  # The starting angle.
+	var rad = Vector2(radius, 0)  # Radius vector.
+	var ps = PoolVector2Array()
 	
-	if cone_points.size() == 3:
-		cone_points[0] = ps[0]
-		cone_points[1] = ps[1]
-		cone_points[2] = ps[2]
-	else:
-		cone_points.append_array(ps)
+	# Append the center point.
+	ps.append(Vector2(0, 0))
+	
+	# Append each of the arc points.
+	for i in range(res + 1):
+		var p = rad.rotated(-ang + i * inc)
+		ps.append(p)
+	
+	cone_points = ps
+	update()  # Call update to force a redraw.
 	
 	return cone_points
 
