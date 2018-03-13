@@ -87,12 +87,12 @@ func _is_in_target_groups(node):
 func _on_entered(obj, is_area):
 	if _is_in_target_groups(obj):
 		target = obj
-	emit_signal("found", obj, is_area)
+		emit_signal("found", obj, is_area)
 
 func _on_exited(obj, is_area):
 	if _is_in_target_groups(obj):
 		target = null
-	emit_signal("lost", obj, is_area)
+		emit_signal("lost", obj, is_area)
 
 func _update_cone_points():
 	var ang = deg2rad(angle)

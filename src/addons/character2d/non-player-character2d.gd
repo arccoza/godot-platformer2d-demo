@@ -41,9 +41,7 @@ func _physics_process(delta):
 	upd_ai_times(delta)
 
 func _on_vision_detect(ev, is_area, entered):
-	if ev.is_in_group("player"):
-		alert = entered
-#		print(ev.name, alert)
+	alert = entered
 
 func upd_ai_times(delta):
 	if wander_time <= 0:
