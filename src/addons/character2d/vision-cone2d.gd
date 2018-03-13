@@ -8,9 +8,12 @@ export(int, 36, 360) var resolution = 72
 export(bool) var cone_is_visible = false
 export(bool) var points_are_visible = false
 var cone_points = PoolVector2Array()
+var ray_points = PoolVector2Array()
 var area = Area2D.new()
 var owner_id = null
 var shape = ConvexPolygonShape2D.new()
+var target = null
+var is_target_hittable = false
 
 
 func set_radius(val):
@@ -48,16 +51,34 @@ func _ready():
 	area.connect("body_exited", self, "_on_exited", [false])
 	add_child(area)
 
+func _physics_process(delta):
+	var space_state = get_world_2d().direct_space_state
+	
+	is_target_hittable = false
+	if target:
+		var hit = space_state.intersect_ray(to_global(position), target.global_position, [self.area])
+		draw_ray(position, to_local(target.global_position))
+		if hit.collider == target:
+			is_target_hittable = true
+	else:
+		draw_ray(null, null)
+	
+	prints(is_target_hittable)
+	
+
 func _on_entered(obj, is_area):
+	if obj.is_in_group("player"):
+		target = obj
 	emit_signal("found", obj, is_area)
 
 func _on_exited(obj, is_area):
+	if obj.is_in_group("player"):
+		target = null
 	emit_signal("lost", obj, is_area)
 
 func _update_cone_points():
 	var ang = deg2rad(angle)
 	var res = ceil((resolution/360.0) * angle * radius/360)  # Number of points in the arc.
-	print(res)
 	var inc = ang/res  # The size of the arc angle steps.
 	ang = ang / 2  # The starting angle.
 	var rad = Vector2(radius, 0)  # Radius vector.
@@ -76,8 +97,16 @@ func _update_cone_points():
 	
 	return cone_points
 
+func draw_ray(from, to):
+	if from != null and to != null:
+		ray_points = PoolVector2Array([from, to])
+	else:
+		ray_points = null
+	update()
+
 func _draw():
 	_draw_cone()
+	_draw_ray()
 
 func _draw_cone():
 	if not (Engine.editor_hint or cone_is_visible):
@@ -93,3 +122,8 @@ func _draw_cone():
 			draw_circle(p, 2.0, colors[0])
 	
 	draw_polygon(points, colors)
+
+func _draw_ray():
+	if ray_points and ray_points.size() >= 2:
+#		prints(ray_points)
+		draw_line(ray_points[0], ray_points[1], ColorN("red", 0.35), 2.0, false)
