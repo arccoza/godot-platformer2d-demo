@@ -49,7 +49,7 @@ func _on_exited(obj, is_area):
 
 func _update_cone_points():
 	var ang = deg2rad(angle)
-	var res = ceil((36.0/360.0) * angle)  # Number of points in the arc.
+	var res = ceil((36.0/360.0) * angle * radius/360)  # Number of points in the arc.
 	print(res)
 	var inc = ang/res  # The size of the arc angle steps.
 	ang = ang / 2  # The starting angle.
