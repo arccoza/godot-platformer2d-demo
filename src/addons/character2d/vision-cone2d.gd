@@ -6,6 +6,7 @@ export(float, 0, 360) var angle = 30 setget set_angle, get_angle
 export(Color, RGBA) var color = ColorN("green", 0.35) setget set_color
 export(int, 36, 360) var resolution = 72
 export(bool) var cone_is_visible = false
+export(bool) var points_are_visible = false
 var cone_points = PoolVector2Array()
 var area = Area2D.new()
 var owner_id = null
@@ -87,7 +88,8 @@ func _draw_cone():
 	
 	colors.append(color if color else ColorN("green", 0.35))
 	
-	for p in points:
-		draw_circle(p, 2.0, colors[0])
+	if points_are_visible:
+		for p in points:
+			draw_circle(p, 2.0, colors[0])
 	
 	draw_polygon(points, colors)
