@@ -2,7 +2,7 @@ tool
 extends Node2D
 
 export(float) var radius = 100 setget set_radius, get_angle
-export(float, 0, 120) var angle = 30 setget set_angle, get_angle
+export(float, 0, 360) var angle = 30 setget set_angle, get_angle
 #export(Color, RGBA) var color = ColorN("green", 0.35)
 export(bool) var cone_is_visible = false
 var cone_points = PoolVector2Array()
