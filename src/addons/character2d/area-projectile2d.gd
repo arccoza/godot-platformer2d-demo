@@ -2,7 +2,6 @@ extends Area2D
 
 export(float) var lifetime = 5.0
 export(int) var collisions = 1
-export(String, MULTILINE) var collision_groups = "terrain\nenemy" setget set_collision_groups, get_collision_groups
 export(float) var health = 0.0
 
 var container = null
@@ -11,19 +10,6 @@ var velocity = Vector2(0, 0)
 var time = 0
 var _offset = null
 enum _layers { LAYER_DEFAULT=1, LAYER_PC=2, LAYER_NPC=4, LAYER_TERRAIN=32, LAYER_OBJECT=64, LAYER_PROJECTILE=128 }
-
-
-func set_collision_groups(val):
-	match typeof(val):
-		TYPE_STRING:
-			collision_groups = val.split("\n")
-		TYPE_ARRAY:
-			collision_groups = PoolStringArray(val)
-		TYPE_STRING_ARRAY:
-			collision_groups = val
-
-func get_collision_groups():
-	return collision_groups
 
 
 signal impacted(target)

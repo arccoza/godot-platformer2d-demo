@@ -417,8 +417,6 @@ __meta__ = {
 }
 lifetime = 0.5
 collisions = 1
-collision_groups = "terrain
-player"
 health = -10.0
 
 [node name="Sprite2" type="Sprite" parent="NonPlayerCharacter2D/Projectiles2D2/AreaProjectile2D" index="0"]
