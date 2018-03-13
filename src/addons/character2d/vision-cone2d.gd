@@ -3,7 +3,7 @@ extends Node2D
 
 export(float) var radius = 100 setget set_radius, get_angle
 export(float, 0, 360) var angle = 30 setget set_angle, get_angle
-#export(Color, RGBA) var color = ColorN("green", 0.35)
+export(Color, RGBA) var color = ColorN("green", 0.35) setget set_color
 export(int, 36, 360) var resolution = 72
 export(bool) var cone_is_visible = false
 var cone_points = PoolVector2Array()
@@ -26,6 +26,11 @@ func set_angle(val):
 
 func get_angle(val):
 	return angle
+
+
+func set_color(val):
+	color = val
+	update()
 
 
 signal found(obj, is_area)  #detected
@@ -80,7 +85,7 @@ func _draw_cone():
 	var colors = PoolColorArray()
 	var points = cone_points
 	
-	colors.append(ColorN("green", 0.35))
+	colors.append(color if color else ColorN("green", 0.35))
 	
 	for p in points:
 		draw_circle(p, 2.0, colors[0])
