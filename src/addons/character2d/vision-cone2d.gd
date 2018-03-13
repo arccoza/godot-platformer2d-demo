@@ -25,7 +25,7 @@ func set_targets(val):
 
 func set_radius(val):
 	radius = val
-	_update_cone_points()
+	draw_cone()
 
 func get_radius(val):
 	return radius
@@ -33,7 +33,7 @@ func get_radius(val):
 
 func set_angle(val):
 	angle = val
-	_update_cone_points()
+	draw_cone()
 
 func get_angle(val):
 	return angle
@@ -82,7 +82,7 @@ func _on_exited(obj, is_area):
 	target = null
 	emit_signal("lost", obj, is_area)
 
-func _update_cone_points():
+func draw_cone():
 	var ang = deg2rad(angle)
 	var res = ceil((resolution/360.0) * angle * radius/360)  # Number of points in the arc.
 	var inc = ang/res  # The size of the arc angle steps.
