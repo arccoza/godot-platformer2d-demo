@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/hud-screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/title-screen.tscn" type="PackedScene" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=6]
 [ext_resource path="res://assets/sprites/grotto-escape/lava-light.png" type="Texture" id=7]
 [ext_resource path="res://addons/character2d/interactable2d.gd" type="Script" id=8]
-[ext_resource path="res://assets/sprites/cavern-background.png" type="Texture" id=9]
+[ext_resource path="res://addons/character2d/icons/interactable2d.svg" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/cavern-background.png" type="Texture" id=10]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -208,7 +209,6 @@ _sections_unfolded = [ "Shadow" ]
 position = Vector2( 581.724, -56.225 )
 gravity = Vector2( 0, 500 )
 speed_max = Vector2( 100, 800 )
-can_float = false
 boost_mul = Vector2( 3, 1.5 )
 
 [node name="tile_map01" type="TileMap" parent="level" index="2"]
@@ -414,6 +414,9 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 8 )
+__meta__ = {
+"_editor_icon": ExtResource( 9 )
+}
 health = -20
 energy = 0
 points = 0
@@ -473,7 +476,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect", "Visibility" ]
 
