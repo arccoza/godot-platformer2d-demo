@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scripts/vision.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -2, 0, 0, -65535, 0, 0, 65534, 0, 0, 1, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 131076, 0, 0, 131088, 0, 0, 196624, 0, 0, 262160, 0, 0, 327683, 0, 0, 327684, 0, 0, 327695, 0, 0, 327696, 0, 0, 327699, 0, 0, 393221, 0, 0, 393227, 0, 0, 393234, 0, 0, 393235, 0, 0, 458768, 0, 0, 458769, 0, 0, 524304, 0, 0, 524305, 0, 0, 589829, 0, 0, 655372, 0, 0, 720908, 0, 0, 720909, 0, 0, 786446, 0, 0 )
+_sections_unfolded = [ "Cell", "Collision" ]
+
+[node name="vision" type="Node2D" parent="." index="1"]
+
+position = Vector2( 170, 90 )
+script = ExtResource( 2 )
+radius = 100.0
+angle = 30
+color = Color( 0, 0.992188, 0.178284, 0.558 )
+resolution = 72
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="." index="2"]
+
+position = Vector2( 220, 100 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+
+position = Vector2( 190, 100 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.25, 0.25 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+
