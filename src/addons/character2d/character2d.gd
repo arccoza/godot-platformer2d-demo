@@ -9,7 +9,7 @@ var floor_normal = Vector2(0, -1)
 var floor_angle = deg2rad(floor_angle_max)
 
 var speed_min = Vector2(10, 6)
-export var speed_max = Vector2(220, 2000)
+export var speed_max = Vector2(220, 200)
 export var speed_inc = Vector2(0.4, 0.8)
 export var speed_dec = Vector2(0.1, 1)
 var speed = Vector2(0, 0)
@@ -18,6 +18,7 @@ var direction_last = Vector2(1, 0)
 var velocity = Vector2(0, 0)
 var y_time = 0.2
 var y_timer = y_time
+export var jump_mul = 10
 export var is_floating = false
 
 export var boost_mul = Vector2(4, 2)
@@ -182,10 +183,11 @@ func upd_speed(delta):
 		speed.x = clamp(speed.x, speed_min.x, speed_max.x)
 	else:
 		speed.x = lerp(speed.x, 0, speed_dec.x)
-	if direction.y and y_timer > 0:
-		speed.y = lerp(speed.y, speed_max.y, speed_inc.y)
+	if direction.y and (y_timer > 0 or is_floating):
+		var mul = jump_mul if not is_floating else 1
+		speed.y = lerp(speed.y, speed_max.y * mul, speed_inc.y)
 #		speed.y += speed_max.y * speed_inc.y
-		speed.y = clamp(speed.y, speed_min.y, speed_max.y)
+		speed.y = clamp(speed.y, speed_min.y, speed_max.y * mul)
 	else:
 		speed.y = 0
 	return speed

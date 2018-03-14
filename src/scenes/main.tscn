@@ -208,7 +208,8 @@ _sections_unfolded = [ "Shadow" ]
 
 position = Vector2( 581.724, -56.225 )
 gravity = Vector2( 0, 500 )
-speed_max = Vector2( 100, 800 )
+speed_max = Vector2( 100, 80 )
+jump_mul = 10
 is_floating = false
 boost_mul = Vector2( 3, 1.5 )
 points_value = 0
