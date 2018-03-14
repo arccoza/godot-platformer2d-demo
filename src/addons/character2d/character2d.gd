@@ -210,7 +210,8 @@ func die():
 
 func attack():
 	play("attack")
-	proj.start()
+	if proj:
+		proj.start()
 
 func play(id):
 	var current = animp.get_animation(animp.current_animation) if animp.current_animation else null
