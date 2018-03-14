@@ -67,7 +67,7 @@ func _physics_process(delta):
 	if target:
 		var hit = space_state.intersect_ray(to_global(position), target.global_position, [self.area])
 		draw_ray(position, to_local(target.global_position))
-		if hit.collider == target:
+		if hit and hit.collider == target:
 			is_target_hittable = true
 	else:
 		draw_ray(null, null)
