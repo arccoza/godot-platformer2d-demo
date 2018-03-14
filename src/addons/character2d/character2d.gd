@@ -32,10 +32,6 @@ export var energy_value = 100
 var energy_min = 0
 export var energy_max = 100
 var energy = Quant.new(energy_value, energy_min, energy_max)
-export var points_value = 0
-var points_min = 0
-export var points_max = 100
-var points = Quant.new(points_value, points_min, points_max)
 
 var action = { attack = false, boost = false, left = false, right = false, up = false, down = false }
 

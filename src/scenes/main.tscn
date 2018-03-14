@@ -211,6 +211,7 @@ gravity = Vector2( 0, 500 )
 speed_max = Vector2( 100, 800 )
 is_floating = false
 boost_mul = Vector2( 3, 1.5 )
+points_value = 0
 
 [node name="tile_map01" type="TileMap" parent="level" index="2"]
 
