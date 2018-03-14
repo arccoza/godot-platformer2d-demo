@@ -18,7 +18,7 @@ var direction_last = Vector2(1, 0)
 var velocity = Vector2(0, 0)
 var y_time = 0.2
 var y_timer = y_time
-export var can_float = false
+export var is_floating = false
 
 export var boost_mul = Vector2(4, 2)
 var boost = Vector2(1, 1)
@@ -150,7 +150,7 @@ func _move(delta):
 #				self.position += Vector2(crem.x, -(cpos.y + 8))
 	
 	# Handle jumping.
-	if can_float or is_on_floor():
+	if is_floating or is_on_floor():
 		y_timer = y_time
 	else:
 		y_timer -= delta
