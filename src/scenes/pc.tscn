@@ -1,13 +1,8 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://addons/character2d/player-character2d.gd" type="Script" id=1]
 [ext_resource path="res://addons/character2d/icons/character2d.svg" type="Texture" id=2]
 [ext_resource path="res://skel.tres" type="Texture" id=3]
-[ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=4]
-[ext_resource path="res://addons/character2d/icons/projectiles2d.svg" type="Texture" id=5]
-[ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=6]
-[ext_resource path="res://addons/character2d/icons/projectile2d.svg" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -88,31 +83,18 @@ radius = 5.15014
 height = 2.95992
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="AtlasTexture" id=6]
-
-flags = 0
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 16, 16 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="CircleShape2D" id=7]
-
-custom_solver_bias = 0.0
-radius = 4.07462
-
-[sub_resource type="OccluderPolygon2D" id=8]
+[sub_resource type="OccluderPolygon2D" id=6]
 
 closed = true
 cull_mode = 0
 polygon = PoolVector2Array( -2.724, 8.22501, -0.724001, 3.22501, 0.275999, 2.22501, 1.276, 3.22501, 3.276, 8.22501 )
 
-[node name="PlayerCharacter2D" type="KinematicBody2D" index="0"]
+[node name="PlayerCharacter2D" type="KinematicBody2D"]
 
 position = Vector2( -26.276, 339.775 )
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 3
+collision_mask = 9
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Transform", "collision" ]
@@ -125,7 +107,8 @@ floor_angle_max = 45
 speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
-can_float = false
+jump_mul = 10
+is_floating = false
 boost_mul = Vector2( 4, 2 )
 health_value = 100
 health_max = 100
@@ -188,68 +171,9 @@ editor_draw_limits = false
 editor_draw_drag_margin = true
 _sections_unfolded = [ "Drag Margin" ]
 
-[node name="step_limit" type="RayCast2D" parent="." index="4"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="4"]
 
-position = Vector2( 0, 4 )
-enabled = true
-exclude_parent = true
-cast_to = Vector2( 10, 0 )
-collision_mask = 1
-_sections_unfolded = [ "Transform" ]
-
-[node name="Projectiles2D" type="Node2D" parent="." index="5"]
-
-script = ExtResource( 4 )
-_sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_editor_icon": ExtResource( 5 )
-}
-active = false
-cycles = 2
-period = 0.1
-span = 0.5
-amount = 1
-speed = 200.0
-direction = Vector2( 1, 0 )
-gravity = Vector2( 0, 0 )
-projectile = null
-container = NodePath("../..")
-
-[node name="AreaProjectile2D" type="Area2D" parent="Projectiles2D" index="0"]
-
-position = Vector2( 10, 2.14569e-06 )
-rotation = 1.5708
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-collision_layer = 524288
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 6 )
-_sections_unfolded = [ "Collision", "Transform" ]
-__meta__ = {
-"_editor_icon": ExtResource( 7 )
-}
-lifetime = 0.5
-collisions = 1
-health = 0.0
-
-[node name="Sprite2" type="Sprite" parent="Projectiles2D/AreaProjectile2D" index="0"]
-
-texture = SubResource( 6 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectiles2D/AreaProjectile2D" index="1"]
-
-position = Vector2( 0.499989, -3 )
-shape = SubResource( 7 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." index="6"]
-
-occluder = SubResource( 8 )
+occluder = SubResource( 6 )
 light_mask = 1
 _sections_unfolded = [ "Transform" ]
 

@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/hud-screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/title-screen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tilesets/grotto-escape-bg-tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/sprites/spot.png" type="Texture" id=4]
 [ext_resource path="res://scenes/pc.tscn" type="PackedScene" id=5]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=6]
-[ext_resource path="res://assets/sprites/grotto-escape/lava-light.png" type="Texture" id=7]
-[ext_resource path="res://addons/character2d/interactable2d.gd" type="Script" id=8]
-[ext_resource path="res://addons/character2d/icons/interactable2d.svg" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/cavern-background.png" type="Texture" id=10]
+[ext_resource path="res://scenes/npc.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=7]
+[ext_resource path="res://assets/sprites/grotto-escape/lava-light.png" type="Texture" id=8]
+[ext_resource path="res://addons/character2d/interactable2d.gd" type="Script" id=9]
+[ext_resource path="res://addons/character2d/icons/interactable2d.svg" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/cavern-background.png" type="Texture" id=11]
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -81,6 +82,7 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="tile_map_bg01" type="TileMap" parent="level" index="0"]
 
+editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
@@ -93,7 +95,7 @@ cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 9
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
@@ -209,15 +211,17 @@ _sections_unfolded = [ "Shadow" ]
 position = Vector2( 581.724, -56.225 )
 gravity = Vector2( 0, 500 )
 speed_max = Vector2( 100, 80 )
-jump_mul = 10
-is_floating = false
 boost_mul = Vector2( 3, 1.5 )
 points_value = 0
 
-[node name="tile_map01" type="TileMap" parent="level" index="2"]
+[node name="NonPlayerCharacter2D" parent="level" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 466, -64 )
+
+[node name="tile_map01" type="TileMap" parent="level" index="3"]
 
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -228,7 +232,7 @@ cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 9
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
@@ -283,10 +287,10 @@ shadow_filter_smooth = 16.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Shadow" ]
 
-[node name="tile_map02" type="TileMap" parent="level" index="3"]
+[node name="tile_map02" type="TileMap" parent="level" index="4"]
 
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -297,7 +301,7 @@ cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 9
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
@@ -310,7 +314,7 @@ position = Vector2( 576, -128 )
 scale = Vector2( 1, 7 )
 enabled = true
 editor_only = false
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 16, 0 )
 texture_scale = 2.0
 color = Color( 1, 1, 1, 0.0276078 )
@@ -337,7 +341,7 @@ position = Vector2( 560, -128 )
 scale = Vector2( -1, 7 )
 enabled = true
 editor_only = false
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 16, 0 )
 texture_scale = 2.0
 color = Color( 1, 1, 1, 0.0276078 )
@@ -358,10 +362,10 @@ shadow_filter_smooth = 32.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Shadow", "Transform" ]
 
-[node name="tile_map03" type="TileMap" parent="level" index="4"]
+[node name="tile_map03" type="TileMap" parent="level" index="5"]
 
 mode = 0
-tile_set = ExtResource( 6 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -372,7 +376,7 @@ cell_clip_uv = false
 collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
-collision_layer = 1
+collision_layer = 9
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
@@ -385,7 +389,7 @@ position = Vector2( 608, 48 )
 rotation = -1.5708
 enabled = true
 editor_only = false
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 texture_scale = 20.0
 color = Color( 1, 1, 1, 0.0276078 )
@@ -406,7 +410,7 @@ shadow_filter_smooth = 32.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Shadow", "Transform" ]
 
-[node name="interactable" type="Area2D" parent="level" index="5"]
+[node name="interactable" type="Area2D" parent="level" index="6"]
 
 position = Vector2( 184, -56 )
 input_pickable = true
@@ -416,13 +420,13 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 __meta__ = {
-"_editor_icon": ExtResource( 9 )
+"_editor_icon": ExtResource( 10 )
 }
 health = -20
 energy = 0
-points = 0
+points = 10
 interactions_max = -1
 period = 0
 eject = Vector2( 0, 0 )
@@ -479,7 +483,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect", "Visibility" ]
 
