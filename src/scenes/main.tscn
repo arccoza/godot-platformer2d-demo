@@ -55,7 +55,7 @@ _sections_unfolded = [ "Color" ]
 custom_solver_bias = 0.0
 extents = Vector2( 24, 32 )
 
-[node name="top" type="Node"]
+[node name="top" type="Node" index="0"]
 
 [node name="ui" type="CanvasLayer" parent="." index="0"]
 
@@ -67,7 +67,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="hud_screen" parent="ui" index="0" instance=ExtResource( 1 )]
 
-visible = false
+player_node = NodePath("../../level/PlayerCharacter2D")
 
 [node name="title_screen" parent="ui" index="1" instance=ExtResource( 2 )]
 
@@ -403,7 +403,7 @@ shadow_filter_smooth = 32.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Shadow", "Transform" ]
 
-[node name="Area2D" type="Area2D" parent="level" index="5"]
+[node name="interactable" type="Area2D" parent="level" index="5"]
 
 position = Vector2( 184, -56 )
 input_pickable = true
@@ -414,20 +414,27 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 8 )
-targets = 1
-health = 0.0
+health = -20
+energy = 0
 points = 0
-ttl = -1
+interactions_max = -1
 period = 0
 eject = Vector2( 0, 0 )
-teleport_to = null
-victory = false
-victory_health = 0
-victory_points = 0
+teleport_on = true
+teleport_to = NodePath("tele_dest")
+floating_on = false
+victory_on = false
+victory_health = -1
+victory_energy = -1
+victory_points = -1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/interactable" index="0"]
 
 shape = SubResource( 2 )
+
+[node name="tele_dest" type="Node2D" parent="level/interactable" index="1"]
+
+position = Vector2( 232, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2"]
 

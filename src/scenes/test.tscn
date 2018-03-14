@@ -228,7 +228,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource( 17 )
 
-[node name="Root" type="Node" index="0"]
+[node name="Root" type="Node"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
