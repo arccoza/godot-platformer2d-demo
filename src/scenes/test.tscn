@@ -1,30 +1,31 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scenes/hud-screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/title-screen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/character2d/non-player-character2d.gd" type="Script" id=3]
-[ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=4]
+[ext_resource path="res://addons/character2d/icons/non-player-character2d.svg" type="Texture" id=4]
 [ext_resource path="res://addons/character2d/vision-cone2d.gd" type="Script" id=5]
 [ext_resource path="res://addons/character2d/icons/vision-cone2d.svg" type="Texture" id=6]
 [ext_resource path="res://skel.tres" type="Texture" id=7]
 [ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=8]
-[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=9]
+[ext_resource path="res://addons/character2d/icons/projectiles2d.svg" type="Texture" id=9]
 [ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=10]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=11]
-[ext_resource path="res://scenes/pc.tscn" type="PackedScene" id=12]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=13]
-[ext_resource path="res://scripts/KinematicBody2D.gd" type="Script" id=14]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0010_1.png" type="Texture" id=15]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0009_2.png" type="Texture" id=16]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0008_3.png" type="Texture" id=17]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0006_4.png" type="Texture" id=18]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0005_5.png" type="Texture" id=19]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0003_6.png" type="Texture" id=20]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0002_7.png" type="Texture" id=21]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0001_8.png" type="Texture" id=22]
-[ext_resource path="res://assets/sprites/forest_bg/Layer_0000_9.png" type="Texture" id=23]
-[ext_resource path="res://scripts/dyn-image.gd" type="Script" id=24]
-[ext_resource path="res://assets/sprites/light.png" type="Texture" id=25]
+[ext_resource path="res://addons/character2d/icons/projectile2d.svg" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=12]
+[ext_resource path="res://scenes/pc.tscn" type="PackedScene" id=13]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=14]
+[ext_resource path="res://scripts/KinematicBody2D.gd" type="Script" id=15]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0010_1.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0009_2.png" type="Texture" id=17]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0008_3.png" type="Texture" id=18]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0006_4.png" type="Texture" id=19]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0005_5.png" type="Texture" id=20]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0003_6.png" type="Texture" id=21]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0002_7.png" type="Texture" id=22]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0001_8.png" type="Texture" id=23]
+[ext_resource path="res://assets/sprites/forest_bg/Layer_0000_9.png" type="Texture" id=24]
+[ext_resource path="res://scripts/dyn-image.gd" type="Script" id=25]
+[ext_resource path="res://assets/sprites/light.png" type="Texture" id=26]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -114,7 +115,7 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="AtlasTexture" id=7]
 
 flags = 0
-atlas = ExtResource( 11 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -172,7 +173,7 @@ anim_loop = true
 [sub_resource type="AtlasTexture" id=11]
 
 flags = 0
-atlas = ExtResource( 11 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -228,7 +229,7 @@ void fragment() {
 render_priority = 0
 shader = SubResource( 17 )
 
-[node name="Root" type="Node"]
+[node name="Root" type="Node" index="0"]
 
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
@@ -413,7 +414,7 @@ audio_bus_name = "Master"
 script = ExtResource( 10 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 9 )
+"_editor_icon": ExtResource( 11 )
 }
 lifetime = 0.5
 collisions = 1
@@ -430,12 +431,11 @@ shape = SubResource( 8 )
 
 [node name="PlayerCharacter2D" parent="." index="3" groups=[
 "player",
-] instance=ExtResource( 12 )]
+] instance=ExtResource( 13 )]
 
 position = Vector2( 493.724, 19.775 )
 collision_layer = 2
 collision_mask = 9
-can_float = false
 
 [node name="TileMap" type="TileMap" parent="." index="4" groups=[
 "terrain",
@@ -444,7 +444,7 @@ can_float = false
 position = Vector2( -198.969, 0 )
 scale = Vector2( 4, 4 )
 mode = 0
-tile_set = ExtResource( 13 )
+tile_set = ExtResource( 14 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -495,7 +495,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 _sections_unfolded = [ "Collision", "collision" ]
 
 [node name="CS2D" type="CollisionShape2D" parent="CollisionObject2D" index="0"]
@@ -510,7 +510,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 _sections_unfolded = [ "Collision", "collision" ]
 
 [node name="CS2D" type="CollisionShape2D" parent="CollisionObject2D2" index="0"]
@@ -556,7 +556,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -581,7 +581,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -606,7 +606,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 17 )
+texture = ExtResource( 18 )
 stretch_mode = 2
 
 [node name="trees3" type="ParallaxLayer" parent="ParallaxBackground" index="3"]
@@ -630,7 +630,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -655,7 +655,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -680,7 +680,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -705,7 +705,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -730,7 +730,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -755,7 +755,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 stretch_mode = 2
 _sections_unfolded = [ "Rect" ]
 
@@ -783,7 +783,7 @@ shadow_gradient_length = 0.0
 shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 _sections_unfolded = [ "Material" ]
 
 [node name="Sprite" type="Sprite" parent="." index="10"]
@@ -800,7 +800,7 @@ material = SubResource( 18 )
 position = Vector2( 110, 440 )
 enabled = true
 editor_only = false
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 offset = Vector2( 0, 0 )
 texture_scale = 0.2
 color = Color( 1, 1, 1, 1 )

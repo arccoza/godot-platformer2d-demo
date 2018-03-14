@@ -1,12 +1,13 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://addons/character2d/player-character2d.gd" type="Script" id=1]
-[ext_resource path="res://addons/character2d/icons/character2d.png" type="Texture" id=2]
+[ext_resource path="res://addons/character2d/icons/character2d.svg" type="Texture" id=2]
 [ext_resource path="res://skel.tres" type="Texture" id=3]
 [ext_resource path="res://addons/character2d/projectiles2d.gd" type="Script" id=4]
-[ext_resource path="res://addons/character2d/icons/projectiles2d.png" type="Texture" id=5]
+[ext_resource path="res://addons/character2d/icons/projectiles2d.svg" type="Texture" id=5]
 [ext_resource path="res://addons/character2d/area-projectile2d.gd" type="Script" id=6]
-[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=7]
+[ext_resource path="res://addons/character2d/icons/projectile2d.svg" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/grotto-escape/fire-ball.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -90,7 +91,7 @@ _sections_unfolded = [ "Resource" ]
 [sub_resource type="AtlasTexture" id=6]
 
 flags = 0
-atlas = ExtResource( 7 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 16, 16 )
 margin = Rect2( 0, 0, 0, 0 )
 filter_clip = false
@@ -106,7 +107,7 @@ closed = true
 cull_mode = 0
 polygon = PoolVector2Array( -2.724, 8.22501, -0.724001, 3.22501, 0.275999, 2.22501, 1.276, 3.22501, 3.276, 8.22501 )
 
-[node name="PlayerCharacter2D" type="KinematicBody2D"]
+[node name="PlayerCharacter2D" type="KinematicBody2D" index="0"]
 
 position = Vector2( -26.276, 339.775 )
 input_pickable = false
@@ -121,10 +122,10 @@ __meta__ = {
 gravity = Vector2( 0, 1000 )
 step_up = Vector2( 300, 990 )
 floor_angle_max = 45
-speed_min = Vector2( 10, 6 )
 speed_max = Vector2( 220, 2000 )
 speed_inc = Vector2( 0.4, 0.8 )
 speed_dec = Vector2( 0.1, 1 )
+can_float = false
 boost_mul = Vector2( 4, 2 )
 health_value = 100
 health_max = 100
@@ -229,13 +230,11 @@ audio_bus_name = "Master"
 script = ExtResource( 6 )
 _sections_unfolded = [ "Collision", "Transform" ]
 __meta__ = {
-"_editor_icon": ExtResource( 5 )
+"_editor_icon": ExtResource( 7 )
 }
 lifetime = 0.5
 collisions = 1
-collision_groups = "terrain
-enemy"
-damage = -10.0
+health = 0.0
 
 [node name="Sprite2" type="Sprite" parent="Projectiles2D/AreaProjectile2D" index="0"]
 
