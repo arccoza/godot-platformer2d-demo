@@ -103,7 +103,7 @@ filter_clip = false
 custom_solver_bias = 0.0
 radius = 4.0
 
-[node name="NonPlayerCharacter2D" type="KinematicBody2D"]
+[node name="NonPlayerCharacter2D" type="KinematicBody2D" index="0"]
 
 position = Vector2( 370, 0 )
 input_pickable = false
@@ -142,7 +142,7 @@ __meta__ = {
 radius = 100.0
 angle = 30.0
 color = null
-resolution = 72
+resolution = 144
 cone_is_visible = true
 points_are_visible = false
 targets = 2

@@ -4,7 +4,7 @@ extends Node2D
 export(float) var radius = 100 setget set_radius, get_angle
 export(float, 0, 360) var angle = 30 setget set_angle, get_angle
 export(Color, RGBA) var color = ColorN("green", 0.35) setget set_color
-export(int, 36, 360) var resolution = 72
+export(int, 36, 360) var resolution = 72 setget set_resolution
 export(bool) var cone_is_visible = false
 export(bool) var points_are_visible = false
 var cone_points = PoolVector2Array()
@@ -42,6 +42,11 @@ func get_angle(val):
 func set_color(val):
 	color = val
 	update()
+
+
+func set_resolution(val):
+	resolution = val
+	draw_cone()
 
 
 signal found(obj, is_area)  #detected
