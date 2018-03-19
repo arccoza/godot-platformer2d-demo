@@ -103,7 +103,7 @@ filter_clip = false
 custom_solver_bias = 0.0
 radius = 4.0
 
-[node name="NonPlayerCharacter2D" type="KinematicBody2D" index="0"]
+[node name="NonPlayerCharacter2D" type="KinematicBody2D"]
 
 position = Vector2( 370, 0 )
 input_pickable = false
