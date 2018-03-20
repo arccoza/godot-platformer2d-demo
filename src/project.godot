@@ -37,13 +37,6 @@ player_attack=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_n
 2d_physics/layer_4="TERRAIN"
 2d_physics/layer_5="OBJECT"
 2d_physics/layer_6="PROJECTILE"
-2d_physics/ANY=1
-2d_physics/PC=2
-2d_physics/NPC=3
-2d_physics/FRIENDLY=4
-2d_physics/HOSTILE=5
-2d_physics/TERRAIN=6
-2d_physics/OBJECT=7
 
 [rendering]
 
