@@ -6,7 +6,7 @@ export var points = 0
 var body_resources = ["health", "energy", "points"]
 
 export var interactions_max = -1
-var interactions = interactions_max
+var interactions = 0
 var bodies = {}
 
 export var period = 0
@@ -57,6 +57,8 @@ func _on_body_exited(body):
 	bodies.erase(body)
 
 func body_mod(data):
+	if body_max_interactions(data):
+		return
 	body_mod_resources(data)
 	body_is_victory(data)
 	body_do_teleport(data)
@@ -96,7 +98,6 @@ func body_do_float(data, entered):
 	var body = data.body
 	if body.get("is_floating") == null:
 		return
-	print("floating")
 	if entered:
 		data["prev_state"] = {is_floating=body.is_floating, gravity=body.get("gravity")}
 		body.is_floating = floating_on
@@ -104,3 +105,13 @@ func body_do_float(data, entered):
 	else:
 		for k in data["prev_state"]:
 			body.set(k, data["prev_state"][k])
+
+func body_max_interactions(data):
+	if interactions_max < 0:
+		return false
+	elif interactions < interactions_max:
+		interactions += 1
+		return false
+	else:
+		queue_free()
+		return true
