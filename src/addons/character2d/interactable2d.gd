@@ -9,7 +9,7 @@ export var interactions_max = -1
 var interactions = 0
 var bodies = {}
 
-export var period = 0
+export var period = 0.0
 
 export var eject = Vector2(0, 0)
 
