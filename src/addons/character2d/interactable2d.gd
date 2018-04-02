@@ -57,6 +57,7 @@ func _on_body_exited(body):
 	bodies.erase(body)
 
 func body_mod(data):
+	interactions += 1
 	if body_max_interactions(data):
 		return
 	body_mod_resources(data)
@@ -112,11 +113,9 @@ func body_do_float(data, entered):
 			body.set(k, data["prev_state"][k])
 
 func body_max_interactions(data):
-	if interactions_max < 0:
-		return false
-	elif interactions < interactions_max:
-		interactions += 1
+	if interactions_max < 0 or interactions < interactions_max:
 		return false
 	else:
+		visible = false
 		queue_free()
 		return true
