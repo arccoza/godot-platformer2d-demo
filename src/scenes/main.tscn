@@ -424,12 +424,11 @@ script = ExtResource( 9 )
 __meta__ = {
 "_editor_icon": ExtResource( 10 )
 }
-health = -20
+health = 0
 energy = 0
 points = 10
 interactions_max = -1
-period = 0.2
-eject = Vector2( 0, 0 )
+period = 0.0
 teleport_on = false
 teleport_to = NodePath("tele_dest")
 floating_on = true

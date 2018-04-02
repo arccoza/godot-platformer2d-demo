@@ -11,7 +11,7 @@ var bodies = {}
 
 export var period = 0.0
 
-export var eject = Vector2(0, 0)
+#export var eject = Vector2(0, 0)
 
 export var teleport_on = false
 export(NodePath) var teleport_to = null
@@ -61,6 +61,7 @@ func body_mod(data):
 		return
 	body_mod_resources(data)
 	body_is_victory(data)
+#	body_do_eject(data)
 	body_do_teleport(data)
 
 func body_mod_resources(data):
@@ -85,6 +86,10 @@ func body_is_victory(data):
 	
 	emit_signal("victory", win)
 	return win
+
+func body_do_eject(data):
+	var body = data.body
+	body.position += eject
 
 func body_do_teleport(data):
 	var body = data.body
