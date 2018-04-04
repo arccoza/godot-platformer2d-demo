@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Marvin_Z_-_Game_Music_02.wav-d905efedd37b1fe9ee19d3d5d962bf57.sample"
+
+[deps]
+
+source_file="res://assets/music/Marvin_Z_-_Game_Music_02.wav"
+source_md5="163e7a9bfc8bfba02a27d5f6b8a2022d"
+
+dest_files=[ "res://.import/Marvin_Z_-_Game_Music_02.wav-d905efedd37b1fe9ee19d3d5d962bf57.sample" ]
+dest_md5="360fa13f6a79009a575b993b35b072f1"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
