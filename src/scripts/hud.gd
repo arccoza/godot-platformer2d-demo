@@ -8,6 +8,10 @@ var res = {}
 func _ready():
 	if player_node:
 		player = get_node(player_node)
+		if player is InstancePlaceholder:
+			player.replace_by_instance()
+			player = get_node(player_node)
+		
 		res["health"] = player.get("health")
 		res["energy"] = player.get("energy")
 		res["points"] = player.get("points")
