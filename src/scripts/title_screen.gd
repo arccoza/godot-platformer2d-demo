@@ -5,12 +5,16 @@ var player = null
 export(NodePath) var level_node
 var level_scene = null
 var level = null
+var level_finish = null
 var name_input = null
 var start_button = null
-enum game_states {GAME_STOPPED, GAME_PAUSED, GAME_PLAYING}
-enum game_actions {GAME_STOP, GAME_PAUSE, GAME_PLAY, GAME_TOGGLE}
+enum game_states {GAME_STOPPED, GAME_PAUSED, GAME_PLAYING, GAME_FINISHED}
+enum game_actions {GAME_STOP, GAME_PAUSE, GAME_PLAY, GAME_TOGGLE, GAME_VICTORY}
 var game_state = GAME_STOPPED
 onready var hud = get_node("../hud_screen")
+onready var vic = get_node("../victory_screen")
+onready var vic_win = vic.find_node("win")
+onready var vic_lose = vic.find_node("lose")
 
 
 func _ready():
@@ -22,11 +26,16 @@ func _ready():
 	level.replace_by_instance()
 	level = get_node(level_node)
 	
+	level_finish = level.find_node("finish")
+	
 	player = level.find_node("player")
 	hud.player = player
 	
 	name_input = find_node("name")
 	start_button = find_node("start")
+	
+	if level_finish:
+		level_finish.connect("victory", self, "_on_victory")
 	
 	if name_input:
 		name_input.connect("text_changed", self, "_on_name_changed")
@@ -34,6 +43,12 @@ func _ready():
 	
 	if start_button:
 		start_button.connect("pressed", self, "_on_start_pressed")
+
+func _on_victory(won):
+	game_do(GAME_VICTORY, won)
+#	vic.visible = true
+#	vic_win.visible = won
+#	vic_lose.visible = not won
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -57,8 +72,11 @@ func _on_start_pressed(t=null):
 	else:
 		game_do(GAME_STOP)
 
-func show(val=true):
+func pause(val=true):
 	get_tree().paused = val
+
+func show(val=true):
+	pause(val)
 	self.visible = val
 
 func hide():
@@ -71,15 +89,23 @@ func reset_game():
 	old.queue_free()
 	level = level_scene.instance()
 	parent.add_child_below_node(old, level, true)
+	level_finish = level.find_node("finish")
 	player = level.find_node("player")
 	hud.player = player
+	
+	if level_finish:
+		level_finish.connect("victory", self, "_on_victory")
+	
+	start_button.text = "START"
+	name_input.clear()
+	name_input.editable = true
 	
 	for c in player.get_children():
 		if c is Camera2D:
 			c.make_current()
 			break
 
-func game_do(action):
+func game_do(action, data=null):
 	prints("ACTION")
 	var from = game_state
 	var to = game_state
@@ -96,9 +122,6 @@ func game_do(action):
 				GAME_STOP:
 					prints("stopping")
 					show()
-					start_button.text = "START"
-					name_input.clear()
-					name_input.editable = true
 					reset_game()
 					to = GAME_STOPPED
 				GAME_TOGGLE:
@@ -108,18 +131,25 @@ func game_do(action):
 				GAME_PAUSE:
 					show()
 					to = GAME_PAUSED
-#				GAME_STOP:
-#					prints("stopping")
-#					show()
-#					start_button.text = "START"
-#					name_input.clear()
-#					name_input.editable = true
-#					player.queue_free()
-#					player_placeholder.replace_by_instance()
-#					player = get_node(player_node)
-#					to = GAME_STOPPED
+				GAME_VICTORY:
+					pause()
+					var won = data
+					vic.visible = true
+					vic_win.visible = won
+					vic_lose.visible = not won
+					to = GAME_FINISHED
 				GAME_TOGGLE:
 					to = game_do(GAME_PAUSE)
+		GAME_FINISHED:
+			match action:
+				GAME_TOGGLE:
+					to = game_do(GAME_STOP)
+				GAME_STOP:
+					vic.visible = false
+					show()
+					reset_game()
+					to = GAME_STOPPED
+				
 					
 	print(game_state)
 	game_state = to

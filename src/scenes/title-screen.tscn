@@ -124,14 +124,14 @@ modulate_color = Color( 0.694118, 0.12549, 0.298039, 1 )
 draw_center = true
 _sections_unfolded = [ "Margin", "Modulate" ]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=8]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=9]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -151,7 +151,7 @@ modulate_color = Color( 0.597656, 0.597656, 0.597656, 1 )
 draw_center = true
 _sections_unfolded = [ "Margin", "Modulate" ]
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=10]
 
 size = 24
 use_mipmaps = false
@@ -230,7 +230,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 824.0
-margin_bottom = 95.0
+margin_bottom = 139.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -247,7 +247,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 824.0
-margin_bottom = 95.0
+margin_bottom = 139.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -264,7 +264,7 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 162.0
-margin_top = 99.0
+margin_top = 143.0
 margin_right = 662.0
 margin_bottom = 434.0
 rect_min_size = Vector2( 500, 0 )
@@ -284,9 +284,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 108.0
+margin_top = 86.0
 margin_right = 500.0
-margin_bottom = 144.0
+margin_bottom = 122.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -314,9 +314,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 194.0
+margin_top = 172.0
 margin_right = 500.0
-margin_bottom = 226.0
+margin_bottom = 204.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -326,10 +326,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
 custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.694118, 0.12549, 0.298039, 1 )
 custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )

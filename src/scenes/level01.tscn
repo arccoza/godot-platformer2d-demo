@@ -1,14 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tilesets/grotto-escape-bg-tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/sprites/spot.png" type="Texture" id=2]
-[ext_resource path="res://scenes/pc.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/npc.tscn" type="PackedScene" id=4]
-[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=5]
-[ext_resource path="res://assets/sprites/grotto-escape/lava-light.png" type="Texture" id=6]
-[ext_resource path="res://addons/character2d/interactable2d.gd" type="Script" id=7]
-[ext_resource path="res://addons/character2d/icons/interactable2d.svg" type="Texture" id=8]
+[ext_resource path="res://addons/character2d/interactable2d.gd" type="Script" id=3]
+[ext_resource path="res://addons/character2d/icons/interactable2d.svg" type="Texture" id=4]
+[ext_resource path="res://scenes/pc.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/npc.tscn" type="PackedScene" id=6]
+[ext_resource path="res://tilesets/grotto-escape-tiles.tres" type="TileSet" id=7]
+[ext_resource path="res://assets/sprites/grotto-escape/lava-light.png" type="Texture" id=8]
 [ext_resource path="res://assets/music/Marvin_Z_-_Game_Music_02.wav" type="AudioStream" id=9]
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.0
 
 [sub_resource type="ParticlesMaterial" id=1]
 
@@ -62,7 +67,6 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="tile_map_bg01" type="TileMap" parent="." index="0"]
 
-editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -186,7 +190,38 @@ shadow_filter_smooth = 16.0
 shadow_item_cull_mask = 1
 _sections_unfolded = [ "Shadow" ]
 
-[node name="player" parent="." index="1" instance=ExtResource( 3 )]
+[node name="finish" type="Area2D" parent="tile_map_bg01" index="4"]
+
+position = Vector2( 340, -40 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_icon": ExtResource( 4 )
+}
+health = 0
+energy = 0
+points = 0
+interactions_max = -1
+period = 0.0
+teleport_on = false
+teleport_to = null
+floating_on = false
+victory_on = true
+victory_health = 20
+victory_energy = -1
+victory_points = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tile_map_bg01/finish" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="player" parent="." index="1" instance=ExtResource( 5 )]
 
 position = Vector2( 581.724, -56.225 )
 gravity = Vector2( 0, 500 )
@@ -194,14 +229,14 @@ speed_max = Vector2( 100, 80 )
 boost_mul = Vector2( 3, 1.5 )
 points_value = 0
 
-[node name="NonPlayerCharacter2D" parent="." index="2" instance=ExtResource( 4 )]
+[node name="NonPlayerCharacter2D" parent="." index="2" instance=ExtResource( 6 )]
 
 position = Vector2( 458, -64 )
 
 [node name="tile_map01" type="TileMap" parent="." index="3"]
 
 mode = 0
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -270,7 +305,7 @@ _sections_unfolded = [ "Shadow" ]
 [node name="tile_map02" type="TileMap" parent="." index="4"]
 
 mode = 0
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -294,7 +329,7 @@ position = Vector2( 576, -128 )
 scale = Vector2( 1, 7 )
 enabled = true
 editor_only = false
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 offset = Vector2( 16, 0 )
 texture_scale = 2.0
 color = Color( 1, 1, 1, 0.0276078 )
@@ -321,7 +356,7 @@ position = Vector2( 560, -128 )
 scale = Vector2( -1, 7 )
 enabled = true
 editor_only = false
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 offset = Vector2( 16, 0 )
 texture_scale = 2.0
 color = Color( 1, 1, 1, 0.0276078 )
@@ -345,7 +380,7 @@ _sections_unfolded = [ "Shadow", "Transform" ]
 [node name="tile_map03" type="TileMap" parent="." index="5"]
 
 mode = 0
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 7 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -369,7 +404,7 @@ position = Vector2( 608, 48 )
 rotation = -1.5708
 enabled = true
 editor_only = false
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 offset = Vector2( 0, 0 )
 texture_scale = 20.0
 color = Color( 1, 1, 1, 0.0276078 )
@@ -400,9 +435,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 7 )
+script = ExtResource( 3 )
 __meta__ = {
-"_editor_icon": ExtResource( 8 )
+"_editor_icon": ExtResource( 4 )
 }
 health = 0
 energy = 0
