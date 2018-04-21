@@ -1,25 +1,16 @@
 extends PanelContainer
 
 export(NodePath) var player_node
-var player_scene = null
 var player = null
 export(NodePath) var level_node
 var level_scene = null
 var level = null
 var name_input = null
 var start_button = null
-var is_restart = false setget set_restart
-var spawn_point = null
 enum game_states {GAME_STOPPED, GAME_PAUSED, GAME_PLAYING}
 enum game_actions {GAME_STOP, GAME_PAUSE, GAME_PLAY, GAME_TOGGLE}
 var game_state = GAME_STOPPED
 onready var hud = get_node("../hud_screen")
-
-
-func set_restart(val):
-	is_restart = val
-	if val:
-		pass # trigger restart mode
 
 
 func _ready():
