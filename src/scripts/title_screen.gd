@@ -1,6 +1,5 @@
 extends PanelContainer
 
-export(NodePath) var player_node
 var player = null
 export(NodePath) var level_node
 var level_scene = null

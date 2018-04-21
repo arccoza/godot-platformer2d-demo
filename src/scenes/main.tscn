@@ -28,7 +28,6 @@ player_node = NodePath("../../level/PlayerCharacter2D")
 
 pause_mode = 2
 _sections_unfolded = [ "Pause", "custom_styles" ]
-player_node = NodePath("../../level/PlayerCharacter2D")
 level_node = NodePath("../../level")
 
 [node name="level" parent="." index="1" instance_placeholder="res://scenes/level01.tscn"]
