@@ -1,8 +1,10 @@
 extends PanelContainer
 
 export(NodePath) var player_node
+var player_scene = null
 var player = null
 export(NodePath) var level_node
+var level_scene = null
 var level = null
 var name_input = null
 var start_button = null
@@ -22,12 +24,21 @@ func set_restart(val):
 
 func _ready():
 	get_tree().paused = true
-	player = get_node(player_node)
-	if player is InstancePlaceholder:
-		player.replace_by_instance()
-		player = get_node(player_node)
 	
-	spawn_point = player.position
+	level = get_node(level_node)
+	level_scene = load(level.get_instance_path())
+	yield(get_tree(), "idle_frame")
+	level.replace_by_instance()
+	level = get_node(level_node)
+	
+	player = level.find_node("player")
+	
+#	player = get_node(player_node)
+#	player_scene = load(player.get_instance_path())
+##	if player is InstancePlaceholder:
+#	player.replace_by_instance()
+#	player = get_node(player_node)
+#	spawn_point = player.position
 	
 	name_input = find_node("name")
 	start_button = find_node("start")
@@ -68,6 +79,15 @@ func show(val=true):
 func hide():
 	show(false)
 
+func reset_game():
+	var old = level
+	var parent = old.get_parent()
+	old.name += "_"
+	old.queue_free()
+	level = level_scene.instance()
+	parent.add_child_below_node(old, level, true)
+	player = level.find_node("player")
+
 func game_do(action):
 	prints("ACTION")
 	var from = game_state
@@ -82,6 +102,14 @@ func game_do(action):
 						start_button.text = "STOP"
 						name_input.editable = false
 						to = GAME_PLAYING
+				GAME_STOP:
+					prints("stopping")
+					show()
+					start_button.text = "START"
+					name_input.clear()
+					name_input.editable = true
+					reset_game()
+					to = GAME_STOPPED
 				GAME_TOGGLE:
 					to = game_do(GAME_PLAY)
 		GAME_PLAYING:
@@ -89,13 +117,16 @@ func game_do(action):
 				GAME_PAUSE:
 					show()
 					to = GAME_PAUSED
-				GAME_STOP:
-					show()
-					start_button.text = "START"
-					name_input.clear()
-					name_input.editable = true
-#					player.
-					to = GAME_STOPPED
+#				GAME_STOP:
+#					prints("stopping")
+#					show()
+#					start_button.text = "START"
+#					name_input.clear()
+#					name_input.editable = true
+#					player.queue_free()
+#					player_placeholder.replace_by_instance()
+#					player = get_node(player_node)
+#					to = GAME_STOPPED
 				GAME_TOGGLE:
 					to = game_do(GAME_PAUSE)
 					
