@@ -27,7 +27,7 @@ func _ready():
 	
 	level = get_node(level_node)
 	level_scene = load(level.get_instance_path())
-	yield(get_tree(), "idle_frame")
+	yield(get_tree(), "idle_frame")  # Wait here for the tree to finish building before we make changes.
 	level.replace_by_instance()
 	level = get_node(level_node)
 	
