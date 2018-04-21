@@ -46,13 +46,9 @@ func _ready():
 
 func _on_victory(won):
 	game_do(GAME_VICTORY, won)
-#	vic.visible = true
-#	vic_win.visible = won
-#	vic_lose.visible = not won
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		print("esc")
 		game_do(GAME_TOGGLE)
 
 func _on_name_changed(t):
@@ -66,7 +62,6 @@ func _on_name_changed(t):
 		hud.find_node("player_name").text = t
 
 func _on_start_pressed(t=null):
-	prints(start_button.text)
 	if start_button.text.to_upper().ends_with("START"):
 		game_do(GAME_PLAY)
 	else:
@@ -106,7 +101,6 @@ func reset_game():
 			break
 
 func game_do(action, data=null):
-	prints("ACTION")
 	var from = game_state
 	var to = game_state
 	
@@ -120,7 +114,6 @@ func game_do(action, data=null):
 						name_input.editable = false
 						to = GAME_PLAYING
 				GAME_STOP:
-					prints("stopping")
 					show()
 					reset_game()
 					to = GAME_STOPPED
@@ -149,8 +142,6 @@ func game_do(action, data=null):
 					show()
 					reset_game()
 					to = GAME_STOPPED
-				
-					
-	print(game_state)
+	
 	game_state = to
 	return to
