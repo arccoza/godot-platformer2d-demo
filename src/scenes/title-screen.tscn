@@ -167,7 +167,7 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="title_screen" type="PanelContainer"]
+[node name="title_screen" type="PanelContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
