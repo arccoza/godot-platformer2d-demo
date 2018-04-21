@@ -32,13 +32,7 @@ func _ready():
 	level = get_node(level_node)
 	
 	player = level.find_node("player")
-	
-#	player = get_node(player_node)
-#	player_scene = load(player.get_instance_path())
-##	if player is InstancePlaceholder:
-#	player.replace_by_instance()
-#	player = get_node(player_node)
-#	spawn_point = player.position
+	hud.player = player
 	
 	name_input = find_node("name")
 	start_button = find_node("start")
