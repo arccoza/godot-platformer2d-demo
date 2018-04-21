@@ -72,6 +72,11 @@ func reset_game():
 	level = level_scene.instance()
 	parent.add_child_below_node(old, level, true)
 	player = level.find_node("player")
+	
+	for c in player.get_children():
+		if c is Camera2D:
+			c.make_current()
+			break
 
 func game_do(action):
 	prints("ACTION")
